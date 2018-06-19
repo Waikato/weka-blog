@@ -56,7 +56,8 @@ nikola help
     * `date` - the date/time of the post (incl timezone)
     * `tags`- comma-separated list (`tag1, tag2, ...`)
     * `author` - the author of the blog post
-    * 
+    * `description` - leave empty
+    * `category` - post category, eg `mooc` or `release`
 
   * empty line
   * actual content
