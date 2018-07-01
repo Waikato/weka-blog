@@ -21,11 +21,11 @@ BLOG_AUTHOR = "The WEKA Team"  # (translatable)
 BLOG_TITLE = "WEKA Blog"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "http://www.cs.waikato.ac.nz/ml/weka/blog/"
+SITE_URL = "https://www.cs.waikato.ac.nz/ml/weka/blog/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://www.cs.waikato.ac.nz/ml/weka/blog/"
-BLOG_EMAIL = "mhall@waikato.ac.nz"
+BLOG_EMAIL = "eibe@waikato.ac.nz"
 BLOG_DESCRIPTION = "Stuff around and about WEKA"  # (translatable)
 
 # Nikola is multilingual!
@@ -683,12 +683,12 @@ CONTENT_FOOTER_FORMATS = {
 # systems.  The following comment systems are supported by Nikola:
 #   disqus, facebook, googleplus, intensedebate, isso, livefyre, muut
 # You can leave this option blank to disable comments.
-COMMENT_SYSTEM = ""
+COMMENT_SYSTEM = "disqus"
 # And you also need to add your COMMENT_SYSTEM_ID which
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = ""
+COMMENT_SYSTEM_ID = "http-www-cs-waikato-ac-nz-ml-weka-blog"
 
 # Enable annotations using annotateit.org?
 # If set to False, you can still enable them for individual posts and pages
