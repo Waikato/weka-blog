@@ -4,7 +4,7 @@
 .. tags: kotlin
 .. author: Steven Lang 
 .. description: 
-.. category: Library
+.. category: library
 
 .. figure:: https://raw.githubusercontent.com/steven-lang/weka-kt/master/resources/Weka_3_kotlin_full.png
    :width: 300px
@@ -17,6 +17,8 @@ Kotlin Extensions for Weka
 ##########################
 
 Kotlin is a statically typed programming language for modern multiplatform applications running on the Java Virtual Machine. Its design philosophy is to be a concise and type-safe (e.g. support for non-nullable types) programming language. It supports both object-oriented and functional constructs. Other features include smart casting, operator overloading, higher-order functions, lambdas, and `extensions <https://kotlinlang.org/docs/reference/extensions.html>`_. The latter has led to the formation of a group of Kotlin extension libraries that primarily focuses on the syntactic improvement of other libraries' usages. A key example is `Android KTX <https://github.com/android/android-ktx>`_ library, developed by Google, which provides extensions for the Android framework. The purpose of this is to make Android development with Kotlin more concise, pleasant and idiomatic. 
+
+.. TEASER_END
 
 *************
 Code Examples

@@ -1,10 +1,10 @@
 .. title: Wiki countdown
 .. slug: 2018-07-02-wiki-countdown
 .. date: 2018-07-02 14:12:00 UTC+12:00
-.. tags: wiki
+.. tags: wiki, github
 .. author: FracPete
 .. description:
-.. category: wiki
+.. category: documentation
 
 Earlier this year, the company hosting the `Weka Wiki <http://weka.wikispaces.com/>`__
 made a notice available when logging into the wiki:
@@ -18,6 +18,8 @@ Notice
   running but have had to conclude that it is no longer viable to continue to
   run the service in the long term. So, it is with no small degree of
   nostalgia, that we will begin to close down later this year."
+
+.. TEASER_END
 
 With that in mind, we started looking for alternatives. In the end, we decided
 to go with a semi-wiki approach by using `mkdocs <http://www.mkdocs.org/>`__
