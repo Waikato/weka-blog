@@ -6,87 +6,79 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/</loc>
+  <loc>https://waikato.github.io/weka-blog/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/2018/</loc>
+  <loc>https://waikato.github.io/weka-blog/2018/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/archive.html</loc>
+  <loc>https://waikato.github.io/weka-blog/archive.html</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/</loc>
+  <lastmod>2018-07-05T02:39:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_code/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/</loc>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_documentation/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_code/</loc>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_library/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_documentation/</loc>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_library/</loc>
+  <loc>https://waikato.github.io/weka-blog/categories/github/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_mooc/</loc>
-  <lastmod>2018-07-02T08:42:00Z</lastmod>
- </url>
- <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_teaching-resource/</loc>
+  <loc>https://waikato.github.io/weka-blog/categories/kotlin/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_wiki/</loc>
-  <lastmod>2018-07-02T08:42:00Z</lastmod>
- </url>
- <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/github/</loc>
+  <loc>https://waikato.github.io/weka-blog/categories/mooc/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/kotlin/</loc>
+  <loc>https://waikato.github.io/weka-blog/categories/wiki/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/mooc/</loc>
+  <loc>https://waikato.github.io/weka-blog/galleries/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/wiki/</loc>
+  <loc>https://waikato.github.io/weka-blog/listings/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/galleries/</loc>
+  <loc>https://waikato.github.io/weka-blog/listings/.gitignore.html</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/posts/2018-05-07-advancedmoocstarted/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/listings/</loc>
+  <loc>https://waikato.github.io/weka-blog/posts/2018-05-30-weka-on-github/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/listings/.gitignore.html</loc>
+  <loc>https://waikato.github.io/weka-blog/posts/2018-06-22-wekakotlin/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/posts/2018-05-07-advancedmoocstarted/</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
- </url>
- <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/posts/2018-05-30-weka-on-github/</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
- </url>
- <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/posts/2018-06-22-wekakotlin/</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
- </url>
- <url>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/posts/2018-07-02-wiki-countdown/</loc>
+  <loc>https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/</loc>
   <lastmod>2018-07-03T10:08:00Z</lastmod>
  </url>
 </urlset>

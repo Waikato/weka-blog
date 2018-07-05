@@ -6,55 +6,47 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_code.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_code.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_documentation.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_documentation.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_library.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_library.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_mooc.xml</loc>
-  <lastmod>2018-07-02T08:42:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_teaching-resource.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/github.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/cat_wiki.xml</loc>
-  <lastmod>2018-07-02T08:42:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/kotlin.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/github.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/mooc.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/kotlin.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/categories/wiki.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/mooc.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/galleries/rss.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/categories/wiki.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/galleries/rss.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/rss.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://www.cs.waikato.ac.nz/ml/weka/blog/sitemap.xml</loc>
-  <lastmod>2018-07-03T10:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
+  <lastmod>2018-07-05T02:40:00Z</lastmod>
  </sitemap>
 </sitemapindex>

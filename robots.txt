@@ -1,2 +1,2 @@
-Sitemap: https://www.cs.waikato.ac.nz/ml/weka/blog/sitemapindex.xml
+Sitemap: https://waikato.github.io/weka-blog/sitemapindex.xml
 
