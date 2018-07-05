@@ -2,6 +2,10 @@
 
 Code for the Nikola-based Weka blog.
 
+The blog itself is located here:
+
+[waikato.github.io/weka-blog/](https://waikato.github.io/weka-blog/)
+
 
 ## Installation
 
@@ -30,6 +34,15 @@ To check all available commands:
 ```
 nikola help
 ```
+
+## Deployment to github pages
+
+* requires `ghp-import` package
+* command for deploying
+
+    ```
+    nikola github_deploy
+    ```
 
 
 ## Blogging
@@ -61,6 +74,13 @@ nikola help
 
   * empty line
   * actual content
+
+* to avoid really long posts to clutter RSS feed and starting page, 
+  add the following special command after a few paragraphs:
+
+  ```
+  .. TEASER_END
+  ```
 
 
 ## Help
