@@ -21,7 +21,7 @@ BLOG_AUTHOR = "The WEKA Team"  # (translatable)
 BLOG_TITLE = "WEKA Blog"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://www.cs.waikato.ac.nz/ml/weka/blog/"
+SITE_URL = "https://waikato.github.io/weka-blog/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://www.cs.waikato.ac.nz/ml/weka/blog/"
