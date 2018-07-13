@@ -45,6 +45,62 @@ nikola help
     ```
 
 
+## jenkins on CentOS
+
+CentOS does not have Python 3.5 packages directly available through packages,
+but rather through *software collections* (`scl`). 
+
+Python 3.5 is enabled like this (from an interactive shell):
+
+```bash
+/bin/scl enable rh-python35 bash
+```
+
+Assuming that the weka-blog repo is installed in `/var/lib/jenkins/repos/weka-blog`, 
+you can use the *Execute shell* build step with this script to automatic deploy
+the github pages *if* the repo has changed:
+
+```bash
+cd /var/lib/jenkins/repos/weka-blog
+COUNT=`git pull | grep -v "Already up-to-date" | wc -l`
+if [ $COUNT -gt 0 ]
+then 
+  /bin/scl enable rh-python35 - << \EOF
+cd /var/lib/jenkins/repos/weka-blog
+/var/lib/jenkins/repos/weka-blog/venv/bin/nikola github_deploy
+EOF
+fi
+```
+
+For getting the jenkins user to deploy to github, you need to:
+
+* create an ssh key as user jenkins
+
+  ```bash
+  ssh-keygen -t rsa -f ~/.ssh/github_wekablog
+  ```
+
+* add the following to `~/.ssh/config`
+
+  ```
+  Host github-wekablog
+     HostName github.com
+     User git
+     IdentityFile ~/.ssh/github_wekablog
+     IdentitiesOnly yes
+  ```
+
+* add the public ssh key under the repo's *Settings -> Deploy keys* 
+  with *write* access
+
+* update the `.git/config` file in the checked out repo, changing the 
+  *remote origin* URL to this (using the just created identity):
+
+  ```
+  url = git@github-wekablog:Waikato/weka-blog.git
+  ```
+
+
 ## Blogging
 
 * posts go into the `posts` directory
