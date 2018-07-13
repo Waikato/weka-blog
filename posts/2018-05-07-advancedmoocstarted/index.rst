@@ -18,7 +18,7 @@ sign up and get started!
 
 .. TEASER_END
 
-Topics covered
+Topics covered:
 
 * Time series analysis
 * Data stream mining
