@@ -6,47 +6,55 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>https://waikato.github.io/weka-blog/authors/fracpete.xml</loc>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://waikato.github.io/weka-blog/authors/steven-lang.xml</loc>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_code.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_documentation.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_library.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/github.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/kotlin.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/mooc.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/wiki.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/galleries/rss.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
-  <lastmod>2018-07-05T02:40:00Z</lastmod>
+  <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
 </sitemapindex>

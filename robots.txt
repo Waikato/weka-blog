@@ -1,2 +1,4 @@
 Sitemap: https://waikato.github.io/weka-blog/sitemapindex.xml
 
+User-Agent: *
+Host: waikato.github.io
