@@ -15,15 +15,19 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/archive.html</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/fracpete/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/authors/mark-hall/</loc>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/steven-lang/</loc>
@@ -31,7 +35,7 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_code/</loc>
@@ -44,6 +48,10 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_library/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_release/</loc>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource/</loc>
@@ -60,6 +68,10 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/mooc/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/release/</loc>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/wiki/</loc>
@@ -92,5 +104,9 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/</loc>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
 </urlset>

@@ -3,28 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wiki countdown | WEKA Blog</title>
+<title>Weka 3.8.3 and 3.9.3 released | WEKA Blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="FracPete">
-<link rel="prev" href="../2018-06-22-wekakotlin/" title="Weka-Kt: Kotlin Extensions for Weka" type="text/html">
-<link rel="next" href="../2018-09-04-383-and-393-released/" title="Weka 3.8.3 and 3.9.3 released" type="text/html">
+<link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Mark Hall">
+<link rel="prev" href="../2018-07-02-wiki-countdown/" title="Wiki countdown" type="text/html">
 <meta property="og:site_name" content="WEKA Blog">
-<meta property="og:title" content="Wiki countdown">
-<meta property="og:url" content="https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/">
-<meta property="og:description" content='Earlier this year, the company hosting the Weka Wiki
-made a notice available when logging into the wiki:
+<meta property="og:title" content="Weka 3.8.3 and 3.9.3 released">
+<meta property="og:url" content="https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/">
+<meta property="og:description" content="New versions of Weka are available for download from the Weka homepage:
 
-Notice
-"Over the last twelve months we have been carrying out a complete technical
-review of t'>
+Weka 3.8.3 - stable version
+It is available as ZIP, with Win32 installer, Win32 installer incl. JRE
+1.8.0_181, Win64 installer,">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-07-02T14:12:00+12:00">
-<meta property="article:tag" content="github">
-<meta property="article:tag" content="wiki">
+<meta property="article:published_time" content="2018-09-04T16:53:00+12:00">
+<meta property="article:tag" content="release">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -77,16 +74,16 @@ review of t'>
         <div class="row">
             
             
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Wiki countdown</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Weka 3.8.3 and 3.9.3 released</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    <a href="../../authors/fracpete/">FracPete</a>
+                    <a href="../../authors/mark-hall/">Mark Hall</a>
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-07-02T14:12:00+12:00" itemprop="datePublished" title="2018-07-02 14:12">2018-07-02 14:12</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-09-04T16:53:00+12:00" itemprop="datePublished" title="2018-09-04 16:53">2018-09-04 16:53</time></a></p>
                 <p class="commentline">
         
-    <a href="#disqus_thread" data-disqus-identifier="cache/posts/2018-07-02-wiki-countdown.html">Comments</a>
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/2018-09-04-383-and-393-released.html">Comments</a>
 
 
             
@@ -98,49 +95,39 @@ review of t'>
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>Earlier this year, the company hosting the <a class="reference external" href="http://weka.wikispaces.com/">Weka Wiki</a>
-made a notice available when logging into the wiki:</p>
-<dl class="docutils">
-<dt>Notice</dt>
-<dd>"Over the last twelve months we have been carrying out a complete technical
-review of the infrastructure and software we use to serve Wikispaces users.
-As part of the review, it has become apparent that the required investment to
-bring the infrastructure and code in line with modern standards is very
-substantial. We have explored all possible options for keeping Wikispaces
-running but have had to conclude that it is no longer viable to continue to
-run the service in the long term. So, it is with no small degree of
-nostalgia, that we will begin to close down later this year."</dd>
-</dl>
-<!-- TEASER_END --><p>With that in mind, we started looking for alternatives. In the end, we decided
-to go with a semi-wiki approach by using <a class="reference external" href="http://www.mkdocs.org/">mkdocs</a>
-on code that is hosted on Github. The reasons were:</p>
-<ul class="simple">
-<li>community engagement is easy via <a class="reference external" href="https://help.github.com/articles/about-pull-requests/">pull requests</a>
+<p>New versions of Weka are available for download from the Weka homepage:</p>
+<ul>
+<li>
+<p class="first"><strong>Weka 3.8.3</strong> - <em>stable version</em></p>
+<p>It is available as ZIP, with Win32 installer, Win32 installer incl. JRE
+1.8.0_181, Win64 installer, Win64 installer incl. 64 bit JRE 1.8.0_181 and
+Mac OS X application with Oracle 64 bit JRE 1.8.0_181.</p>
 </li>
-<li>mkdocs uses <a class="reference external" href="https://daringfireball.net/projects/markdown/">markdown</a>
-for the articles, a markup language that many people are familiar with</li>
-<li>mkdocs can <a class="reference external" href="https://www.mkdocs.org/user-guide/deploying-your-docs/">automatically deploy</a>
-to <a class="reference external" href="https://pages.github.com/">Github Pages</a>
+<li>
+<p class="first"><strong>Weka 3.9.3</strong> - <em>development version</em></p>
+<p>It is available as ZIP, with Win32 installer, Win32 installer incl. JRE
+1.8.0_151, Win64 installer, Win64 installer incl. 64 bit JRE 1.8.0_151 and
+Mac OS X application with Oracle 64 bit JRE 1.8.0_151.</p>
 </li>
 </ul>
-<p>Downside to switching to markdown is that we have to manually migrate articles,
-switching from one markup language to another. This means, it is a lengthy process
-getting the new site full operational, so please bear with us.</p>
-<p>So, long story short: the old wiki is dying on July 31st, the new one is being
-fleshed out here:</p>
-<p><a class="reference external" href="https://waikato.github.io/weka-wiki/">waikato.github.io/weka-wiki</a></p>
+<!-- TEASER_END --><p>Stable 3.8 receives bug fixes and new features that do not include breaking API changes and maintain serialized model compatibility. 3.9 (development) receives bug fixes and new features that might include breaking API changes and/or render models serialized using earlier versions incompatible.</p>
+<p>Weka homepage:</p>
+<p><a class="reference external" href="http://www.cs.waikato.ac.nz/~ml/weka/">http://www.cs.waikato.ac.nz/~ml/weka/</a></p>
+<p>Pentaho data mining community documentation:</p>
+<p><a class="reference external" href="https://wiki.pentaho.com/display/DATAMINING/Pentaho+Data+Mining+Community+Documentation">https://wiki.pentaho.com/display/DATAMINING/Pentaho+Data+Mining+Community+Documentation</a></p>
+<p>Packages for Weka&gt;=3.7.2 can be browsed online at:</p>
+<p><a class="reference external" href="http://weka.sourceforge.net/packageMetaData/">http://weka.sourceforge.net/packageMetaData/</a></p>
+<p>These releases include a number of bug fixes and improvements. As usual, for a complete list of changes refer to the changelogs.</p>
+<p>Cheers,</p>
+<p>The Weka Team</p>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../categories/github/" rel="tag">github</a></li>
-            <li><a class="tag p-category" href="../../categories/wiki/" rel="tag">wiki</a></li>
+<li><a class="tag p-category" href="../../categories/release/" rel="tag">release</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../2018-06-22-wekakotlin/" rel="prev" title="Weka-Kt: Kotlin Extensions for Weka">Previous post</a>
-            </li>
-            <li class="next">
-                <a href="../2018-09-04-383-and-393-released/" rel="next" title="Weka 3.8.3 and 3.9.3 released">Next post</a>
+                <a href="../2018-07-02-wiki-countdown/" rel="prev" title="Wiki countdown">Previous post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
@@ -148,9 +135,9 @@ fleshed out here:</p>
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="http-www-cs-waikato-ac-nz-ml-weka-blog",
-            disqus_url="https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/",
-        disqus_title="Wiki countdown",
-        disqus_identifier="cache/posts/2018-07-02-wiki-countdown.html",
+            disqus_url="https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/",
+        disqus_title="Weka 3.8.3 and 3.9.3 released",
+        disqus_identifier="cache/posts/2018-09-04-383-and-393-released.html",
         disqus_config = function () {
             this.language = "en";
         };

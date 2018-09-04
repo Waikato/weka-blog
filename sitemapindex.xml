@@ -7,7 +7,11 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/fracpete.xml</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-07-13T00:23:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://waikato.github.io/weka-blog/authors/mark-hall.xml</loc>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/steven-lang.xml</loc>
@@ -26,8 +30,12 @@
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_release.xml</loc>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource.xml</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-07-13T00:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/github.xml</loc>
@@ -39,7 +47,11 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/mooc.xml</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-07-13T00:23:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://waikato.github.io/weka-blog/categories/release.xml</loc>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/wiki.xml</loc>
@@ -51,10 +63,10 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2018-09-04T05:00:00Z</lastmod>
  </sitemap>
 </sitemapindex>
