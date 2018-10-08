@@ -149,7 +149,7 @@ Here are some tools:
 * Command-line tools
 
   * [pandoc](https://pandoc.org/)
-  * [rst2html](ttp://docutils.sourceforge.net/docs/user/tools.html#rst2html-py)
+  * [rst2html](http://docutils.sourceforge.net/docs/user/tools.html#rst2html-py)
 
 * GUI editors
 
