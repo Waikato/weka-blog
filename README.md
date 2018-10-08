@@ -138,6 +138,23 @@ For getting the jenkins user to deploy to github, you need to:
   .. TEASER_END
   ```
 
+## Tools
+
+Here are some tools:
+
+* Online editors
+
+  * [Online editor](http://rst.ninjs.org/)
+
+* Command-line tools
+
+  * [pandoc](https://pandoc.org/)
+  * [rst2html](ttp://docutils.sourceforge.net/docs/user/tools.html#rst2html-py)
+
+* GUI editors
+
+  * [ReText](https://github.com/retext-project/retext)
+
 
 ## Help
 
