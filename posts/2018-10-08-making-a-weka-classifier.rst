@@ -1,6 +1,6 @@
 .. title: Making a Weka classifier
 .. slug: 2018-10-08-making-a-weka-classifier
-.. date: 2018-10-30 22:02:00 UTC+12:00
+.. date: 2018-10-08 16:02:00 UTC+12:00
 .. tags: github
 .. author: eibe
 .. description:
@@ -26,143 +26,145 @@ Note also that, fFor Weka’s GUIs to work properly with your class, it needs to
 
 There are four command-line options already implemented in AbstractClassifier:
 
--output-debug-info
--do-not-check-capabiliities
--num-decimal-places
--batch-size
+::
+
+	-output-debug-info
+	-do-not-check-capabiliities
+	-num-decimal-places
+	-batch-size
 
 The first option will simply set the member variable m_Debug to true. You can use it in your class to output optional debug information (or you can just ignore it). The second option is only relevant if your class implements handling of capabilities. More on that in a second. The third option sets the value of the m_numDecimalPlaces variable. This should be used in the toString() method of your class, which you need to implement if you want a textual description of your model to be output by Weka, to specify the number of significant digits that are used when numbers are included in the output. The fourth option is ignored by almost all classifiers in Weka: it can be used to set a desired batch size for batch prediction when the classifier is used in batch prediction mode.
 
 Below, I have included an implementation of a basic K-nearest-neighbours classifier for Weka. It implements buildClassifier(Instances) and distributionForInstance(Instance), the two required methods for a Classifier, but also illustrates option handling for setting the parameter K: the setK(int) and getK() methods are used for setting K in Weka’s GUIs. Whenever a matching getter and setter method pair is found in a Classifier object, it will automatically show up in the GenericObjectEditor used to configure learning schemes in Weka’s GUIs. Looking at the code a bit further, the information in the @OptionMetaData(…) tag is used to specify the corresponding command-line option for the setter/getter pair. The toString() method in this example code is rudimentary and just outputs the number of neighbours used by the classifier.
 
-``
-/**
-* This code is released to the public domain. Use as you see fit.
-*/
-package weka.classifiers.lazy;
+.. code-block:: Java
 
-import weka.core.Instance;
-import weka.core.Instances;
-import weka.classifiers.AbstractClassifier;
-import weka.core.neighboursearch.LinearNNSearch;
-import weka.core.neighboursearch.NearestNeighbourSearch;
-import weka.core.OptionMetadata;
-import weka.core.Capabilities;
+	/**
+	* This code is released to the public domain. Use as you see fit.
+	*/
+	package weka.classifiers.lazy;
 
-/**
-* Implements the k-nearest-neighbours method for classification and
-* regression.  Existing WEKA code is used to retrieve the K nearest
-* neighbours for a test instance. The number of neighbours to use is
-* a parameter that the user can specify, via a get...()/set...()
-* method pair for WEKA's GUIs and a Java annotation for command-line
-* option handling.
-*/
-public class KNN extends AbstractClassifier {
+	import weka.core.Instance;
+	import weka.core.Instances;
+	import weka.classifiers.AbstractClassifier;
+	import weka.core.neighboursearch.LinearNNSearch;
+	import weka.core.neighboursearch.NearestNeighbourSearch;
+	import weka.core.OptionMetadata;
+	import weka.core.Capabilities;
 
-   /** The number of neighbours to use */
-   protected int m_K = 1;
+	/**
+	* Implements the k-nearest-neighbours method for classification and
+	* regression.  Existing WEKA code is used to retrieve the K nearest
+	* neighbours for a test instance. The number of neighbours to use is
+	* a parameter that the user can specify, via a get...()/set...()
+	* method pair for WEKA's GUIs and a Java annotation for command-line
+	* option handling.
+	*/
+	public class KNN extends AbstractClassifier {
 
-   /** The method to be used to search for nearest neighbours. */
-   protected NearestNeighbourSearch m_NNSearch = new LinearNNSearch();
+	   /** The number of neighbours to use */
+	   protected int m_K = 1;
 
-   /**
-    * Returns capabilities of the classifier.
-    *
-    * @return the capabilities of this classifier
-    */
-   public Capabilities getCapabilities() {
-       Capabilities result = super.getCapabilities();
-       result.disableAll();
+	   /** The method to be used to search for nearest neighbours. */
+	   protected NearestNeighbourSearch m_NNSearch = new LinearNNSearch();
 
-       // predictor attributes
-       result.enable(Capabilities.Capability.NOMINAL_ATTRIBUTES);
-       result.enable(Capabilities.Capability.NUMERIC_ATTRIBUTES);
-       result.enable(Capabilities.Capability.DATE_ATTRIBUTES);
-       result.enable(Capabilities.Capability.MISSING_VALUES);
+	   /**
+	    * Returns capabilities of the classifier.
+	    *
+	    * @return the capabilities of this classifier
+	    */
+	   public Capabilities getCapabilities() {
+	       Capabilities result = super.getCapabilities();
+	       result.disableAll();
 
-       // class
-       result.enable(Capabilities.Capability.NOMINAL_CLASS);
-       result.enable(Capabilities.Capability.NUMERIC_CLASS);
-       result.enable(Capabilities.Capability.DATE_CLASS);
-       result.enable(Capabilities.Capability.MISSING_CLASS_VALUES);
+	       // predictor attributes
+	       result.enable(Capabilities.Capability.NOMINAL_ATTRIBUTES);
+	       result.enable(Capabilities.Capability.NUMERIC_ATTRIBUTES);
+	       result.enable(Capabilities.Capability.DATE_ATTRIBUTES);
+	       result.enable(Capabilities.Capability.MISSING_VALUES);
 
-       return result;
-   }
+	       // class
+	       result.enable(Capabilities.Capability.NOMINAL_CLASS);
+	       result.enable(Capabilities.Capability.NUMERIC_CLASS);
+	       result.enable(Capabilities.Capability.DATE_CLASS);
+	       result.enable(Capabilities.Capability.MISSING_CLASS_VALUES);
 
-   /**
-    * Method to set the number of neighbours. Including metadata annotation
-    * to implement command-line option handling for this parameter.
-    */
-   @OptionMetadata(displayName = "number of neighbours", description = "Number of neighbours to use (default = 1).", 
-                   commandLineParamName = "K", commandLineParamSynopsis = "-K <int>", displayOrder = 1)
-   public void setK(int k) {
-       m_K = k;
-   }
+	       return result;
+	   }
 
-   /** 
-    * Method to get the currently set number of neighbours.
-    */
-   public int getK() {
-       return m_K;
-   }
+	   /**
+	    * Method to set the number of neighbours. Including metadata annotation
+	    * to implement command-line option handling for this parameter.
+	    */
+	   @OptionMetadata(displayName = "number of neighbours", description = "Number of neighbours to use (default = 1).", 
+			   commandLineParamName = "K", commandLineParamSynopsis = "-K <int>", displayOrder = 1)
+	   public void setK(int k) {
+	       m_K = k;
+	   }
 
-   /**
-    * Initialises the classifier from the given training instances.
-    */
-   public void buildClassifier(Instances trainingData) throws Exception {
+	   /** 
+	    * Method to get the currently set number of neighbours.
+	    */
+	   public int getK() {
+	       return m_K;
+	   }
 
-       // Can the classifier handle the data?
-       getCapabilities().testWithFail(trainingData);
+	   /**
+	    * Initialises the classifier from the given training instances.
+	    */
+	   public void buildClassifier(Instances trainingData) throws Exception {
 
-       // Make a copy of data and delete instances with a missing class value
-       trainingData = new Instances(trainingData);
-       trainingData.deleteWithMissingClass();
+	       // Can the classifier handle the data?
+	       getCapabilities().testWithFail(trainingData);
 
-       // Trivial for KNN: just initialise NN search class
-       m_NNSearch.setInstances(trainingData);
-   }
+	       // Make a copy of data and delete instances with a missing class value
+	       trainingData = new Instances(trainingData);
+	       trainingData.deleteWithMissingClass();
 
-   /**
-    * Returns class probability distribution (classification) or numeric
-    * target value (regression) for a given test instance.
-    */
-   public double[] distributionForInstance(Instance testInstance) throws Exception {
+	       // Trivial for KNN: just initialise NN search class
+	       m_NNSearch.setInstances(trainingData);
+	   }
 
-       // Add instance to NN search so that attribute ranges can be updated
-       m_NNSearch.addInstanceInfo(testInstance);
+	   /**
+	    * Returns class probability distribution (classification) or numeric
+	    * target value (regression) for a given test instance.
+	    */
+	   public double[] distributionForInstance(Instance testInstance) throws Exception {
 
-       // Get the list of neighbours
-       Instances neighbours = m_NNSearch.kNearestNeighbours(testInstance, m_K);
+	       // Add instance to NN search so that attribute ranges can be updated
+	       m_NNSearch.addInstanceInfo(testInstance);
 
-       // Calculate calculate class probability distribution or target value
-       double[] dist = new double[testInstance.numClasses()];
-       for (Instance neighbour : neighbours) {
-           if (testInstance.classAttribute().isNominal()) {
-               dist[(int)neighbour.classValue()] += 1.0 / neighbours.numInstances();
-           } else {
-               dist[0] += neighbour.classValue() / neighbours.numInstances();
-           }
-       }
-       return dist;
-   }
+	       // Get the list of neighbours
+	       Instances neighbours = m_NNSearch.kNearestNeighbours(testInstance, m_K);
 
-   /**
-    * Returns a textual description of the classifier.
-    */
-   public String toString() {
+	       // Calculate calculate class probability distribution or target value
+	       double[] dist = new double[testInstance.numClasses()];
+	       for (Instance neighbour : neighbours) {
+		   if (testInstance.classAttribute().isNominal()) {
+		       dist[(int)neighbour.classValue()] += 1.0 / neighbours.numInstances();
+		   } else {
+		       dist[0] += neighbour.classValue() / neighbours.numInstances();
+		   }
+	       }
+	       return dist;
+	   }
 
-       // Not much to output here for KNN: no explicit model
-       return "KNN with " + m_K + " neighbours";
-   }
+	   /**
+	    * Returns a textual description of the classifier.
+	    */
+	   public String toString() {
 
-   /**
-    * Main method, can be used to run classifier from command-line.
-    */
-   public static void main(String[] args) {
-       runClassifier(new KNN(), args);
-   }
-}
-``
+	       // Not much to output here for KNN: no explicit model
+	       return "KNN with " + m_K + " neighbours";
+	   }
+
+	   /**
+	    * Main method, can be used to run classifier from command-line.
+	    */
+	   public static void main(String[] args) {
+	       runClassifier(new KNN(), args);
+	   }
+	}
 
 In this simple classifier, the biggest method is the getCapabilities() method. This method is optional. It specifies what kind of data this classifier is able to deal with and is used in Weka’s GUIs to grey out a classifier if it is not applicable to a particular dataset. It is also used in the buildClassifier(Instances) method in this example code: getCapabilities().testWithFail(trainingData) will use this method to check whether the classifier is actually applicable to the data provided as the training data. Note that implementing this method is really optional: AbstractClassifier has a default implementation of getCapabilities() that does not restrict the classifier in any way. Basically, getCapabilities() only needs to be implemented if you want your classifier to be used by other users, to make application of your classifier more user friendly.
 
@@ -170,61 +172,61 @@ The main() method in the example class is used to run the classifier from the co
 
 Below, I have also included a minimalist version of the example class that has the absolute minimum amount of code necessary to use the classifier in Weka’s GUIs. It would be enough to run experiments with the K-nearest-neighbour method in Weka’s Experimenter GUI, etc. As you can see, it is pretty straightforward to implement a classifier in Weka, particularly if you only want to quickly run some experiments with a learning algorithm that you have dreamed up!
 
-``
-package weka.classifiers.lazy;
+.. code-block:: Java
 
-import weka.core.Instance;
-import weka.core.Instances;
-import weka.classifiers.AbstractClassifier;
-import weka.core.neighboursearch.LinearNNSearch;
-import weka.core.neighboursearch.NearestNeighbourSearch;
+	package weka.classifiers.lazy;
 
-public class KNNMinimal extends AbstractClassifier {
+	import weka.core.Instance;
+	import weka.core.Instances;
+	import weka.classifiers.AbstractClassifier;
+	import weka.core.neighboursearch.LinearNNSearch;
+	import weka.core.neighboursearch.NearestNeighbourSearch;
 
-   protected int m_K = 1;
+	public class KNNMinimal extends AbstractClassifier {
 
-   protected NearestNeighbourSearch m_NNSearch = new LinearNNSearch();
+	   protected int m_K = 1;
 
-   public void setK(int k) {
-       m_K = k;
-   }
+	   protected NearestNeighbourSearch m_NNSearch = new LinearNNSearch();
 
-   public int getK() {
-       return m_K;
-   }
+	   public void setK(int k) {
+	       m_K = k;
+	   }
 
-   public void buildClassifier(Instances trainingData) throws Exception {
+	   public int getK() {
+	       return m_K;
+	   }
 
-       trainingData = new Instances(trainingData);
-       trainingData.deleteWithMissingClass();
+	   public void buildClassifier(Instances trainingData) throws Exception {
 
-       m_NNSearch.setInstances(trainingData);
-   }
+	       trainingData = new Instances(trainingData);
+	       trainingData.deleteWithMissingClass();
 
-   public double[] distributionForInstance(Instance testInstance) throws Exception {
+	       m_NNSearch.setInstances(trainingData);
+	   }
 
-       m_NNSearch.addInstanceInfo(testInstance);
+	   public double[] distributionForInstance(Instance testInstance) throws Exception {
 
-       Instances neighbours = m_NNSearch.kNearestNeighbours(testInstance, m_K);
+	       m_NNSearch.addInstanceInfo(testInstance);
 
-       double[] dist = new double[testInstance.numClasses()];
-       for (Instance neighbour : neighbours) {
-           if (testInstance.classAttribute().isNominal()) {
-               dist[(int)neighbour.classValue()] += 1.0 / neighbours.numInstances();
-           } else {
-               dist[0] += neighbour.classValue() / neighbours.numInstances();
-           }
-       }
-       return dist;
-   }
-}
-``
+	       Instances neighbours = m_NNSearch.kNearestNeighbours(testInstance, m_K);
+
+	       double[] dist = new double[testInstance.numClasses()];
+	       for (Instance neighbour : neighbours) {
+		   if (testInstance.classAttribute().isNominal()) {
+		       dist[(int)neighbour.classValue()] += 1.0 / neighbours.numInstances();
+		   } else {
+		       dist[0] += neighbour.classValue() / neighbours.numInstances();
+		   }
+	       }
+	       return dist;
+	   }
+	}
 
 One more thing: if you want your class to be located in a new Java package that is not one of Weka’s standard packages for classifiers, you will need to make an appropriate version of the GenericPropertiesCreate.props file for Weka. For example, the RPlugin package for Weka defines a new weka.classifiers.mlr package and has the following info in the GenericPropertiesCreator.props file:
 
-``
-weka.classifiers.Classifier=\
-weka.classifiers.mlr
-``
+::
+
+	weka.classifiers.Classifier=\
+	weka.classifiers.mlr
 
 That is it for me for today. Hope you found this useful.
