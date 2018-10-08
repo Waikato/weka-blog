@@ -15,11 +15,15 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/archive.html</loc>
-  <lastmod>2018-09-04T05:00:00Z</lastmod>
+  <lastmod>2018-10-08T04:08:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/</loc>
-  <lastmod>2018-09-04T05:00:00Z</lastmod>
+  <lastmod>2018-10-08T04:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/authors/eibe/</loc>
+  <lastmod>2018-10-08T04:08:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/fracpete/</loc>
@@ -108,5 +112,9 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/</loc>
   <lastmod>2018-09-04T05:00:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/posts/2018-10-08-making-a-weka-classifier/</loc>
+  <lastmod>2018-10-08T04:08:00Z</lastmod>
  </url>
 </urlset>
