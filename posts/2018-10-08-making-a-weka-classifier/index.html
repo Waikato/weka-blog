@@ -99,57 +99,57 @@
 <p>There are three primary methods in the <tt class="docutils literal">Classifier</tt> interface: <tt class="docutils literal">buildClassifier(Instances)</tt>, which will build the classification or regression model based on the given training instances, <tt class="docutils literal">classifyInstance(Instance)</tt>, which takes a test instance and returns a single predicted class value for the instance that is supplied, and <tt class="docutils literal">distributionForInstance(Instance)</tt>, which returns a class probability distribution instead, assuming the class attribute is nominal. The fourth method in the <tt class="docutils literal">Classifier</tt> interface, <tt class="docutils literal">getCapabilities()</tt>, returns the capabilities of the classifier, specifying what kind of data it can be applied to. More on that further below.</p>
 <p>In practice, it is normally best to just extend Weka’s <tt class="docutils literal">AbstractClassifier</tt> class, which implements the <tt class="docutils literal">Classifier</tt> interface and is the superclass of pretty much all <tt class="docutils literal">Classifier</tt> classes that can be found in Weka. It has default implementations for the <tt class="docutils literal">distributionForInstance(Instance)</tt> and <tt class="docutils literal">classifyInstance(Instance)</tt> methods, one of which you have to override in your <tt class="docutils literal">Classifier</tt> class. You also need to implement the <tt class="docutils literal">buildClassifier(Instances)</tt> method to actually build the classification/regression model. The <tt class="docutils literal">AbstractClassifier</tt> has a default implementation of the <tt class="docutils literal">getCapabilities()</tt> method, which simply returns all possible capabilities, implying that the classifier can be applied to any kind of training data. Your class will inherit this default implementation and overriding this method is optional.</p>
 <p>So, at a minimum, the Java class for your learning algorithm, assuming it extends <tt class="docutils literal">AbstractClassifier</tt>, needs to implement two methods: <tt class="docutils literal">buildClassifier(Instances)</tt> and <tt class="docutils literal">distributionForInstance(Instance)</tt> (or <tt class="docutils literal">classifyInstance(Instance)</tt>). The <tt class="docutils literal">distributionForInstance(Instance)</tt> method must return a double array containing the estimated class probabilities for the different class values of the test instance if the class is nominal. If the class is numeric, it must return a single-element array with the numeric prediction for the test instance. The <tt class="docutils literal">classifyInstance(Instance)</tt> method, if you choose to implement it instead of <tt class="docutils literal">distributionForInstance(Instance)</tt>, must return the index of the predicted class value (coded as a number of type <tt class="docutils literal">double</tt>) if the class is nominal and simply return the predicted class value if the class is numeric.</p>
-<p>Below you can find an implementation of a basic K-nearest-neighbours classifier for Weka. It implements <tt class="docutils literal">buildClassifier(Instances)</tt> and <tt class="docutils literal">distributionForInstance(Instance)</tt>, the two required methods for a <tt class="docutils literal">Classifier</tt>. It also has a setter/getter method pair to set the value of the parameter <tt class="docutils literal">K</tt> in WEKA's graphical user interfaces (GUIs) and shows WEKA's <tt class="docutils literal">@OptionMetadata</tt> annotation, which is used to specify further information for this parameter, e.g., the corresponding command-line option <tt class="docutils literal"><span class="pre">-K</span> &lt;int&gt;</tt>. This is all the code that is necessary to use the classifier in Weka’s GUI or from a command-line interface using the <tt class="docutils literal">weka.Run</tt> class. It would be enough to run systematic experiments with the K-nearest-neighbour method in Weka’s Experimenter GUI, for example. As you can see, it is pretty straightforward to implement a classifier in Weka!</p>
-<pre class="code Java"><a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-1"></a><span class="kn">package</span> <span class="nn">weka.classifiers.lazy</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-2"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-3"></a><span class="kn">import</span> <span class="nn">weka.core.Instance</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-4"></a><span class="kn">import</span> <span class="nn">weka.core.Instances</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-5"></a><span class="kn">import</span> <span class="nn">weka.core.OptionMetadata</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-6"></a><span class="kn">import</span> <span class="nn">weka.classifiers.AbstractClassifier</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-7"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.LinearNNSearch</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-8"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.NearestNeighbourSearch</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-9"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-10"></a><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KNNMinimal</span> <span class="kd">extends</span> <span class="n">AbstractClassifier</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-11"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-12"></a>   <span class="kd">protected</span> <span class="kt">int</span> <span class="n">m_K</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-13"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-14"></a>   <span class="kd">protected</span> <span class="n">NearestNeighbourSearch</span> <span class="n">m_NNSearch</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinearNNSearch</span><span class="o">();</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-15"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-16"></a>   <span class="nd">@OptionMetadata</span><span class="o">(</span><span class="n">displayName</span> <span class="o">=</span> <span class="s">"number of neighbours"</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">"Number of neighbours to use (default = 1)."</span><span class="o">,</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-17"></a>                   <span class="n">commandLineParamName</span> <span class="o">=</span> <span class="s">"K"</span><span class="o">,</span> <span class="n">commandLineParamSynopsis</span> <span class="o">=</span> <span class="s">"-K &lt;int&gt;"</span><span class="o">,</span> <span class="n">displayOrder</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-18"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setK</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-19"></a>       <span class="n">m_K</span> <span class="o">=</span> <span class="n">k</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-20"></a>   <span class="o">}</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-21"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-22"></a>   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getK</span><span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-23"></a>       <span class="k">return</span> <span class="n">m_K</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-24"></a>   <span class="o">}</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-25"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-26"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildClassifier</span><span class="o">(</span><span class="n">Instances</span> <span class="n">trainingData</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-27"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-28"></a>       <span class="n">trainingData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Instances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-29"></a>       <span class="n">trainingData</span><span class="o">.</span><span class="na">deleteWithMissingClass</span><span class="o">();</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-30"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-31"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">setInstances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-32"></a>   <span class="o">}</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-33"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-34"></a>   <span class="kd">public</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">distributionForInstance</span><span class="o">(</span><span class="n">Instance</span> <span class="n">testInstance</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-35"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-36"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">addInstanceInfo</span><span class="o">(</span><span class="n">testInstance</span><span class="o">);</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-37"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-38"></a>       <span class="n">Instances</span> <span class="n">neighbours</span> <span class="o">=</span> <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">kNearestNeighbours</span><span class="o">(</span><span class="n">testInstance</span><span class="o">,</span> <span class="n">m_K</span><span class="o">);</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-39"></a>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-40"></a>       <span class="kt">double</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">testInstance</span><span class="o">.</span><span class="na">numClasses</span><span class="o">()];</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-41"></a>       <span class="k">for</span> <span class="o">(</span><span class="n">Instance</span> <span class="n">neighbour</span> <span class="o">:</span> <span class="n">neighbours</span><span class="o">)</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-42"></a>           <span class="k">if</span> <span class="o">(</span><span class="n">testInstance</span><span class="o">.</span><span class="na">classAttribute</span><span class="o">().</span><span class="na">isNominal</span><span class="o">())</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-43"></a>               <span class="n">dist</span><span class="o">[(</span><span class="kt">int</span><span class="o">)</span><span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()]</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-44"></a>           <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-45"></a>               <span class="n">dist</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-46"></a>           <span class="o">}</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-47"></a>       <span class="o">}</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-48"></a>       <span class="k">return</span> <span class="n">dist</span><span class="o">;</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-49"></a>   <span class="o">}</span>
-<a name="rest_code_aa573f16e0214a47ad49a6fe90a8fe11-50"></a><span class="o">}</span>
+<p>Below you can find an implementation of a basic K-nearest-neighbours classifier for Weka. It implements <tt class="docutils literal">buildClassifier(Instances)</tt> and <tt class="docutils literal">distributionForInstance(Instance)</tt>, the two required methods for a <tt class="docutils literal">Classifier</tt>. It also has a setter/getter method pair to set the value of the parameter <tt class="docutils literal">K</tt> in WEKA's graphical user interfaces (GUIs) and shows WEKA's <tt class="docutils literal">@OptionMetadata</tt> annotation, which is used to specify further information for this parameter, e.g., the corresponding command-line option <tt class="docutils literal"><span class="pre">-K</span> &lt;int&gt;</tt>. This is all the code that is necessary to use the classifier in Weka’s GUIs or run it from a command-line interface using the <tt class="docutils literal">weka.Run</tt> class. For example, it would be enough to run systematic experiments with the K-nearest-neighbour method in Weka’s Experimenter GUI. As you can see, it is pretty straightforward to implement a classifier in Weka!</p>
+<pre class="code Java"><a name="rest_code_f83ba36690c54560892b982a7a37d2a1-1"></a><span class="kn">package</span> <span class="nn">weka.classifiers.lazy</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-2"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-3"></a><span class="kn">import</span> <span class="nn">weka.core.Instance</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-4"></a><span class="kn">import</span> <span class="nn">weka.core.Instances</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-5"></a><span class="kn">import</span> <span class="nn">weka.core.OptionMetadata</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-6"></a><span class="kn">import</span> <span class="nn">weka.classifiers.AbstractClassifier</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-7"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.LinearNNSearch</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-8"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.NearestNeighbourSearch</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-9"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-10"></a><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KNNMinimal</span> <span class="kd">extends</span> <span class="n">AbstractClassifier</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-11"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-12"></a>   <span class="kd">protected</span> <span class="kt">int</span> <span class="n">m_K</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-13"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-14"></a>   <span class="kd">protected</span> <span class="n">NearestNeighbourSearch</span> <span class="n">m_NNSearch</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinearNNSearch</span><span class="o">();</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-15"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-16"></a>   <span class="nd">@OptionMetadata</span><span class="o">(</span><span class="n">displayName</span> <span class="o">=</span> <span class="s">"number of neighbours"</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">"Number of neighbours to use (default = 1)."</span><span class="o">,</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-17"></a>                   <span class="n">commandLineParamName</span> <span class="o">=</span> <span class="s">"K"</span><span class="o">,</span> <span class="n">commandLineParamSynopsis</span> <span class="o">=</span> <span class="s">"-K &lt;int&gt;"</span><span class="o">,</span> <span class="n">displayOrder</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-18"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setK</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-19"></a>       <span class="n">m_K</span> <span class="o">=</span> <span class="n">k</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-20"></a>   <span class="o">}</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-21"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-22"></a>   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getK</span><span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-23"></a>       <span class="k">return</span> <span class="n">m_K</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-24"></a>   <span class="o">}</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-25"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-26"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildClassifier</span><span class="o">(</span><span class="n">Instances</span> <span class="n">trainingData</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-27"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-28"></a>       <span class="n">trainingData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Instances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-29"></a>       <span class="n">trainingData</span><span class="o">.</span><span class="na">deleteWithMissingClass</span><span class="o">();</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-30"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-31"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">setInstances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-32"></a>   <span class="o">}</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-33"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-34"></a>   <span class="kd">public</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">distributionForInstance</span><span class="o">(</span><span class="n">Instance</span> <span class="n">testInstance</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-35"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-36"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">addInstanceInfo</span><span class="o">(</span><span class="n">testInstance</span><span class="o">);</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-37"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-38"></a>       <span class="n">Instances</span> <span class="n">neighbours</span> <span class="o">=</span> <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">kNearestNeighbours</span><span class="o">(</span><span class="n">testInstance</span><span class="o">,</span> <span class="n">m_K</span><span class="o">);</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-39"></a>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-40"></a>       <span class="kt">double</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">testInstance</span><span class="o">.</span><span class="na">numClasses</span><span class="o">()];</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-41"></a>       <span class="k">for</span> <span class="o">(</span><span class="n">Instance</span> <span class="n">neighbour</span> <span class="o">:</span> <span class="n">neighbours</span><span class="o">)</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-42"></a>           <span class="k">if</span> <span class="o">(</span><span class="n">testInstance</span><span class="o">.</span><span class="na">classAttribute</span><span class="o">().</span><span class="na">isNominal</span><span class="o">())</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-43"></a>               <span class="n">dist</span><span class="o">[(</span><span class="kt">int</span><span class="o">)</span><span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()]</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-44"></a>           <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-45"></a>               <span class="n">dist</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-46"></a>           <span class="o">}</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-47"></a>       <span class="o">}</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-48"></a>       <span class="k">return</span> <span class="n">dist</span><span class="o">;</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-49"></a>   <span class="o">}</span>
+<a name="rest_code_f83ba36690c54560892b982a7a37d2a1-50"></a><span class="o">}</span>
 </pre>
 <p>For Weka to find your class using its automatic Java class discovery mechanism when you want to run it in the GUIs or from the command-line using <tt class="docutils literal">weka.Run</tt>, it needs to be in the Java <tt class="docutils literal">CLASSPATH</tt> and in one of Weka's standard Java packages for classifiers (e.g., <tt class="docutils literal">weka.classifiers.functions</tt> or <tt class="docutils literal">weka.classifiers.trees</tt>). If that is the case, regardless of where your class is physically located on your file system, it will show up in Weka’s GUIs automatically (e.g., if you invoke the <tt class="docutils literal">main()</tt> method of <tt class="docutils literal">weka.gui.GUIChooser</tt>, which is the main entry point into Weka’s GUIs) and also be available through <tt class="docutils literal">weka.Run</tt> at a command-line interface.</p>
 <p>Note that the standard Java package structuring rules apply: the directory structure for your class needs to match up with the fully qualified Java class name, e.g., <tt class="docutils literal">weka.classifiers.functions.MyFunctionalClassifier</tt> must be located in a folder called <tt class="docutils literal">functions</tt>, which in turn is located inside a folder called <tt class="docutils literal">classifiers</tt>, which in turn is located in a folder called <tt class="docutils literal">weka</tt>. The folder containing this <tt class="docutils literal">weka</tt> folder will need to be included in your <tt class="docutils literal">CLASSPATH</tt>.</p>
@@ -176,125 +176,125 @@ java weka.gui.GUIChooser
 </pre>
 <p>The first option will simply set the protected member variable <tt class="docutils literal">m_Debug</tt> to true. You can use it in your class to output optional debug information, or you can just ignore it. The second option is only relevant if your class implements handling of capabilities. More on that in a second. The third option sets the value of the <tt class="docutils literal">m_numDecimalPlaces</tt> variable. This should be used in the <tt class="docutils literal">toString()</tt> method of your class, which you need to implement if you want a textual description of your model to be output by Weka, to specify the number of significant digits that are used when floating-point numbers are included in the output. The fourth option is ignored by almost all classifiers in Weka: it can be used to set a desired batch size for batch prediction when the classifier is used in batch prediction mode.</p>
 <p>Below is an expanded version of the above example code that includes a <tt class="docutils literal">toString()</tt> method and a <tt class="docutils literal">getCapabilities()</tt> method. The <tt class="docutils literal">toString()</tt> method in this example code is rudimentary and just outputs the number of neighbours used by the classifier. The biggest method is the <tt class="docutils literal">getCapabilities()</tt> method. This method is optional. It specifies what kind of data this classifier is able to deal with and is used in Weka’s GUIs to grey out a classifier if it is not applicable to a particular dataset. It is also used in the <tt class="docutils literal">buildClassifier(Instances)</tt> method in this example code: <tt class="docutils literal"><span class="pre">getCapabilities().testWithFail(trainingData)</span></tt> will use it to check whether the classifier is actually applicable to the data provided for training. Note that implementing this method is really optional: <tt class="docutils literal">AbstractClassifier</tt> has a default implementation of <tt class="docutils literal">getCapabilities()</tt> that does not restrict the classifier in any way. Basically, <tt class="docutils literal">getCapabilities()</tt> only needs to be implemented if you want your classifier to be used by other users, to make it more user friendly.</p>
-<pre class="code Java"><a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-1"></a><span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-2"></a><span class="cm">* This code is released to the public domain. Use as you see fit.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-3"></a><span class="cm">*/</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-4"></a><span class="kn">package</span> <span class="nn">weka.classifiers.lazy</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-5"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-6"></a><span class="kn">import</span> <span class="nn">weka.core.Instance</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-7"></a><span class="kn">import</span> <span class="nn">weka.core.Instances</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-8"></a><span class="kn">import</span> <span class="nn">weka.core.OptionMetadata</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-9"></a><span class="kn">import</span> <span class="nn">weka.core.Capabilities</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-10"></a><span class="kn">import</span> <span class="nn">weka.classifiers.AbstractClassifier</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-11"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.LinearNNSearch</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-12"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.NearestNeighbourSearch</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-13"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-14"></a><span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-15"></a><span class="cm">* Implements the k-nearest-neighbours method for classification and</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-16"></a><span class="cm">* regression.  Existing WEKA code is used to retrieve the K nearest</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-17"></a><span class="cm">* neighbours for a test instance. The number of neighbours to use is</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-18"></a><span class="cm">* a parameter that the user can specify, via a get...()/set...()</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-19"></a><span class="cm">* method pair for WEKA's GUIs and a Java annotation for command-line</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-20"></a><span class="cm">* option handling.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-21"></a><span class="cm">*/</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-22"></a><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KNN</span> <span class="kd">extends</span> <span class="n">AbstractClassifier</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-23"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-24"></a>   <span class="cm">/** The number of neighbours to use */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-25"></a>   <span class="kd">protected</span> <span class="kt">int</span> <span class="n">m_K</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-26"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-27"></a>   <span class="cm">/** The method to be used to search for nearest neighbours. */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-28"></a>   <span class="kd">protected</span> <span class="n">NearestNeighbourSearch</span> <span class="n">m_NNSearch</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinearNNSearch</span><span class="o">();</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-29"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-30"></a>   <span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-31"></a><span class="cm">    * Returns capabilities of the classifier.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-32"></a><span class="cm">    *</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-33"></a><span class="cm">    * @return the capabilities of this classifier</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-34"></a><span class="cm">    */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-35"></a>   <span class="kd">public</span> <span class="n">Capabilities</span> <span class="nf">getCapabilities</span><span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-36"></a>       <span class="n">Capabilities</span> <span class="n">result</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">getCapabilities</span><span class="o">();</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-37"></a>       <span class="n">result</span><span class="o">.</span><span class="na">disableAll</span><span class="o">();</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-38"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-39"></a>       <span class="c1">// predictor attributes</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-40"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NOMINAL_ATTRIBUTES</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-41"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NUMERIC_ATTRIBUTES</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-42"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">DATE_ATTRIBUTES</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-43"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">MISSING_VALUES</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-44"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-45"></a>       <span class="c1">// class</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-46"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NOMINAL_CLASS</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-47"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NUMERIC_CLASS</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-48"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">DATE_CLASS</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-49"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">MISSING_CLASS_VALUES</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-50"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-51"></a>       <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-52"></a>   <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-53"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-54"></a>   <span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-55"></a><span class="cm">    * Method to set the number of neighbours. Including metadata annotation</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-56"></a><span class="cm">    * to implement command-line option handling for this parameter.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-57"></a><span class="cm">    */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-58"></a>   <span class="nd">@OptionMetadata</span><span class="o">(</span><span class="n">displayName</span> <span class="o">=</span> <span class="s">"number of neighbours"</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">"Number of neighbours to use (default = 1)."</span><span class="o">,</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-59"></a>                   <span class="n">commandLineParamName</span> <span class="o">=</span> <span class="s">"K"</span><span class="o">,</span> <span class="n">commandLineParamSynopsis</span> <span class="o">=</span> <span class="s">"-K &lt;int&gt;"</span><span class="o">,</span> <span class="n">displayOrder</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-60"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setK</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-61"></a>       <span class="n">m_K</span> <span class="o">=</span> <span class="n">k</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-62"></a>   <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-63"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-64"></a>   <span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-65"></a><span class="cm">    * Method to get the currently set number of neighbours.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-66"></a><span class="cm">    */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-67"></a>   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getK</span><span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-68"></a>       <span class="k">return</span> <span class="n">m_K</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-69"></a>   <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-70"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-71"></a>   <span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-72"></a><span class="cm">    * Initialises the classifier from the given training instances.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-73"></a><span class="cm">    */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-74"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildClassifier</span><span class="o">(</span><span class="n">Instances</span> <span class="n">trainingData</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-75"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-76"></a>       <span class="c1">// Can the classifier handle the data?</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-77"></a>       <span class="n">getCapabilities</span><span class="o">().</span><span class="na">testWithFail</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-78"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-79"></a>       <span class="c1">// Make a copy of data and delete instances with a missing class value</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-80"></a>       <span class="n">trainingData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Instances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-81"></a>       <span class="n">trainingData</span><span class="o">.</span><span class="na">deleteWithMissingClass</span><span class="o">();</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-82"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-83"></a>       <span class="c1">// Trivial for KNN: just initialise NN search class</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-84"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">setInstances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-85"></a>   <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-86"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-87"></a>   <span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-88"></a><span class="cm">    * Returns class probability distribution (classification) or numeric</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-89"></a><span class="cm">    * target value (regression) for a given test instance.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-90"></a><span class="cm">    */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-91"></a>   <span class="kd">public</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">distributionForInstance</span><span class="o">(</span><span class="n">Instance</span> <span class="n">testInstance</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-92"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-93"></a>       <span class="c1">// Add instance to NN search so that attribute ranges can be updated</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-94"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">addInstanceInfo</span><span class="o">(</span><span class="n">testInstance</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-95"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-96"></a>       <span class="c1">// Get the list of neighbours</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-97"></a>       <span class="n">Instances</span> <span class="n">neighbours</span> <span class="o">=</span> <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">kNearestNeighbours</span><span class="o">(</span><span class="n">testInstance</span><span class="o">,</span> <span class="n">m_K</span><span class="o">);</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-98"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-99"></a>       <span class="c1">// Calculate calculate class probability distribution or target value</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-100"></a>       <span class="kt">double</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">testInstance</span><span class="o">.</span><span class="na">numClasses</span><span class="o">()];</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-101"></a>       <span class="k">for</span> <span class="o">(</span><span class="n">Instance</span> <span class="n">neighbour</span> <span class="o">:</span> <span class="n">neighbours</span><span class="o">)</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-102"></a>           <span class="k">if</span> <span class="o">(</span><span class="n">testInstance</span><span class="o">.</span><span class="na">classAttribute</span><span class="o">().</span><span class="na">isNominal</span><span class="o">())</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-103"></a>               <span class="n">dist</span><span class="o">[(</span><span class="kt">int</span><span class="o">)</span><span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()]</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-104"></a>           <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-105"></a>               <span class="n">dist</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-106"></a>           <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-107"></a>       <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-108"></a>       <span class="k">return</span> <span class="n">dist</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-109"></a>   <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-110"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-111"></a>   <span class="cm">/**</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-112"></a><span class="cm">    * Returns a textual description of the classifier.</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-113"></a><span class="cm">    */</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-114"></a>   <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-115"></a>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-116"></a>       <span class="c1">// Not much to output here for KNN: no explicit model</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-117"></a>       <span class="k">return</span> <span class="s">"KNN with "</span> <span class="o">+</span> <span class="n">m_K</span> <span class="o">+</span> <span class="s">" neighbours"</span><span class="o">;</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-118"></a>   <span class="o">}</span>
-<a name="rest_code_8f7fc25a35d74a21afb9cf878e7500b8-119"></a><span class="o">}</span>
+<pre class="code Java"><a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-1"></a><span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-2"></a><span class="cm">* This code is released to the public domain. Use as you see fit.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-3"></a><span class="cm">*/</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-4"></a><span class="kn">package</span> <span class="nn">weka.classifiers.lazy</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-5"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-6"></a><span class="kn">import</span> <span class="nn">weka.core.Instance</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-7"></a><span class="kn">import</span> <span class="nn">weka.core.Instances</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-8"></a><span class="kn">import</span> <span class="nn">weka.core.OptionMetadata</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-9"></a><span class="kn">import</span> <span class="nn">weka.core.Capabilities</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-10"></a><span class="kn">import</span> <span class="nn">weka.classifiers.AbstractClassifier</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-11"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.LinearNNSearch</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-12"></a><span class="kn">import</span> <span class="nn">weka.core.neighboursearch.NearestNeighbourSearch</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-13"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-14"></a><span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-15"></a><span class="cm">* Implements the k-nearest-neighbours method for classification and</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-16"></a><span class="cm">* regression.  Existing WEKA code is used to retrieve the K nearest</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-17"></a><span class="cm">* neighbours for a test instance. The number of neighbours to use is</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-18"></a><span class="cm">* a parameter that the user can specify, via a get...()/set...()</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-19"></a><span class="cm">* method pair for WEKA's GUIs and a Java annotation for command-line</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-20"></a><span class="cm">* option handling.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-21"></a><span class="cm">*/</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-22"></a><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KNN</span> <span class="kd">extends</span> <span class="n">AbstractClassifier</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-23"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-24"></a>   <span class="cm">/** The number of neighbours to use */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-25"></a>   <span class="kd">protected</span> <span class="kt">int</span> <span class="n">m_K</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-26"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-27"></a>   <span class="cm">/** The method to be used to search for nearest neighbours. */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-28"></a>   <span class="kd">protected</span> <span class="n">NearestNeighbourSearch</span> <span class="n">m_NNSearch</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinearNNSearch</span><span class="o">();</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-29"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-30"></a>   <span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-31"></a><span class="cm">    * Returns capabilities of the classifier.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-32"></a><span class="cm">    *</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-33"></a><span class="cm">    * @return the capabilities of this classifier</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-34"></a><span class="cm">    */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-35"></a>   <span class="kd">public</span> <span class="n">Capabilities</span> <span class="nf">getCapabilities</span><span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-36"></a>       <span class="n">Capabilities</span> <span class="n">result</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">getCapabilities</span><span class="o">();</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-37"></a>       <span class="n">result</span><span class="o">.</span><span class="na">disableAll</span><span class="o">();</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-38"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-39"></a>       <span class="c1">// predictor attributes</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-40"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NOMINAL_ATTRIBUTES</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-41"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NUMERIC_ATTRIBUTES</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-42"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">DATE_ATTRIBUTES</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-43"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">MISSING_VALUES</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-44"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-45"></a>       <span class="c1">// class</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-46"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NOMINAL_CLASS</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-47"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">NUMERIC_CLASS</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-48"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">DATE_CLASS</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-49"></a>       <span class="n">result</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">Capabilities</span><span class="o">.</span><span class="na">Capability</span><span class="o">.</span><span class="na">MISSING_CLASS_VALUES</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-50"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-51"></a>       <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-52"></a>   <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-53"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-54"></a>   <span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-55"></a><span class="cm">    * Method to set the number of neighbours. Including metadata annotation</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-56"></a><span class="cm">    * to implement command-line option handling for this parameter.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-57"></a><span class="cm">    */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-58"></a>   <span class="nd">@OptionMetadata</span><span class="o">(</span><span class="n">displayName</span> <span class="o">=</span> <span class="s">"number of neighbours"</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">"Number of neighbours to use (default = 1)."</span><span class="o">,</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-59"></a>                   <span class="n">commandLineParamName</span> <span class="o">=</span> <span class="s">"K"</span><span class="o">,</span> <span class="n">commandLineParamSynopsis</span> <span class="o">=</span> <span class="s">"-K &lt;int&gt;"</span><span class="o">,</span> <span class="n">displayOrder</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-60"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setK</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-61"></a>       <span class="n">m_K</span> <span class="o">=</span> <span class="n">k</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-62"></a>   <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-63"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-64"></a>   <span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-65"></a><span class="cm">    * Method to get the currently set number of neighbours.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-66"></a><span class="cm">    */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-67"></a>   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getK</span><span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-68"></a>       <span class="k">return</span> <span class="n">m_K</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-69"></a>   <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-70"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-71"></a>   <span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-72"></a><span class="cm">    * Initialises the classifier from the given training instances.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-73"></a><span class="cm">    */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-74"></a>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildClassifier</span><span class="o">(</span><span class="n">Instances</span> <span class="n">trainingData</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-75"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-76"></a>       <span class="c1">// Can the classifier handle the data?</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-77"></a>       <span class="n">getCapabilities</span><span class="o">().</span><span class="na">testWithFail</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-78"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-79"></a>       <span class="c1">// Make a copy of data and delete instances with a missing class value</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-80"></a>       <span class="n">trainingData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Instances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-81"></a>       <span class="n">trainingData</span><span class="o">.</span><span class="na">deleteWithMissingClass</span><span class="o">();</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-82"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-83"></a>       <span class="c1">// Trivial for KNN: just initialise NN search class</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-84"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">setInstances</span><span class="o">(</span><span class="n">trainingData</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-85"></a>   <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-86"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-87"></a>   <span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-88"></a><span class="cm">    * Returns class probability distribution (classification) or numeric</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-89"></a><span class="cm">    * target value (regression) for a given test instance.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-90"></a><span class="cm">    */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-91"></a>   <span class="kd">public</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">distributionForInstance</span><span class="o">(</span><span class="n">Instance</span> <span class="n">testInstance</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-92"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-93"></a>       <span class="c1">// Add instance to NN search so that attribute ranges can be updated</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-94"></a>       <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">addInstanceInfo</span><span class="o">(</span><span class="n">testInstance</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-95"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-96"></a>       <span class="c1">// Get the list of neighbours</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-97"></a>       <span class="n">Instances</span> <span class="n">neighbours</span> <span class="o">=</span> <span class="n">m_NNSearch</span><span class="o">.</span><span class="na">kNearestNeighbours</span><span class="o">(</span><span class="n">testInstance</span><span class="o">,</span> <span class="n">m_K</span><span class="o">);</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-98"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-99"></a>       <span class="c1">// Calculate calculate class probability distribution or target value</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-100"></a>       <span class="kt">double</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">testInstance</span><span class="o">.</span><span class="na">numClasses</span><span class="o">()];</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-101"></a>       <span class="k">for</span> <span class="o">(</span><span class="n">Instance</span> <span class="n">neighbour</span> <span class="o">:</span> <span class="n">neighbours</span><span class="o">)</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-102"></a>           <span class="k">if</span> <span class="o">(</span><span class="n">testInstance</span><span class="o">.</span><span class="na">classAttribute</span><span class="o">().</span><span class="na">isNominal</span><span class="o">())</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-103"></a>               <span class="n">dist</span><span class="o">[(</span><span class="kt">int</span><span class="o">)</span><span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()]</span> <span class="o">+=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-104"></a>           <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-105"></a>               <span class="n">dist</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+=</span> <span class="n">neighbour</span><span class="o">.</span><span class="na">classValue</span><span class="o">()</span> <span class="o">/</span> <span class="n">neighbours</span><span class="o">.</span><span class="na">numInstances</span><span class="o">();</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-106"></a>           <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-107"></a>       <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-108"></a>       <span class="k">return</span> <span class="n">dist</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-109"></a>   <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-110"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-111"></a>   <span class="cm">/**</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-112"></a><span class="cm">    * Returns a textual description of the classifier.</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-113"></a><span class="cm">    */</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-114"></a>   <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-115"></a>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-116"></a>       <span class="c1">// Not much to output here for KNN: no explicit model</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-117"></a>       <span class="k">return</span> <span class="s">"KNN with "</span> <span class="o">+</span> <span class="n">m_K</span> <span class="o">+</span> <span class="s">" neighbours"</span><span class="o">;</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-118"></a>   <span class="o">}</span>
+<a name="rest_code_e46aa8603f9b4c519f8e39a1546fcc07-119"></a><span class="o">}</span>
 </pre>
 <p>One more thing: if you want your class to be located in a new Java package that is not one of Weka’s standard packages for classifiers, you will need to make an appropriate version of the <tt class="docutils literal">GenericPropertiesCreator.props</tt> file for Weka. For example, the <tt class="docutils literal">RPlugin</tt> package for Weka defines a new <tt class="docutils literal">weka.classifiers.mlr</tt> package and has the following info in the <tt class="docutils literal">GenericPropertiesCreator.props</tt> file:</p>
 <pre class="literal-block">
