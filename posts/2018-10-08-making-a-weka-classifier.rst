@@ -12,8 +12,8 @@ One role of the Weka software is to provide users with the opportunity to implem
 
 To integrate your supervised learning algorithm into Weka, you need to make a Java class that implements Weka’s ``Classifier`` interface. Regression methods, just like classification methods, are also implemented as ``Classifier`` objects in Weka: the historic reason for this is that regression has sometimes been termed classification with “continuous classes” in early work on machine learning. 
 
-Section 1 Implementing a nearest-neighbour classifier
-=====================================================
+Section 1: Implementing a nearest-neighbour classifier
+======================================================
 
 There are three primary methods in the ``Classifier`` interface: ``buildClassifier(Instances)``, which will build the classification or regression model based on the given training instances, ``classifyInstance(Instance)``, which takes a test instance and returns a single predicted class value for the instance that is supplied, and ``distributionForInstance(Instance)``, which returns a class probability distribution instead, assuming the class attribute is nominal. The fourth method in the ``Classifier`` interface, ``getCapabilities()``, returns the capabilities of the classifier, specifying what kind of data it can be applied to. More on that further below.
 
@@ -96,8 +96,8 @@ This will run a 10-fold cross-validation with our 1-nearest-neighbour classifier
         java weka.gui.GUIChooser
 
 
-Section 2 Options, capabilities, and textual output
-===================================================
+Section 2: Options, capabilities, and textual output
+====================================================
 
 For Weka’s GUIs to work properly with your ``Classifier`` class, it needs to implement Java's ``Serializable`` indicator interface. ``AbstractClassifier`` does that, so the above example code will work fine. ``AbstractClassifier`` also implements a bunch of other interfaces, including the ``OptionHandler`` interface that is used for command-line option handling. There are four command-line options already implemented in ``AbstractClassifier``, which are automatically added to the ``-K`` option we have specified in the above example classifier:
 
