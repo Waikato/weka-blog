@@ -18,7 +18,7 @@ In practice, it is normally best to just extend Weka’s ``AbstractClassifier`` 
 
 So, at a minimum, the Java class for your learning algorithm, assuming it extends ``AbstractClassifier``, needs to implement two methods: ``buildClassifier(Instances)`` and ``distributionForInstance(Instance)`` (or ``classifyInstance(Instance)``). The ``distributionForInstance(Instance)`` method must return a double array containing the estimated class probabilities for the different class values of the test instance if the class is nominal. If the class is numeric, it must return a single-element array with the numeric prediction for the test instance. The ``classifyInstance(Instance)`` method, if you choose to implement it instead of ``distributionForInstance(Instance)``, must return the index of the predicted class value (coded as a number of type ``double``) if the class is nominal and simply return the predicted class value if the class is numeric. 
 
-Below you can find an implementation of a basic K-nearest-neighbours classifier for Weka. It implements ``buildClassifier(Instances)`` and ``distributionForInstance(Instance)``, the two required methods for a ``Classifier``. It also has a setter/getter method pair to set the value of the parameter ``K`` in WEKA's graphical user interfaces (GUIs) and shows WEKA's ``@OptionMetadata`` annotation, which is used to specify further information for this parameter. This is all the code that is necessary to use the classifier in Weka’s GUIs. It would be enough to run systematic experiments with the K-nearest-neighbour method in Weka’s Experimenter GUI, for example. As you can see, it is pretty straightforward to implement a classifier in Weka!
+Below you can find an implementation of a basic K-nearest-neighbours classifier for Weka. It implements ``buildClassifier(Instances)`` and ``distributionForInstance(Instance)``, the two required methods for a ``Classifier``. It also has a setter/getter method pair to set the value of the parameter ``K`` in WEKA's graphical user interfaces (GUIs) and shows WEKA's ``@OptionMetadata`` annotation, which is used to specify further information for this parameter, e.g., the corresponding command-line option ``-K <int>``. This is all the code that is necessary to use the classifier in Weka’s GUI or from a command-line interface using the ``weka.Run`` classs. It would be enough to run systematic experiments with the K-nearest-neighbour method in Weka’s Experimenter GUI, for example. As you can see, it is pretty straightforward to implement a classifier in Weka!
 
 .. code-block:: Java
 
@@ -26,6 +26,7 @@ Below you can find an implementation of a basic K-nearest-neighbours classifier 
 
 	import weka.core.Instance;
 	import weka.core.Instances;
+	import weka.core.OptionMetadata;
 	import weka.classifiers.AbstractClassifier;
 	import weka.core.neighboursearch.LinearNNSearch;
 	import weka.core.neighboursearch.NearestNeighbourSearch;
@@ -72,25 +73,36 @@ Below you can find an implementation of a basic K-nearest-neighbours classifier 
 	   }
 	}
 
-For Weka to find your class using its automatic Java class discovery mechanism when you want to run it in the GUIs, it needs to be in the Java ``CLASSPATH`` and in one of Weka's standard Java packages for classifiers (e.g., ``weka.classifiers.functions`` or ``weka.classifiers.trees``). If that is the case, regardless of where your class is physically located on your file system, it will show up in Weka’s GUIs automatically (e.g., if you invoke the ``main()`` method of ``weka.gui.GUIChooser``, which is the main entry point into Weka’s GUIs). 
+For Weka to find your class using its automatic Java class discovery mechanism when you want to run it in the GUIs or from the command-line using ``weka.Run``, it needs to be in the Java ``CLASSPATH`` and in one of Weka's standard Java packages for classifiers (e.g., ``weka.classifiers.functions`` or ``weka.classifiers.trees``). If that is the case, regardless of where your class is physically located on your file system, it will show up in Weka’s GUIs automatically (e.g., if you invoke the ``main()`` method of ``weka.gui.GUIChooser``, which is the main entry point into Weka’s GUIs) and also be available through ``weka.Run`` at a command-line interface. 
 
 Note that the standard Java package structuring rules apply: the directory structure for your class needs to match up with the fully qualified Java class name, e.g., ``weka.classifiers.functions.MyFunctionalClassifier`` must be located in a folder called ``functions``, which in turn is located inside a folder called ``classifiers``, which in turn is located in a folder called ``weka``. The folder containing this ``weka`` folder will need to be included in your ``CLASSPATH``. 
 
-For Weka’s GUIs to work properly with your class, it needs to implement Java's ``Serializable`` indicator interface. ``AbstractClassifier`` does that, so the above example code will work fine. ``AbstractClassifier`` also implements a bunch of other interfaces, including the ``OptionHandler`` interface that is used for command-line option handling. There are four command-line options already implemented in ``AbstractClassifier``:
+On my computer, running macOS, having expanded ``weka-3-8-3.zip`` from the Weka website into ``/Users/eibe/weka-3-8-3``, and with the ``KNNMinimal.java`` file containing the above program in the folder ``/Users/eibe/weka-example/weka/classifiers/lazy``, I can use the following incantations to compile and run the classifier from the macOS command-line interface (assuming the Java JDK has been installed):
+
+::
+        cd /Users/eibe/weka-example
+        export CLASSPATH=/Users/eibe/weka-example:/Users/eibe/weka-3-8-3/weka.jar
+        javac weka/classifiers/lazy/KNNMinimal.java
+        java weka.Run .KNNMinimal -t /Users/eibe/weka-3-8-3/data/iris.arff
+
+This will run a 10-fold cross-validation with our 1-nearest-neighbour classifier on the iris data. And, to start up the Weka GUIs and use the classifier from those, we can enter
+
+::
+
+        java weka.gui.GUIChooser
+
+For Weka’s GUIs to work properly with your ``Classifier`` class, it needs to implement Java's ``Serializable`` indicator interface. ``AbstractClassifier`` does that, so the above example code will work fine. ``AbstractClassifier`` also implements a bunch of other interfaces, including the ``OptionHandler`` interface that is used for command-line option handling. There are four command-line options already implemented in ``AbstractClassifier``, which are automatically added to the ``-K`` option we have specified in the above example classifier:
 
 ::
 
 	-output-debug-info
 	-do-not-check-capabiliities
-	-num-decimal-places
-	-batch-size
+	-num-decimal-places <int>
+	-batch-size <int>
 
-These become available to command-line users if your ``Classifier`` has an appropriately structured ``main()`` method so that it can be used from a command-line interface (see below for example code). The first option will simply set the protected member variable ``m_Debug`` to true. You can use it in your class to output optional debug information, or you can just ignore it. The second option is only relevant if your class implements handling of capabilities. More on that in a second. The third option sets the value of the ``m_numDecimalPlaces`` variable. This should be used in the ``toString()`` method of your class, which you need to implement if you want a textual description of your model to be output by Weka, to specify the number of significant digits that are used when floating-point numbers are included in the output. The fourth option is ignored by almost all classifiers in Weka: it can be used to set a desired batch size for batch prediction when the classifier is used in batch prediction mode.
+The first option will simply set the protected member variable ``m_Debug`` to true. You can use it in your class to output optional debug information, or you can just ignore it. The second option is only relevant if your class implements handling of capabilities. More on that in a second. The third option sets the value of the ``m_numDecimalPlaces`` variable. This should be used in the ``toString()`` method of your class, which you need to implement if you want a textual description of your model to be output by Weka, to specify the number of significant digits that are used when floating-point numbers are included in the output. The fourth option is ignored by almost all classifiers in Weka: it can be used to set a desired batch size for batch prediction when the classifier is used in batch prediction mode.
 
-Below is an expanded version of the above example code that includes a ``toString()`` method, a ``main()`` method, and a ``getCapabilities()`` method. The ``toString()`` method in this example code is rudimentary and just outputs the number of neighbours used by the classifier. The biggest method is the ``getCapabilities()`` method. This method is optional. It specifies what kind of data this classifier is able to deal with and is used in Weka’s GUIs to grey out a classifier if it is not applicable to a particular dataset. It is also used in the ``buildClassifier(Instances)`` method in this example code: ``getCapabilities().testWithFail(trainingData)`` will use it to check whether the classifier is actually applicable to the data provided for training. Note that implementing this method is really optional: ``AbstractClassifier`` has a default implementation of ``getCapabilities()`` that does not restrict the classifier in any way. Basically, ``getCapabilities()`` only needs to be implemented if you want your classifier to be used by other users, to make it more user friendly.
-
-The ``main()`` method in the extended example class is used to run the classifier from the command-line. The ``runClassifier(Classifier, String[])`` method called in this ``main()`` method will use Weka’s ``Evaluation`` class to enable a cross-validation, etc., of the classifier on the data that is provided. It will automatically enable all the general command-line options available for evaluation of Weka classifiers and also make use of the specific command-line options that are provided in the code for the classifier via the ``@OptionMetaData`` tags.
-
+Below is an expanded version of the above example code that includes a ``toString()`` method and a ``getCapabilities()`` method. The ``toString()`` method in this example code is rudimentary and just outputs the number of neighbours used by the classifier. The biggest method is the ``getCapabilities()`` method. This method is optional. It specifies what kind of data this classifier is able to deal with and is used in Weka’s GUIs to grey out a classifier if it is not applicable to a particular dataset. It is also used in the ``buildClassifier(Instances)`` method in this example code: ``getCapabilities().testWithFail(trainingData)`` will use it to check whether the classifier is actually applicable to the data provided for training. Note that implementing this method is really optional: ``AbstractClassifier`` has a default implementation of ``getCapabilities()`` that does not restrict the classifier in any way. Basically, ``getCapabilities()`` only needs to be implemented if you want your classifier to be used by other users, to make it more user friendly.
 
 .. code-block:: Java
 
@@ -101,11 +113,11 @@ The ``main()`` method in the extended example class is used to run the classifie
 
 	import weka.core.Instance;
 	import weka.core.Instances;
+	import weka.core.OptionMetadata;
+	import weka.core.Capabilities;
 	import weka.classifiers.AbstractClassifier;
 	import weka.core.neighboursearch.LinearNNSearch;
 	import weka.core.neighboursearch.NearestNeighbourSearch;
-	import weka.core.OptionMetadata;
-	import weka.core.Capabilities;
 
 	/**
 	* Implements the k-nearest-neighbours method for classification and
@@ -211,13 +223,6 @@ The ``main()`` method in the extended example class is used to run the classifie
 
 	       // Not much to output here for KNN: no explicit model
 	       return "KNN with " + m_K + " neighbours";
-	   }
-
-	   /**
-	    * Main method, can be used to run classifier from command-line.
-	    */
-	   public static void main(String[] args) {
-	       runClassifier(new KNN(), args);
 	   }
 	}
 
