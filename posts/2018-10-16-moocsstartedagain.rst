@@ -1,6 +1,6 @@
-.. title: Advanced Weka MOOC started
-.. slug: 2018-10-16-moocstarted
-.. date: 2018-10-16 08:00:00 UTC+12:00
+.. title: Weka MOOCs started again
+.. slug: 2018-10-16-moocsstartedagain
+.. date: 2018-10-16 10:22:00 UTC+13:00
 .. tags: mooc
 .. author: FracPete
 .. description:
@@ -11,14 +11,14 @@
    :class: thumbnail
    :alt: Weka MOOC
 
-Week 1 of Data Mining with Weka is now underway!
+*Data Mining with Weka* and *More Data Mining with Weka* are underway!
 
-Head over to `FutureLearn <https://www.futurelearn.com/courses/data-mining-with-weka>`__,
+Head over to `FutureLearn <https://www.futurelearn.com/programs/data-mining>`__,
 sign up and get started!
 
 .. TEASER_END
 
-Topics covered:
+Topics covered in *Data Mining with Weka*:
 
 * What is data mining?
 * Where can it be applied?
@@ -29,4 +29,18 @@ Topics covered:
 * What is “overfitting” and how can you combat it?
 * How can ensemble techniques combine the result of different algorithms?
 * What ethical considerations arise when mining data?
+
+Topics covered in *More Data Mining with Weka*:
+
+* Running large-scale data mining experiments
+* Constructing and executing knowledge flows
+* Processing very large datasets
+* Analyzing collections of textual documents
+* Mining association rules
+* Preprocessing data using a range of filters
+* Automatic methods of attribute selection
+* Clustering data
+* Taking account of different decision costs
+* Producing learning curves
+* Optimizing learning parameters in data mining
 
