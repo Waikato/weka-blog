@@ -10,7 +10,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2018-10-16-moocsstartedagain/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019-03-01-bookmarks/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -63,7 +63,47 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2018-10-16-moocsstartedagain/" class="u-url">Weka MOOCs started again</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2019-03-01-bookmarks/" class="u-url">Bookmarks support</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/peter-reutemann/">Peter Reutemann</a>
+            </span></p>
+            <p class="dateline"><a href="posts/2019-03-01-bookmarks/" rel="bookmark"><time class="published dt-published" datetime="2019-03-01T11:10:00+12:00" title="2019-03-01 11:10">2019-03-01 11:10</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2019-03-01-bookmarks/#disqus_thread" data-disqus-identifier="cache/posts/2019-03-01-bookmarks.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>One long-standing annoyance in Weka's user interface was the
+opening and saving of files: you needed to click many times
+before you reached your destination. The only thing you were
+able to modify, for example for the Explorer, was the <em>initial
+directory</em> a file chooser was using (<a class="reference external" href="https://github.com/Waikato/weka-trunk/blob/master/weka/src/main/java/weka/gui/explorer/Explorer.props">Explorer.props</a>).</p>
+<p>However, your datasets are usually distributed, especially
+when you are working on many projects, which renders a
+single starting directory ineffective, unfortunately.</p>
+<p>Some time ago, when working on a consulting project using
+our <a class="reference external" href="https://adams.cms.waikato.ac.nz/">ADAMS</a> framework,
+I had to generated a large amount of
+screenshots and needed to save them in various locations
+under various names. The number of clicks that it required
+me to get to the target directories was driving me crazy.
+Half-way through, I stopped and hacked together a little
+bookmarks panel that allowed me to add and remove directories.
+Over time, this turned into a separate, little library called
+<a class="reference external" href="https://github.com/fracpete/jfilechooser-bookmarks">jfilechooser-bookmarks</a>.</p>
+<p>Yesterday, I incorporated this library into Weka by creating
+a custom <tt class="docutils literal">javax.swing.JFileChooser</tt> class called <tt class="docutils literal">weka.gui.WekaFileChooser</tt>
+which is now used through the core Weka user interface.</p>
+<p>Here is an example of a file dialog:</p>
+<img alt="../../images/filechooser-bookmarks.png" src="images/filechooser-bookmarks.png">
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2018-10-16-moocsstartedagain/" class="u-url">Weka MOOCs started again</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="authors/fracpete/">FracPete</a>
@@ -256,7 +296,7 @@ sign up and get started!</p>
         <!--End of body content-->
 
         <footer id="footer">
-            Contents © 2018         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2019         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
         </footer>
 </div>

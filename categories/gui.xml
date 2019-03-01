@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WEKA Blog (Posts about gui)</title><link>https://waikato.github.io/weka-blog/</link><description></description><atom:link type="application/rss+xml" rel="self" href="https://waikato.github.io/weka-blog/categories/gui.xml"></atom:link><language>en</language><lastBuildDate>Fri, 01 Mar 2019 00:23:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Bookmarks support</title><link>https://waikato.github.io/weka-blog/posts/2019-03-01-bookmarks/</link><dc:creator>Peter Reutemann</dc:creator><description>&lt;div&gt;&lt;p&gt;One long-standing annoyance in Weka's user interface was the
+opening and saving of files: you needed to click many times
+before you reached your destination. The only thing you were
+able to modify, for example for the Explorer, was the &lt;em&gt;initial
+directory&lt;/em&gt; a file chooser was using (&lt;a class="reference external" href="https://github.com/Waikato/weka-trunk/blob/master/weka/src/main/java/weka/gui/explorer/Explorer.props"&gt;Explorer.props&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;However, your datasets are usually distributed, especially
+when you are working on many projects, which renders a
+single starting directory ineffective, unfortunately.&lt;/p&gt;
+&lt;p&gt;Some time ago, when working on a consulting project using
+our &lt;a class="reference external" href="https://adams.cms.waikato.ac.nz/"&gt;ADAMS&lt;/a&gt; framework,
+I had to generated a large amount of
+screenshots and needed to save them in various locations
+under various names. The number of clicks that it required
+me to get to the target directories was driving me crazy.
+Half-way through, I stopped and hacked together a little
+bookmarks panel that allowed me to add and remove directories.
+Over time, this turned into a separate, little library called
+&lt;a class="reference external" href="https://github.com/fracpete/jfilechooser-bookmarks"&gt;jfilechooser-bookmarks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yesterday, I incorporated this library into Weka by creating
+a custom &lt;tt class="docutils literal"&gt;javax.swing.JFileChooser&lt;/tt&gt; class called &lt;tt class="docutils literal"&gt;weka.gui.WekaFileChooser&lt;/tt&gt;
+which is now used through the core Weka user interface.&lt;/p&gt;
+&lt;p&gt;Here is an example of a file dialog:&lt;/p&gt;
+&lt;img alt="../../images/filechooser-bookmarks.png" src="https://waikato.github.io/weka-blog/images/filechooser-bookmarks.png"&gt;&lt;/div&gt;</description><category>gui</category><guid>https://waikato.github.io/weka-blog/posts/2019-03-01-bookmarks/</guid><pubDate>Thu, 28 Feb 2019 23:10:00 GMT</pubDate></item></channel></rss>

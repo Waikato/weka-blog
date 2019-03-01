@@ -7,19 +7,23 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://waikato.github.io/weka-blog/</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/2018/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </url>
  <url>
+  <loc>https://waikato.github.io/weka-blog/2019/</loc>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://waikato.github.io/weka-blog/archive.html</loc>
-  <lastmod>2018-10-15T20:08:00Z</lastmod>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/</loc>
-  <lastmod>2018-10-08T04:08:00Z</lastmod>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/eibe/</loc>
@@ -34,12 +38,16 @@
   <lastmod>2018-09-04T05:00:00Z</lastmod>
  </url>
  <url>
+  <loc>https://waikato.github.io/weka-blog/authors/peter-reutemann/</loc>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://waikato.github.io/weka-blog/authors/steven-lang/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/</loc>
-  <lastmod>2018-09-04T05:00:00Z</lastmod>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_code/</loc>
@@ -48,6 +56,10 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_documentation/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_gui/</loc>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_library/</loc>
@@ -64,6 +76,10 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/github/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/gui/</loc>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/kotlin/</loc>
@@ -91,7 +107,7 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/listings/.gitignore.html</loc>
-  <lastmod>2018-07-13T00:08:00Z</lastmod>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/posts/2018-05-07-advancedmoocstarted/</loc>
@@ -122,7 +138,7 @@
   <lastmod>2018-10-15T21:38:00Z</lastmod>
  </url>
  <url>
-  <loc>https://waikato.github.io/weka-blog/posts/2018-10-16-moocstarted/</loc>
-  <lastmod>2018-10-15T20:08:00Z</lastmod>
+  <loc>https://waikato.github.io/weka-blog/posts/2019-03-01-bookmarks/</loc>
+  <lastmod>2019-03-01T00:23:00Z</lastmod>
  </url>
 </urlset>
