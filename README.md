@@ -170,4 +170,5 @@ Useful links:
 * [Nikola handbook](https://www.getnikola.com/handbook.html)
 * [A ReStructuredText Primer](http://docutils.sourceforge.net/docs/user/rst/quickstart.html)
 * [Quick reStructuredText](http://docutils.sourceforge.net/docs/user/rst/quickref.html)
+* [reStructuredText Directives](http://docutils.sourceforge.net/docs/ref/rst/directives.html)
 
