@@ -1,0 +1,44 @@
+.. title: Oversample and Undersample 
+.. slug: 2019-01-30-sampling
+.. date: 2019-01-30 11:10:00 UTC+12:00
+.. tags: draft
+.. author: Eibe Frank
+.. description: 
+.. category: preprocessing
+
+From an earlier message to this list:
+
+``.supervised.instance.Resample`` uses the following expression to determine the number of instances to sample for a particular class i:
+
+.. code:: java
+
+   int sampleSize = (int)((m_SampleSizePercent / 100.0)  * ((1 - m_BiasToUniformClass) * numInstancesPerClass[i] + m_BiasToUniformClass * data.numInstances() / numActualClasses));
+
+where ``data.numInstances()`` gives the total number of instances in the dataset, numInstancesPerClass[i] holds the number of instances in class i and numActualClasses corresponds to the number of classes that actually occur in the dataset (some classes declared in an ARFF file may not have any instances in the data).
+
+Assuming you have only two classes, you can do the following.
+
+To undersample the majority class so that both classes have the same number of instances, use ``noReplacement=true``, ``biasToUniformClass=1.0``, and ``sampleSizePercent=X``, where *X/2* is (approximately) the percentage of data that belongs to the minority class.
+
+For example, on the diabetes data that comes with WEKA, you can use the following configuration:
+
+::
+
+   weka.filters.supervised.instance.Resample -B 1.0 -Z 69.8 -no-replacement
+
+You will probably need to fiddle with the ``-Z`` parameter (``sampleSizePercent``) a bit to keep all the instances of the minority class. Watch out for something like *WARNING: Not enough instances of tested_positive for selected value of bias parameter in supervised Resample filter when sampling without replacement.* It means the value specified by ``-Z`` is too large.
+
+A much easier way to achieve the same effect is to use the SpreadSubsample filter instead, with ``distributionSpread=1.0``:
+
+:: 
+
+  weka.filters.supervised.instance.SpreadSubsample -M 1.0
+
+To oversample the minority class so that both classes have the same number of instances, use the supervised Resample filter with ``noReplacement=false``, ``biasToUniformClass=1.0``, and ``sampleSizePercent=Y``, where *Y/2* is (approximately) the percentage of data that belongs to the majority class. Example for the diabetes data:
+
+::
+
+  weka.filters.supervised.instance.Resample -B 1.0 -Z 130.3
+
+Note that this will apply sampling *with* replacement to the majority class as well, so it may not be ideal for your application! To get oversampling of the minority class and keep the majority class untouched, you may need to write your own program or use the KnowledgeFlow. 
+
