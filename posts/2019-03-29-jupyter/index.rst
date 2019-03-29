@@ -17,6 +17,8 @@ first.
 Rather than using *mybinder.org*, I was intrigued how easy it would be
 to run it on ones local machine. As it turns out, extremely easy!
 
+.. TEASER_END
+
 ************
 Installation
 ************

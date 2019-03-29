@@ -86,63 +86,7 @@ called <em>JShell</em>, which allows executing Java code without compiling it
 first.</p>
 <p>Rather than using <em>mybinder.org</em>, I was intrigued how easy it would be
 to run it on ones local machine. As it turns out, extremely easy!</p>
-<div class="section" id="installation">
-<h2>Installation</h2>
-<p>Here is what I did on my Linux Mint 18.2 machine:</p>
-<ul>
-<li>
-<p class="first">created a directory called <em>weka-notebooks</em></p>
-<pre class="literal-block">
-mkdir weka-notebooks
-</pre>
-</li>
-<li>
-<p class="first">changed into the directory and created a Python virtual environment:</p>
-<pre class="literal-block">
-cd weka-notebooks
-virtualenv -p /usr/bin/python3.5 venv
-</pre>
-</li>
-<li>
-<p class="first">installed Jupyter notebooks and its dependencies:</p>
-<pre class="literal-block">
-venv/bin/pip install jupyter
-</pre>
-</li>
-<li>
-<p class="first">then I downloaded the latest IJava <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/">release</a> (at time of writing, this
-was <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip">1.20</a>) into this directory</p>
-</li>
-<li>
-<p class="first">unzipped the IJava archive:</p>
-<pre class="literal-block">
-unzip -q ijava*.zip
-</pre>
-</li>
-<li>
-<p class="first">and installed the Java kernel into my virtual environment, using the IJava installer:</p>
-<pre class="literal-block">
-venv/bin/python install.py --sys-prefix
-</pre>
-</li>
-<li>
-<p class="first">after that, I fired up Jupyter using:</p>
-<pre class="literal-block">
-venv/bin/jupyter-notebook
-</pre>
-</li>
-<li>
-<p class="first">now you can create new notebooks!</p>
-</li>
-</ul>
-</div>
-<div class="section" id="example">
-<h2>Example</h2>
-<p>The following example cross-validates J48 on the UCI dataset <em>anneal</em> (you can
-download the notebook for the <a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/trunk/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">developer version</a> of Weka and the
-<a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/branches/stable-3-8/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">stable 3.8 version</a>):</p>
-<img alt="../../images/jupyter.png" src="images/jupyter.png">
-</div>
+<p class="more"><a href="posts/2019-03-29-jupyter/">Read more…</a></p>
 </div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2019-03-01-bookmarks/" class="u-url">Bookmarks support</a></h1>
@@ -168,21 +112,7 @@ directory</em> a file chooser was using (<a class="reference external" href="htt
 <p>However, your datasets are usually distributed, especially
 when you are working on many projects, which renders a
 single starting directory ineffective, unfortunately.</p>
-<p>Some time ago, when working on a consulting project using
-our <a class="reference external" href="https://adams.cms.waikato.ac.nz/">ADAMS</a> framework,
-I had to generated a large amount of
-screenshots and needed to save them in various locations
-under various names. The number of clicks that it required
-me to get to the target directories was driving me crazy.
-Half-way through, I stopped and hacked together a little
-bookmarks panel that allowed me to add and remove directories.
-Over time, this turned into a separate, little library called
-<a class="reference external" href="https://github.com/fracpete/jfilechooser-bookmarks">jfilechooser-bookmarks</a>.</p>
-<p>Yesterday, I incorporated this library into Weka by creating
-a custom <tt class="docutils literal">javax.swing.JFileChooser</tt> class called <tt class="docutils literal">weka.gui.WekaFileChooser</tt>
-which is now used through the core Weka user interface.</p>
-<p>Here is an example of a file dialog:</p>
-<img alt="../../images/filechooser-bookmarks.png" src="images/filechooser-bookmarks.png">
+<p class="more"><a href="posts/2019-03-01-bookmarks/">Read more…</a></p>
 </div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2018-10-16-moocsstartedagain/" class="u-url">Weka MOOCs started again</a></h1>
