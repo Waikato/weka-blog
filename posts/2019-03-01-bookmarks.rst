@@ -16,6 +16,8 @@ However, your datasets are usually distributed, especially
 when you are working on many projects, which renders a
 single starting directory ineffective, unfortunately.
 
+.. TEASER_END
+
 Some time ago, when working on a consulting project using
 our `ADAMS <https://adams.cms.waikato.ac.nz/>`__ framework, 
 I had to generated a large amount of 
