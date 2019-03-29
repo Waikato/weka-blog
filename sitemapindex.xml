@@ -19,7 +19,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/peter-reutemann.xml</loc>
-  <lastmod>2019-03-01T00:23:00Z</lastmod>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/steven-lang.xml</loc>
@@ -46,6 +46,10 @@
   <lastmod>2018-09-04T05:00:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_scripting.xml</loc>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource.xml</loc>
   <lastmod>2018-10-15T21:38:00Z</lastmod>
  </sitemap>
@@ -70,6 +74,10 @@
   <lastmod>2018-09-04T05:00:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://waikato.github.io/weka-blog/categories/scripting.xml</loc>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/wiki.xml</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
@@ -79,10 +87,10 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
-  <lastmod>2019-03-01T00:23:00Z</lastmod>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
-  <lastmod>2019-03-01T00:23:00Z</lastmod>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </sitemap>
 </sitemapindex>

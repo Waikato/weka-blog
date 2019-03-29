@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/archive.html</loc>
-  <lastmod>2019-03-01T00:23:00Z</lastmod>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/</loc>
@@ -47,7 +47,7 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/</loc>
-  <lastmod>2019-03-01T00:23:00Z</lastmod>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_code/</loc>
@@ -68,6 +68,10 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_release/</loc>
   <lastmod>2018-09-04T05:00:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_scripting/</loc>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource/</loc>
@@ -92,6 +96,10 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/release/</loc>
   <lastmod>2018-09-04T05:00:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/categories/scripting/</loc>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/categories/wiki/</loc>
@@ -140,5 +148,9 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/posts/2019-03-01-bookmarks/</loc>
   <lastmod>2019-03-01T00:23:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/posts/2019-03-29-jupyter/</loc>
+  <lastmod>2019-03-29T01:38:00Z</lastmod>
  </url>
 </urlset>

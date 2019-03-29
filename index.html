@@ -10,7 +10,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019-03-01-bookmarks/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2019-03-29-jupyter/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -63,7 +63,89 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2019-03-01-bookmarks/" class="u-url">Bookmarks support</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2019-03-29-jupyter/" class="u-url">Jupyter notebooks</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/peter-reutemann/">Peter Reutemann</a>
+            </span></p>
+            <p class="dateline"><a href="posts/2019-03-29-jupyter/" rel="bookmark"><time class="published dt-published" datetime="2019-03-29T14:04:00+13:00" title="2019-03-29 14:04">2019-03-29 14:04</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2019-03-29-jupyter/#disqus_thread" data-disqus-identifier="cache/posts/2019-03-29-jupyter.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p><a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> are extremely popular in the
+Python world, simply because it is great to combine documentation and
+code in a visually appealing way. Makes it an ideal tool for teaching!</p>
+<p>A recent post on the <a class="reference external" href="https://moa.cms.waikato.ac.nz/how-to-use-jupyter-notebooks-with-moa/">MOA blog</a>, demonstrated the <a class="reference external" href="https://github.com/SpencerPark/IJava">IJava kernel</a> for executing Java scripts. The kernel relies on the Java JDK 9+ feature
+called <em>JShell</em>, which allows executing Java code without compiling it
+first.</p>
+<p>Rather than using <em>mybinder.org</em>, I was intrigued how easy it would be
+to run it on ones local machine. As it turns out, extremely easy!</p>
+<div class="section" id="installation">
+<h2>Installation</h2>
+<p>Here is what I did on my Linux Mint 18.2 machine:</p>
+<ul>
+<li>
+<p class="first">created a directory called <em>weka-notebooks</em></p>
+<pre class="literal-block">
+mkdir weka-notebooks
+</pre>
+</li>
+<li>
+<p class="first">changed into the directory and created a Python virtual environment:</p>
+<pre class="literal-block">
+cd weka-notebooks
+virtualenv -p /usr/bin/python3.5 venv
+</pre>
+</li>
+<li>
+<p class="first">installed Jupyter notebooks and its dependencies:</p>
+<pre class="literal-block">
+venv/bin/pip install jupyter
+</pre>
+</li>
+<li>
+<p class="first">then I downloaded the latest IJava <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/">release</a> (at time of writing, this
+was <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip">1.20</a>) into this directory</p>
+</li>
+<li>
+<p class="first">unzipped the IJava archive:</p>
+<pre class="literal-block">
+unzip -q ijava*.zip
+</pre>
+</li>
+<li>
+<p class="first">and installed the Java kernel into my virtual environment, using the IJava installer:</p>
+<pre class="literal-block">
+venv/bin/python install.py --sys-prefix
+</pre>
+</li>
+<li>
+<p class="first">after that, I fired up Jupyter using:</p>
+<pre class="literal-block">
+venv/bin/jupyter-notebook
+</pre>
+</li>
+<li>
+<p class="first">now you can create new notebooks!</p>
+</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2>Example</h2>
+<p>The following example cross-validates J48 on the UCI dataset <em>anneal</em> (you can
+download the notebook for the <a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/trunk/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">developer version</a> of Weka and the
+<a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/branches/stable-3-8/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">stable 3.8 version</a>):</p>
+<img alt="../../images/jupyter.png" src="images/jupyter.png">
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2019-03-01-bookmarks/" class="u-url">Bookmarks support</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="authors/peter-reutemann/">Peter Reutemann</a>

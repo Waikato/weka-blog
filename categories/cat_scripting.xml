@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>WEKA Blog (Posts about scripting)</title><link>https://waikato.github.io/weka-blog/</link><description></description><atom:link rel="self" type="application/rss+xml" href="https://waikato.github.io/weka-blog/categories/cat_scripting.xml"></atom:link><language>en</language><lastBuildDate>Fri, 29 Mar 2019 01:38:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Jupyter notebooks</title><link>https://waikato.github.io/weka-blog/posts/2019-03-29-jupyter/</link><dc:creator>Peter Reutemann</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="https://jupyter.org/"&gt;Jupyter notebooks&lt;/a&gt; are extremely popular in the
+Python world, simply because it is great to combine documentation and
+code in a visually appealing way. Makes it an ideal tool for teaching!&lt;/p&gt;
+&lt;p&gt;A recent post on the &lt;a class="reference external" href="https://moa.cms.waikato.ac.nz/how-to-use-jupyter-notebooks-with-moa/"&gt;MOA blog&lt;/a&gt;, demonstrated the &lt;a class="reference external" href="https://github.com/SpencerPark/IJava"&gt;IJava kernel&lt;/a&gt; for executing Java scripts. The kernel relies on the Java JDK 9+ feature
+called &lt;em&gt;JShell&lt;/em&gt;, which allows executing Java code without compiling it
+first.&lt;/p&gt;
+&lt;p&gt;Rather than using &lt;em&gt;mybinder.org&lt;/em&gt;, I was intrigued how easy it would be
+to run it on ones local machine. As it turns out, extremely easy!&lt;/p&gt;
+&lt;div class="section" id="installation"&gt;
+&lt;h2&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Here is what I did on my Linux Mint 18.2 machine:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;created a directory called &lt;em&gt;weka-notebooks&lt;/em&gt;&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+mkdir weka-notebooks
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;changed into the directory and created a Python virtual environment:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+cd weka-notebooks
+virtualenv -p /usr/bin/python3.5 venv
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;installed Jupyter notebooks and its dependencies:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+venv/bin/pip install jupyter
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;then I downloaded the latest IJava &lt;a class="reference external" href="https://github.com/SpencerPark/IJava/releases/"&gt;release&lt;/a&gt; (at time of writing, this
+was &lt;a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip"&gt;1.20&lt;/a&gt;) into this directory&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;unzipped the IJava archive:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+unzip -q ijava*.zip
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;and installed the Java kernel into my virtual environment, using the IJava installer:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+venv/bin/python install.py --sys-prefix
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;after that, I fired up Jupyter using:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+venv/bin/jupyter-notebook
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;now you can create new notebooks!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="example"&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;The following example cross-validates J48 on the UCI dataset &lt;em&gt;anneal&lt;/em&gt; (you can
+download the notebook for the &lt;a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/trunk/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb"&gt;developer version&lt;/a&gt; of Weka and the
+&lt;a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/branches/stable-3-8/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb"&gt;stable 3.8 version&lt;/a&gt;):&lt;/p&gt;
+&lt;img alt="../../images/jupyter.png" src="https://waikato.github.io/weka-blog/images/jupyter.png"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>scripting</category><guid>https://waikato.github.io/weka-blog/posts/2019-03-29-jupyter/</guid><pubDate>Fri, 29 Mar 2019 01:04:00 GMT</pubDate></item></channel></rss>

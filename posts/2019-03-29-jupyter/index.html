@@ -3,25 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bookmarks support | WEKA Blog</title>
+<title>Jupyter notebooks | WEKA Blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2019-03-01-bookmarks/">
+<link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2019-03-29-jupyter/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Peter Reutemann">
-<link rel="prev" href="../2018-10-16-moocsstartedagain/" title="Weka MOOCs started again" type="text/html">
-<link rel="next" href="../2019-03-29-jupyter/" title="Jupyter notebooks" type="text/html">
+<link rel="prev" href="../2019-03-01-bookmarks/" title="Bookmarks support" type="text/html">
 <meta property="og:site_name" content="WEKA Blog">
-<meta property="og:title" content="Bookmarks support">
-<meta property="og:url" content="https://waikato.github.io/weka-blog/posts/2019-03-01-bookmarks/">
-<meta property="og:description" content="One long-standing annoyance in Weka's user interface was the
-opening and saving of files: you needed to click many times
-before you reached your destination. The only thing you were
-able to modify, fo">
+<meta property="og:title" content="Jupyter notebooks">
+<meta property="og:url" content="https://waikato.github.io/weka-blog/posts/2019-03-29-jupyter/">
+<meta property="og:description" content="Jupyter notebooks are extremely popular in the
+Python world, simply because it is great to combine documentation and
+code in a visually appealing way. Makes it an ideal tool for teaching!
+A recent pos">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2019-03-01T11:10:00+12:00">
-<meta property="article:tag" content="gui">
+<meta property="article:published_time" content="2019-03-29T14:04:00+13:00">
+<meta property="article:tag" content="scripting">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -74,16 +73,16 @@ able to modify, fo">
         <div class="row">
             
             
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Bookmarks support</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Jupyter notebooks</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                     <a href="../../authors/peter-reutemann/">Peter Reutemann</a>
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-03-01T11:10:00+12:00" itemprop="datePublished" title="2019-03-01 11:10">2019-03-01 11:10</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-03-29T14:04:00+13:00" itemprop="datePublished" title="2019-03-29 14:04">2019-03-29 14:04</time></a></p>
                 <p class="commentline">
         
-    <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019-03-01-bookmarks.html">Comments</a>
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019-03-29-jupyter.html">Comments</a>
 
 
             
@@ -95,40 +94,79 @@ able to modify, fo">
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>One long-standing annoyance in Weka's user interface was the
-opening and saving of files: you needed to click many times
-before you reached your destination. The only thing you were
-able to modify, for example for the Explorer, was the <em>initial
-directory</em> a file chooser was using (<a class="reference external" href="https://github.com/Waikato/weka-trunk/blob/master/weka/src/main/java/weka/gui/explorer/Explorer.props">Explorer.props</a>).</p>
-<p>However, your datasets are usually distributed, especially
-when you are working on many projects, which renders a
-single starting directory ineffective, unfortunately.</p>
-<p>Some time ago, when working on a consulting project using
-our <a class="reference external" href="https://adams.cms.waikato.ac.nz/">ADAMS</a> framework,
-I had to generated a large amount of
-screenshots and needed to save them in various locations
-under various names. The number of clicks that it required
-me to get to the target directories was driving me crazy.
-Half-way through, I stopped and hacked together a little
-bookmarks panel that allowed me to add and remove directories.
-Over time, this turned into a separate, little library called
-<a class="reference external" href="https://github.com/fracpete/jfilechooser-bookmarks">jfilechooser-bookmarks</a>.</p>
-<p>Yesterday, I incorporated this library into Weka by creating
-a custom <tt class="docutils literal">javax.swing.JFileChooser</tt> class called <tt class="docutils literal">weka.gui.WekaFileChooser</tt>
-which is now used through the core Weka user interface.</p>
-<p>Here is an example of a file dialog:</p>
-<img alt="../../images/filechooser-bookmarks.png" src="../../images/filechooser-bookmarks.png">
+<p><a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> are extremely popular in the
+Python world, simply because it is great to combine documentation and
+code in a visually appealing way. Makes it an ideal tool for teaching!</p>
+<p>A recent post on the <a class="reference external" href="https://moa.cms.waikato.ac.nz/how-to-use-jupyter-notebooks-with-moa/">MOA blog</a>, demonstrated the <a class="reference external" href="https://github.com/SpencerPark/IJava">IJava kernel</a> for executing Java scripts. The kernel relies on the Java JDK 9+ feature
+called <em>JShell</em>, which allows executing Java code without compiling it
+first.</p>
+<p>Rather than using <em>mybinder.org</em>, I was intrigued how easy it would be
+to run it on ones local machine. As it turns out, extremely easy!</p>
+<div class="section" id="installation">
+<h2>Installation</h2>
+<p>Here is what I did on my Linux Mint 18.2 machine:</p>
+<ul>
+<li>
+<p class="first">created a directory called <em>weka-notebooks</em></p>
+<pre class="literal-block">
+mkdir weka-notebooks
+</pre>
+</li>
+<li>
+<p class="first">changed into the directory and created a Python virtual environment:</p>
+<pre class="literal-block">
+cd weka-notebooks
+virtualenv -p /usr/bin/python3.5 venv
+</pre>
+</li>
+<li>
+<p class="first">installed Jupyter notebooks and its dependencies:</p>
+<pre class="literal-block">
+venv/bin/pip install jupyter
+</pre>
+</li>
+<li>
+<p class="first">then I downloaded the latest IJava <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/">release</a> (at time of writing, this
+was <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip">1.20</a>) into this directory</p>
+</li>
+<li>
+<p class="first">unzipped the IJava archive:</p>
+<pre class="literal-block">
+unzip -q ijava*.zip
+</pre>
+</li>
+<li>
+<p class="first">and installed the Java kernel into my virtual environment, using the IJava installer:</p>
+<pre class="literal-block">
+venv/bin/python install.py --sys-prefix
+</pre>
+</li>
+<li>
+<p class="first">after that, I fired up Jupyter using:</p>
+<pre class="literal-block">
+venv/bin/jupyter-notebook
+</pre>
+</li>
+<li>
+<p class="first">now you can create new notebooks!</p>
+</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2>Example</h2>
+<p>The following example cross-validates J48 on the UCI dataset <em>anneal</em> (you can
+download the notebook for the <a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/trunk/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">developer version</a> of Weka and the
+<a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/branches/stable-3-8/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">stable 3.8 version</a>):</p>
+<img alt="../../images/jupyter.png" src="../../images/jupyter.png">
+</div>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../categories/gui/" rel="tag">gui</a></li>
+<li><a class="tag p-category" href="../../categories/scripting/" rel="tag">scripting</a></li>
         </ul>
 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../2018-10-16-moocsstartedagain/" rel="prev" title="Weka MOOCs started again">Previous post</a>
-            </li>
-            <li class="next">
-                <a href="../2019-03-29-jupyter/" rel="next" title="Jupyter notebooks">Next post</a>
+                <a href="../2019-03-01-bookmarks/" rel="prev" title="Bookmarks support">Previous post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
@@ -136,9 +174,9 @@ which is now used through the core Weka user interface.</p>
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="http-www-cs-waikato-ac-nz-ml-weka-blog",
-            disqus_url="https://waikato.github.io/weka-blog/posts/2019-03-01-bookmarks/",
-        disqus_title="Bookmarks support",
-        disqus_identifier="cache/posts/2019-03-01-bookmarks.html",
+            disqus_url="https://waikato.github.io/weka-blog/posts/2019-03-29-jupyter/",
+        disqus_title="Jupyter notebooks",
+        disqus_identifier="cache/posts/2019-03-29-jupyter.html",
         disqus_config = function () {
             this.language = "en";
         };
