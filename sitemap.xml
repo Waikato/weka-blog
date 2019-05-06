@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://waikato.github.io/weka-blog/</loc>
-  <lastmod>2019-03-01T00:23:00Z</lastmod>
+  <lastmod>2019-05-06T02:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/2018/</loc>
@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/archive.html</loc>
-  <lastmod>2019-04-02T01:08:00Z</lastmod>
+  <lastmod>2019-05-06T02:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/</loc>
@@ -110,6 +110,10 @@
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </url>
  <url>
+  <loc>https://waikato.github.io/weka-blog/index-1.html</loc>
+  <lastmod>2019-05-06T02:38:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://waikato.github.io/weka-blog/listings/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </url>
@@ -156,5 +160,9 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/posts/2019-04-02-jupyter-windows/</loc>
   <lastmod>2019-04-02T01:08:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/posts/2019-05-06-advancedmoocstarted/</loc>
+  <lastmod>2019-05-06T02:38:00Z</lastmod>
  </url>
 </urlset>
