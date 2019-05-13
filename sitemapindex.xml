@@ -6,6 +6,10 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>https://waikato.github.io/weka-blog/authors/eibe-frank.xml</loc>
+  <lastmod>2019-05-13T05:23:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/eibe.xml</loc>
   <lastmod>2018-10-09T02:38:00Z</lastmod>
  </sitemap>
@@ -42,6 +46,10 @@
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_preprocessing.xml</loc>
+  <lastmod>2019-05-13T05:23:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_release.xml</loc>
   <lastmod>2018-09-04T05:00:00Z</lastmod>
  </sitemap>
@@ -55,7 +63,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/github.xml</loc>
-  <lastmod>2018-10-09T02:38:00Z</lastmod>
+  <lastmod>2019-05-13T05:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/gui.xml</loc>
@@ -87,10 +95,10 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
-  <lastmod>2019-05-06T02:38:00Z</lastmod>
+  <lastmod>2019-05-13T05:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
-  <lastmod>2019-05-06T02:38:00Z</lastmod>
+  <lastmod>2019-05-13T05:23:00Z</lastmod>
  </sitemap>
 </sitemapindex>
