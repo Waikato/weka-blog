@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Micro averages in multi-class classification | WEKA Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2019-02-16-micro_average/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Eibe Frank">
+<link rel="prev" href="../2019-01-30-sampling/" title="Oversampling and Undersampling" type="text/html">
+<link rel="next" href="../2019-03-01-bookmarks/" title="Bookmarks support" type="text/html">
+<meta property="og:site_name" content="WEKA Blog">
+<meta property="og:title" content="Micro averages in multi-class classification">
+<meta property="og:url" content="https://waikato.github.io/weka-blog/posts/2019-02-16-micro_average/">
+<meta property="og:description" content="When evaluating multi-class classification models, Weka outputs a weighted average of the per-class precision, recall, and F-measure: it computes these statistics for each class individually, treating">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-02-16T13:48:00+12:00">
+<meta property="article:tag" content="github">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://waikato.github.io/weka-blog/">
+
+                <span id="blog-title">WEKA Blog</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" role="navigation" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Micro averages in multi-class classification</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    <a href="../../authors/eibe-frank/">Eibe Frank</a>
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-02-16T13:48:00+12:00" itemprop="datePublished" title="2019-02-16 13:48">2019-02-16 13:48</time></a></p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/2019-02-16-micro_average.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>When evaluating multi-class classification models, Weka outputs a weighted average of the per-class precision, recall, and F-measure: it computes these statistics for each class individually, treating the corresponding class as the "positive" class and the union of the other classes as the negative class, and computes a weighted average of these per-class statistics, with a per-class weight that is equal to the proportion of data in that class. A recent question on the Weka mailing list was whether the software also outputs micro-averaged precision, recall, and F-measure for multi-class problems. It turns out that it does! To find out where these can be found, read on.</p>
+<!-- TEASER_END -->
+<p>The answer is somewhat surprising. It turns out that for a multi-class classification problem (including two-class ones), micro-averaged precision, recall and F-measure are all the same and identical to classification accuracy as measured by the percentage of correctly classified instances. And the percentage of correctly classified instances is obviously something that is output by Weka!</p>
+<div class="section" id="section-1-micro-averaged-precision">
+<h2>Section 1: Micro-averaged precision</h2>
+<p>Let us consider precision first. For a single class, precision is the number of true positives TP for that class divided by the sum of the number of true positives TP and the number of false positives FP. The denominator, the sum of TP and FP, is equal to the number of predicted positives PP. Now, to compute the micro-averaged precision across a set of classes, we simply sum up the values of TP for the different classes to obtain the numerator for the calculation of (micro-averaged) precision and take the sum of the values of PP for the different classes as the denominator. For example, assuming two classes A and B, and denoting true positives, false positives, and predicted positives for A by TP(A), FN(A), and PP(A), and doing the same for B, we can write micro-averaged precision as</p>
+<pre class="literal-block">
+(TP(A) + TP(B)) / (TP(A) + FP(A) + TP(B) + FP(B)) = (TP(A) + TP(B)) / (PP(A) + PP(B))
+</pre>
+<p>Looking at this more closely, we can easily see that this is actually the percentage of correctly classified instances, i.e., classification accuracy. The numerator is the sum of the diagonal elements of the corresponding confusion matrix, and the denominator is the sum of all the values in the confusion matrix (i.e., the total number of instances in the dataset). Hence, micro-averaged precision is exactly the same as the percentage of correct classifications for a two-class problem. Moreover, it is straightforward to generalise this to multi-class problems: we can simply extend the sums in the numerator and the denominator.</p>
+</div>
+<div class="section" id="section-2-micro-averaged-recall">
+<h2>Section 2: Micro-averaged recall</h2>
+<p>Let us consider recall next, which is defined as the number of true positives TP divided by the number of positives P, where P is equal to the number of true positives TP plus the number of false negatives FN. Similarly to micro-averaged precision, micro-averaged recall is calculated by summing the TP values across the different classes to obtain the numerator; the denominator is obtained by taking the sum of the number of positives P across all classes. Considering a two-class problem again, for simplicity, and denoting the number of false negatives for classes A and B by FN(A) and FN(B) respectively, and the number of positives by P(A) and P(B), we get the following for micro-averaged recall:</p>
+<pre class="literal-block">
+(TP(A) + TP(B)) / (TP(A) + FN(A) + TP(B) + FN(B)) = (TP(A) + TP(B)) / (P(A) + P(B))
+</pre>
+<p>Now, as in the case of micro-averaged precision, the numerator is the number of correctly classified instances. The denominator is the sum of the class sizes. So, again, just like micro-averaged precision, micro-averaged recall is also equal to the percentage of correct classification. As above, by extending the sums in the numerator and the denominator when there are more than two classes, we can see that this equivalence holds in multi-class scenarios with more than two classes as well.</p>
+</div>
+<div class="section" id="section-3-micro-averaged-f-measure">
+<h2>Section 3: Micro-averaged F-measure</h2>
+<p>What about micro-averaged F-measure? That's the harmonic mean of micro-averaged precision and recall. Both are equal to classification accuracy so the micro-averaged is also equal to classification accuracy.</p>
+</div>
+<div class="section" id="section-4-micro-averaged-false-positive-rate">
+<h2>Section 4: Micro-averaged false positive rate</h2>
+<p>Another way to look at classification models is to consider their false positive rate and their true positive rate. What are the micro-averaged versions of those statistics in a multi-class problem? True positive rate is the same as recall so we already know that it is the same as classification accuracy. What about the micro-averaged false positive rate? In the two-class case, it is</p>
+<pre class="literal-block">
+(FP(A) + FP(B)) / (FP(A) + TN(A) + FP(B) + TN(B))
+</pre>
+<p>and this is the same as error rate (the percentage of incorrectly classified instances). However, when there are more than two classes, this equivalence no longer holds.</p>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/github/" rel="tag">github</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../2019-01-30-sampling/" rel="prev" title="Oversampling and Undersampling">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../2019-03-01-bookmarks/" rel="next" title="Bookmarks support">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="http-www-cs-waikato-ac-nz-ml-weka-blog",
+            disqus_url="https://waikato.github.io/weka-blog/posts/2019-02-16-micro_average/",
+        disqus_title="Micro averages in multi-class classification",
+        disqus_identifier="cache/posts/2019-02-16-micro_average.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="http-www-cs-waikato-ac-nz-ml-weka-blog";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2019         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

@@ -164,6 +164,25 @@ single starting directory ineffective, unfortunately.</p>
 <p class="more"><a href="posts/2019-03-01-bookmarks/">Read more…</a></p>
 </div>
     </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2019-02-16-micro_average/" class="u-url">Micro averages in multi-class classification</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/eibe-frank/">Eibe Frank</a>
+            </span></p>
+            <p class="dateline"><a href="posts/2019-02-16-micro_average/" rel="bookmark"><time class="published dt-published" datetime="2019-02-16T13:48:00+12:00" title="2019-02-16 13:48">2019-02-16 13:48</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/2019-02-16-micro_average/#disqus_thread" data-disqus-identifier="cache/posts/2019-02-16-micro_average.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>When evaluating multi-class classification models, Weka outputs a weighted average of the per-class precision, recall, and F-measure: it computes these statistics for each class individually, treating the corresponding class as the "positive" class and the union of the other classes as the negative class, and computes a weighted average of these per-class statistics, with a per-class weight that is equal to the proportion of data in that class. A recent question on the Weka mailing list was whether the software also outputs micro-averaged precision, recall, and F-measure for multi-class problems. It turns out that it does! To find out where these can be found, read on.</p>
+<p class="more"><a href="posts/2019-02-16-micro_average/">Read more…</a></p>
+</div>
+    </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2019-01-30-sampling/" class="u-url">Oversampling and Undersampling</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
@@ -288,31 +307,6 @@ run the service in the long term. So, it is with no small degree of
 nostalgia, that we will begin to close down later this year."</dd>
 </dl>
 <p class="more"><a href="posts/2018-07-02-wiki-countdown/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2018-06-22-wekakotlin/" class="u-url">Weka-Kt: Kotlin Extensions for Weka</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="authors/steven-lang/">Steven Lang</a>
-            </span></p>
-            <p class="dateline"><a href="posts/2018-06-22-wekakotlin/" rel="bookmark"><time class="published dt-published" datetime="2018-06-22T08:00:00+12:00" title="2018-06-22 08:00">2018-06-22 08:00</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/2018-06-22-wekakotlin/#disqus_thread" data-disqus-identifier="cache/posts/2018-06-29-wekakotlin.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<div class="figure">
-<a class="reference external image-reference" href="https://github.com/steven-lang/weka-kt"><img alt="Weka-Kt: Kotlin Extensions for Weka" src="https://raw.githubusercontent.com/steven-lang/weka-kt/master/resources/Weka_3_kotlin_full.png" style="width: 300px;"></a>
-</div>
-<div class="section" id="kotlin-extensions-for-weka">
-<h2>Kotlin Extensions for Weka</h2>
-<p>Kotlin is a statically typed programming language for modern multiplatform applications running on the Java Virtual Machine. Its design philosophy is to be a concise and type-safe (e.g. support for non-nullable types) programming language. It supports both object-oriented and functional constructs. Other features include smart casting, operator overloading, higher-order functions, lambdas, and <a class="reference external" href="https://kotlinlang.org/docs/reference/extensions.html">extensions</a>. The latter has led to the formation of a group of Kotlin extension libraries that primarily focuses on the syntactic improvement of other libraries' usages. A key example is <a class="reference external" href="https://github.com/android/android-ktx">Android KTX</a> library, developed by Google, which provides extensions for the Android framework. The purpose of this is to make Android development with Kotlin more concise, pleasant and idiomatic.</p>
-<p class="more"><a href="posts/2018-06-22-wekakotlin/">Read more…</a></p>
-</div>
 </div>
     </div>
     </article>

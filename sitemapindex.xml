@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/eibe-frank.xml</loc>
-  <lastmod>2019-05-13T05:23:00Z</lastmod>
+  <lastmod>2019-05-13T09:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/eibe.xml</loc>
@@ -58,12 +58,16 @@
   <lastmod>2019-04-02T01:08:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_statistics.xml</loc>
+  <lastmod>2019-05-13T09:53:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_teaching-resource.xml</loc>
   <lastmod>2019-05-06T02:38:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/github.xml</loc>
-  <lastmod>2019-05-13T05:23:00Z</lastmod>
+  <lastmod>2019-05-13T09:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/gui.xml</loc>
@@ -95,10 +99,10 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
-  <lastmod>2019-05-13T05:23:00Z</lastmod>
+  <lastmod>2019-05-13T09:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
-  <lastmod>2019-05-13T05:23:00Z</lastmod>
+  <lastmod>2019-05-13T09:53:00Z</lastmod>
  </sitemap>
 </sitemapindex>
