@@ -75,6 +75,6 @@ The following example cross-validates J48 on the UCI dataset *anneal* (you can
 download the notebook for the `developer version <https://svn.cms.waikato.ac.nz/svn/weka/trunk/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb>`__ of Weka and the
 `stable 3.8 version <https://svn.cms.waikato.ac.nz/svn/weka/branches/stable-3-8/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb>`__):
 
-.. imag:: ../../images/jupyter.png
+.. image:: ../../images/jupyter.png
 
 
