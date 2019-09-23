@@ -15,7 +15,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/fracpete.xml</loc>
-  <lastmod>2019-05-06T02:38:00Z</lastmod>
+  <lastmod>2019-09-23T02:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/mark-hall.xml</loc>
@@ -23,7 +23,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/peter-reutemann.xml</loc>
-  <lastmod>2019-04-02T01:08:00Z</lastmod>
+  <lastmod>2019-07-04T22:17:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/steven-lang.xml</loc>
@@ -55,7 +55,11 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_scripting.xml</loc>
-  <lastmod>2019-04-02T01:08:00Z</lastmod>
+  <lastmod>2019-07-04T22:17:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://waikato.github.io/weka-blog/categories/cat_snapshots.xml</loc>
+  <lastmod>2019-09-23T02:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_statistics.xml</loc>
@@ -67,7 +71,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/github.xml</loc>
-  <lastmod>2019-05-13T09:53:00Z</lastmod>
+  <lastmod>2019-09-23T02:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/gui.xml</loc>
@@ -87,7 +91,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/scripting.xml</loc>
-  <lastmod>2019-04-02T01:08:00Z</lastmod>
+  <lastmod>2019-07-04T22:17:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/wiki.xml</loc>
@@ -99,10 +103,10 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
-  <lastmod>2019-05-13T09:53:00Z</lastmod>
+  <lastmod>2019-09-23T02:09:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
-  <lastmod>2019-05-13T09:53:00Z</lastmod>
+  <lastmod>2019-09-23T02:09:00Z</lastmod>
  </sitemap>
 </sitemapindex>

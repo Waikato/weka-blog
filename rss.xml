@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WEKA Blog</title><link>https://waikato.github.io/weka-blog/</link><description>Stuff around and about WEKA</description><atom:link rel="self" type="application/rss+xml" href="https://waikato.github.io/weka-blog/rss.xml"></atom:link><language>en</language><lastBuildDate>Thu, 04 Jul 2019 22:17:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Advanced Weka MOOC started</title><link>https://waikato.github.io/weka-blog/posts/2019-05-06-advancedmoocstarted/</link><dc:creator>FracPete</dc:creator><description>&lt;div&gt;&lt;div class="figure"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>WEKA Blog</title><link>https://waikato.github.io/weka-blog/</link><description>Stuff around and about WEKA</description><atom:link rel="self" href="https://waikato.github.io/weka-blog/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Mon, 23 Sep 2019 02:09:13 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>(Unofficial) Debian packages</title><link>https://waikato.github.io/weka-blog/posts/2019-09-23-weka-on-github/</link><dc:creator>FracPete</dc:creator><description>&lt;div&gt;&lt;p&gt;Users installing Weka on Linux must have always felt left out
+a bit, with no installer available, instead having to deal with
+just a ZIP file. For power users, that would not have mattered,
+but users new to Linux may have found that a bit more challenging.&lt;/p&gt;
+&lt;p&gt;Well, things have changed - at least for users of Debian or
+one of its many derivatives like Ubuntu - with the advent
+of &lt;a class="reference external" href="https://www.cs.waikato.ac.nz/~ml/weka/snapshots/weka_snapshots.html"&gt;snapshots&lt;/a&gt;
+being available for download as (experimental) &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Deb_%28file_format%29"&gt;Debian packages&lt;/a&gt; (stable 3.8 and developer version).&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://waikato.github.io/weka-blog/posts/2019-09-23-weka-on-github/"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>github</category><guid>https://waikato.github.io/weka-blog/posts/2019-09-23-weka-on-github/</guid><pubDate>Mon, 23 Sep 2019 01:21:00 GMT</pubDate></item><item><title>Advanced Weka MOOC started</title><link>https://waikato.github.io/weka-blog/posts/2019-05-06-advancedmoocstarted/</link><dc:creator>FracPete</dc:creator><description>&lt;div&gt;&lt;div class="figure"&gt;
 &lt;a class="reference external image-reference" href="https://www.futurelearn.com/courses/advanced-data-mining-with-weka"&gt;&lt;img alt="Advanced Weka MOOC" class="thumbnail" src="https://ugc.futurelearn.com/uploads/images/7e/29/promo_large_7e290d30-8e84-46b2-bf50-801246fb157c.jpg"&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;A new iteration of &lt;strong&gt;Advanced Data Mining with Weka&lt;/strong&gt; has started and Week 1 is now underway!&lt;/p&gt;
@@ -49,17 +57,4 @@ Mac OS X application with Oracle 64 bit JRE 1.8.0_181.&lt;/p&gt;
 Mac OS X application with Oracle 64 bit JRE 1.8.0_151.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>release</category><guid>https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/</guid><pubDate>Tue, 04 Sep 2018 04:53:00 GMT</pubDate></item><item><title>Wiki countdown</title><link>https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/</link><dc:creator>FracPete</dc:creator><description>&lt;div&gt;&lt;p&gt;Earlier this year, the company hosting the &lt;a class="reference external" href="http://weka.wikispaces.com/"&gt;Weka Wiki&lt;/a&gt;
-made a notice available when logging into the wiki:&lt;/p&gt;
-&lt;dl class="docutils"&gt;
-&lt;dt&gt;Notice&lt;/dt&gt;
-&lt;dd&gt;"Over the last twelve months we have been carrying out a complete technical
-review of the infrastructure and software we use to serve Wikispaces users.
-As part of the review, it has become apparent that the required investment to
-bring the infrastructure and code in line with modern standards is very
-substantial. We have explored all possible options for keeping Wikispaces
-running but have had to conclude that it is no longer viable to continue to
-run the service in the long term. So, it is with no small degree of
-nostalgia, that we will begin to close down later this year."&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;p&gt;&lt;a href="https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>github</category><category>wiki</category><guid>https://waikato.github.io/weka-blog/posts/2018-07-02-wiki-countdown/</guid><pubDate>Mon, 02 Jul 2018 02:12:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>release</category><guid>https://waikato.github.io/weka-blog/posts/2018-09-04-383-and-393-released/</guid><pubDate>Tue, 04 Sep 2018 04:53:00 GMT</pubDate></item></channel></rss>
