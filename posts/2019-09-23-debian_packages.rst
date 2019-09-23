@@ -98,7 +98,7 @@ Building packages
 
 This section is only relevant to people wanting to build their own
 Debian packages, e.g., when including their own classes in a custom
-build or people that want to simply know how it is done.
+build, or people that want to simply know how it is done.
 
 Building of Debian packages is only possible on Linux
 systems that have the Debian package tools installed (*fakeroot*, *dpkg-deb*),
