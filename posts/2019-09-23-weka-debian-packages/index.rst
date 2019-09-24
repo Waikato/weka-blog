@@ -1,5 +1,5 @@
-.. title: (Unofficial) Debian packages
-.. slug: 2019-09-23-weka-on-github
+.. title: Weka Debian packages
+.. slug: 2019-09-23-weka-debian-packages
 .. date: 2019-09-23 13:21:00 UTC+12:00
 .. tags: github
 .. author: FracPete
@@ -14,7 +14,7 @@ but users new to Linux may have found that a bit more challenging.
 Well, things have changed - at least for users of Debian or
 one of its many derivatives like Ubuntu - with the advent
 of `snapshots <https://www.cs.waikato.ac.nz/~ml/weka/snapshots/weka_snapshots.html>`__ 
-being available for download as (experimental) `Debian packages <https://en.wikipedia.org/wiki/Deb_%28file_format%29>`__ (stable 3.8 and developer version).
+being available for download as `Debian packages <https://en.wikipedia.org/wiki/Deb_%28file_format%29>`__ (stable 3.8 and developer version).
 
 .. TEASER_END
 
