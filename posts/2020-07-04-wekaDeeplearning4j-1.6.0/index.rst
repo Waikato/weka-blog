@@ -27,5 +27,4 @@ Some image classification datasets come in a simple 'folder-organised' fashion, 
 
 Check out the `documentation <https://deeplearning.cms.waikato.ac.nz>`__ for more info on these new features!
 
-.. |---| unicode:: U+02014 .. em dash
-		   :trim:
+.. |---| unicode:: U+02014
