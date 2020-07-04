@@ -5,7 +5,7 @@
 .. author: Eibe Frank
 .. description: 
 .. category: packages
-   
+
 A new version of WekaDeeplearning4j, version 1.6.0, has just been released and brings with it a bunch of exciting new features.
 
 .. TEASER_END
