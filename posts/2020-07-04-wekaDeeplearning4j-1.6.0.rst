@@ -5,9 +5,6 @@
 .. author: Eibe Frank
 .. description: 
 .. category: packages
-
-.. |---| unicode:: U+02014 .. em dash
-		      :trim:
    
 A new version of WekaDeeplearning4j, version 1.6.0, has just been released and brings with it a bunch of exciting new features.
        
@@ -28,4 +25,7 @@ Image Dataset Conversion Script
 
 Some image classification datasets come in a simple 'folder-organised' fashion, where collections of images are split into subfolders, with the name of each subfolder providing the class of all images within it. To make it easier to work with these types of image datasets, the package now includes the `ImageDirectoryLoader` which can load in datasets of this form.
 
-Check out the `documentation <https://deeplearning.cms.waikato.ac.nz>` for more info on these new features!
+Check out the `documentation <https://deeplearning.cms.waikato.ac.nz>`__ for more info on these new features!
+
+.. |---| unicode:: U+02014 .. em dash
+		   :trim:
