@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more | WEKA Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2020-07-04-wekaDeeplearning4j-1.6.0/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Eibe Frank">
+<link rel="prev" href="../2019-09-23-weka-debian-packages/" title="Weka Debian packages" type="text/html">
+<meta property="og:site_name" content="WEKA Blog">
+<meta property="og:title" content="New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction">
+<meta property="og:url" content="https://waikato.github.io/weka-blog/posts/2020-07-04-wekaDeeplearning4j-1.6.0/">
+<meta property="og:description" content="A new version of WekaDeeplearning4j, version 1.6.0, has just been released and brings with it a bunch of exciting new features.
+
+
+Pretrained Models
+The package previously already contained a model zoo">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-07-04T18:06:00+12:00">
+<meta property="article:tag" content="github">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://waikato.github.io/weka-blog/">
+
+                <span id="blog-title">WEKA Blog</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" role="navigation" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    <a href="../../authors/eibe-frank/">Eibe Frank</a>
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2020-07-04T18:06:00+12:00" itemprop="datePublished" title="2020-07-04 18:06">2020-07-04 18:06</time></a></p>
+            
+        <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>A new version of WekaDeeplearning4j, version 1.6.0, has just been released and brings with it a bunch of exciting new features.</p>
+<!-- TEASER_END -->
+<div class="section" id="pretrained-models">
+<h2>Pretrained Models</h2>
+<p>The package previously already contained a model zoo&amp;mdash;a set of model architectures designed by others (e.g., AlexNet, ResNet50)&amp;mdash;but there was no easy way to use a pretrained checkpoint in Wdl4jMlpClassifier so training these models had to be done from scratch. The new release of WekaDeeplearning4j both expands the model zoo to contain over 30 models and provides an easy way to initialize them with pre-trained weights that have been made publicly available for these models. This makes it even easier to start playing with state-of-the-art neural networks (e.g., EfficientNet): not only do you not need programming experience&amp;mdash;due to the WEKA GUI&amp;mdash;but now you don't even need a beefy GPU to start getting useful results because these models can simply be used as feature extractors without any extra training, simply using the pre-trained weights.</p>
+</div>
+<div class="section" id="updated-dl4jmlpfilter">
+<h2>Updated Dl4jMlpFilter</h2>
+<p>This filter allows you to use a model&amp;mdash;which can now be a pretrained model from the Model Zoo&amp;mdash;as a feature extractor, converting an image dataset into a numeric form that can be used with any off-the-shelf WEKA classifier. In the new version, the filter also supports multiple feature extraction layers: by default the last dense layer will be used, but you can alternatively choose any intermediary layer as well, concatenating the activations from the two layers. This opens up a huge new world of experimentation.</p>
+</div>
+<div class="section" id="image-dataset-conversion-script">
+<h2>Image Dataset Conversion Script</h2>
+<p>Some image classification datasets come in a simple 'folder-organised' fashion, where collections of images are split into subfolders, with the name of each subfolder providing the class of all images within it. To make it easier to work with these types of image datasets, the package now includes the <cite>ImageDirectoryLoader</cite> which can load in datasets of this form.</p>
+<p>Check out the [docs](<a class="reference external" href="https://deeplearning.cms.waikato.ac.nz/">https://deeplearning.cms.waikato.ac.nz/</a>) for more info on these new features!</p>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/github/" rel="tag">github</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../2019-09-23-weka-debian-packages/" rel="prev" title="Weka Debian packages">Previous post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2020         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
