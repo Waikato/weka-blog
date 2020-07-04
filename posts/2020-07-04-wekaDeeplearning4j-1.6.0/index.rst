@@ -18,7 +18,7 @@ The package previously already contained a model zoo—a set of model architectu
 Updated Dl4jMlpFilter
 =====================
 
-The `Dl4jMlpFilter` allows you to use a model—which can now be a pretrained model from the Model Zoo—as a feature extractor, converting an image dataset into a numeric form that can be used with any off-the-shelf WEKA classifier. In the new version, the filter also supports multiple feature extraction layers: by default the last dense layer will be used, but you can alternatively choose any intermediary layer as well, concatenating the activations from the two layers. This opens up a huge new world of experimentation.
+The `Dl4jMlpFilter` allows you to use a model—which can now be a pretrained model from the model zoo—as a feature extractor, converting an image dataset into a numeric form that can be used with any off-the-shelf WEKA classifier. In the new version, the filter also supports multiple feature extraction layers; by default the last dense layer will be used, but you can alternatively choose any intermediary layer as well, concatenating the activations from the two layers. This opens up a huge new world of experimentation.
 
 Image Dataset Conversion Script
 ===============================
