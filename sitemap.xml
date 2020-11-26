@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://waikato.github.io/weka-blog/</loc>
-  <lastmod>2020-07-04T06:40:00Z</lastmod>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/2018/</loc>
@@ -23,11 +23,11 @@
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/archive.html</loc>
-  <lastmod>2020-07-04T06:40:00Z</lastmod>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/</loc>
-  <lastmod>2020-06-03T04:42:00Z</lastmod>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/eibe-frank/</loc>
@@ -44,6 +44,10 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/peter-reutemann/</loc>
   <lastmod>2019-03-01T00:23:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/authors/rhys-compton/</loc>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </url>
  <url>
   <loc>https://waikato.github.io/weka-blog/authors/steven-lang/</loc>
@@ -106,6 +110,10 @@
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </url>
  <url>
+  <loc>https://waikato.github.io/weka-blog/index-1.html</loc>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://waikato.github.io/weka-blog/listings/</loc>
   <lastmod>2018-07-13T00:08:00Z</lastmod>
  </url>
@@ -152,5 +160,9 @@
  <url>
   <loc>https://waikato.github.io/weka-blog/posts/2020-07-04-wekaDeeplearning4j-1.6.0/</loc>
   <lastmod>2020-07-04T06:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://waikato.github.io/weka-blog/posts/2020-11-26-wekaDeeplearning4j-1.7.0/</loc>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </url>
 </urlset>

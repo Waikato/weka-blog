@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/eibe-frank.xml</loc>
-  <lastmod>2020-07-04T06:40:00Z</lastmod>
+  <lastmod>2020-07-04T08:37:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/eibe.xml</loc>
@@ -20,6 +20,10 @@
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/peter-reutemann.xml</loc>
   <lastmod>2019-07-04T22:17:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://waikato.github.io/weka-blog/authors/rhys-compton.xml</loc>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/authors/steven-lang.xml</loc>
@@ -39,7 +43,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_packages.xml</loc>
-  <lastmod>2020-07-04T06:40:00Z</lastmod>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/cat_preprocessing.xml</loc>
@@ -59,7 +63,7 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/github.xml</loc>
-  <lastmod>2020-07-04T06:40:00Z</lastmod>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/categories/gui.xml</loc>
@@ -79,10 +83,10 @@
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/rss.xml</loc>
-  <lastmod>2020-07-04T06:40:00Z</lastmod>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://waikato.github.io/weka-blog/sitemap.xml</loc>
-  <lastmod>2020-07-04T06:40:00Z</lastmod>
+  <lastmod>2020-11-26T06:29:00Z</lastmod>
  </sitemap>
 </sitemapindex>
