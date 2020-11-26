@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>WEKA Blog</title><link>https://waikato.github.io/weka-blog/</link><description>Stuff around and about WEKA</description><atom:link rel="self" href="https://waikato.github.io/weka-blog/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Thu, 26 Nov 2020 06:29:11 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>New WekaDeeplearning4j Release - CNN explorer, saliency maps, progress manager, and model summaries</title><link>https://waikato.github.io/weka-blog/posts/2020-11-26-wekaDeeplearning4j-1.7.0/</link><dc:creator>Rhys Compton</dc:creator><description>&lt;div&gt;&lt;p&gt;A new version of WekaDeeplearning4j, version 1.7.0, is available!&lt;/p&gt;
-&lt;!-- TEASER_EN --&gt;
-&lt;p&gt;![Dl4jCNNExplorer and Saliency map generation](../../images/GUI.jpg)&lt;/p&gt;
-&lt;p&gt;### Dl4j Inference Panel &amp;amp; Dl4jCNNExplorer
-One major addition in &lt;strong&gt;WekaDeeplearning4j&lt;/strong&gt; v1.7.0 is the new &lt;strong&gt;Dl4jCNNExplorer&lt;/strong&gt; and the
-associated GUI &lt;strong&gt;Dl4j Inference Panel&lt;/strong&gt;. This brings real-time inference to the WEKA universe,
-allowing you to quickly run an image classification CNN model on an image without having to
-load an entire &lt;cite&gt;.arff&lt;/cite&gt; file.&lt;/p&gt;
-&lt;p&gt;The &lt;strong&gt;Dl4jCNNExplorer&lt;/strong&gt; supports both a custom-trained &lt;cite&gt;Dl4jMlpClassifier&lt;/cite&gt; and a model from
-the Model Zoo, so it can be used to verify your model's prediction capabilities
-or simply play around with pretrained models and explore what state-of-the-art
-architectures may work best for your domain.&lt;/p&gt;
-&lt;p&gt;Check out the [usage example](&lt;a class="reference external" href="https://deeplearning.cms.waikato.ac.nz/examples/dl4j-inference/"&gt;https://deeplearning.cms.waikato.ac.nz/examples/dl4j-inference/&lt;/a&gt;)
-to see how easy it is to get started.&lt;/p&gt;
-&lt;p&gt;### Saliency Map Generation with ScoreCAM
-Another exciting new feature is the implementation of &lt;strong&gt;ScoreCAM&lt;/strong&gt;, a saliency map generation technique.
-This can be accessed through the &lt;cite&gt;Dl4jCNNExplorer&lt;/cite&gt;, allowing you to not only perform prediction on an image,
-but look at &lt;em&gt;what&lt;/em&gt; in the image your model was using for prediction.&lt;/p&gt;
-&lt;p&gt;This can be invoked from the command-line, although the best user experience is to be had from the GUI using the
-&lt;strong&gt;Saliency Map Viewer&lt;/strong&gt;, which allows you to quickly customize the ScoreCAM target classes.&lt;/p&gt;
-&lt;p&gt;Check out the [usage example](&lt;a class="reference external" href="https://deeplearning.cms.waikato.ac.nz/examples/dl4j-inference/#example-4-saliency-map-generation"&gt;https://deeplearning.cms.waikato.ac.nz/examples/dl4j-inference/#example-4-saliency-map-generation&lt;/a&gt;)
-to see what new insights can be brought to your workflow.&lt;/p&gt;
-&lt;p&gt;### Progress Manager&lt;/p&gt;
-&lt;p&gt;![Progress Manager](../../images/ProgressManager.png)&lt;/p&gt;
-&lt;p&gt;We've created a simple---but effective---progress bar and added this to the long-running tasks
-(model training, feature extraction, etc.). This provides a graphical indicator of progress and remaining
-ETA for the current job so will make WEKA more usable for large jobs.&lt;/p&gt;
-&lt;p&gt;### Model Summaries&lt;/p&gt;
-&lt;p&gt;We've also added [model summaries](&lt;a class="reference external" href="https://deeplearning.cms.waikato.ac.nz/user-guide/model-zoo/#model-summaries"&gt;https://deeplearning.cms.waikato.ac.nz/user-guide/model-zoo/#model-summaries&lt;/a&gt;)
-to the documentation, which specify the different models and their layers. This can be useful for designing
-your own architectures or with the &lt;cite&gt;Dl4jMlpFilter&lt;/cite&gt;, when using intermediary layers for feature extraction.&lt;/p&gt;&lt;/div&gt;</description><category>github</category><guid>https://waikato.github.io/weka-blog/posts/2020-11-26-wekaDeeplearning4j-1.7.0/</guid><pubDate>Thu, 26 Nov 2020 06:06:00 GMT</pubDate></item><item><title>New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more</title><link>https://waikato.github.io/weka-blog/posts/2020-07-04-wekaDeeplearning4j-1.6.0/</link><dc:creator>Eibe Frank</dc:creator><description>&lt;div&gt;&lt;p&gt;A new version of WekaDeeplearning4j, version 1.6.0, has just been released and brings with it a bunch of exciting new features.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>WEKA Blog</title><link>https://waikato.github.io/weka-blog/</link><description>Stuff around and about WEKA</description><atom:link rel="self" href="https://waikato.github.io/weka-blog/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Thu, 26 Nov 2020 06:50:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>New WekaDeeplearning4j Release - CNN explorer, saliency maps, progress manager, and model summaries</title><link>https://waikato.github.io/weka-blog/posts/2020-11-26-wekaDeeplearning4j-1.7.0/</link><dc:creator>Rhys Compton</dc:creator><description>&lt;div&gt;&lt;p&gt;A new version of WekaDeeplearning4j, version 1.7.0, is available!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://waikato.github.io/weka-blog/posts/2020-11-26-wekaDeeplearning4j-1.7.0/"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>github</category><guid>https://waikato.github.io/weka-blog/posts/2020-11-26-wekaDeeplearning4j-1.7.0/</guid><pubDate>Thu, 26 Nov 2020 06:06:00 GMT</pubDate></item><item><title>New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more</title><link>https://waikato.github.io/weka-blog/posts/2020-07-04-wekaDeeplearning4j-1.6.0/</link><dc:creator>Eibe Frank</dc:creator><description>&lt;div&gt;&lt;p&gt;A new version of WekaDeeplearning4j, version 1.6.0, has just been released and brings with it a bunch of exciting new features.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://waikato.github.io/weka-blog/posts/2020-07-04-wekaDeeplearning4j-1.6.0/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>github</category><guid>https://waikato.github.io/weka-blog/posts/2020-07-04-wekaDeeplearning4j-1.6.0/</guid><pubDate>Sat, 04 Jul 2020 06:06:00 GMT</pubDate></item><item><title>Weka Debian packages</title><link>https://waikato.github.io/weka-blog/posts/2019-09-23-weka-debian-packages/</link><dc:creator>FracPete</dc:creator><description>&lt;div&gt;&lt;p&gt;Users installing Weka on Linux must have always felt left out
 a bit, with no installer available, instead having to deal with
 just a ZIP file. For power users, that would not have mattered,
