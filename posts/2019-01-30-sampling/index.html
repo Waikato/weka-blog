@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +8,7 @@
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2019-01-30-sampling/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Eibe Frank">
 <link rel="prev" href="../2018-10-08-making-a-weka-classifier/" title="Making a Weka classifier" type="text/html">
@@ -25,39 +26,38 @@
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark
+bg-dark
+"><div class="container">
 <!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://waikato.github.io/weka-blog/">
+        <a class="navbar-brand" href="../../">
 
-                <span id="blog-title">WEKA Blog</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" role="navigation" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../../archive.html">Archive</a>
+            <span id="blog-title">WEKA Blog</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Archive</a>
                 </li>
-<li>
-<a href="../../categories/">Tags</a>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
                 </li>
-<li>
-<a href="../../rss.xml">RSS feed</a>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
 
                 
             </li>
 </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="index.rst" id="sourcelink">Source</a>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item">
+    <a href="index.rst" id="sourcelink" class="nav-link">Source</a>
     </li>
+
 
                 
             </ul>
@@ -68,16 +68,19 @@
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
-        <div class="row">
-            
-            
+        
+        
+        
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Oversampling and Undersampling</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    <a href="../../authors/eibe-frank/">Eibe Frank</a>
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    <a class="u-url" href="../../authors/eibe-frank/">Eibe Frank</a>
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-01-30T11:10:00+12:00" itemprop="datePublished" title="2019-01-30 11:10">2019-01-30 11:10</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-01-30T11:10:00+12:00" itemprop="datePublished" title="2019-01-30 11:10">2019-01-30 11:10</time></a>
+            </p>
             
         <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
 
@@ -85,52 +88,35 @@
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>A frequent question of Weka users is how to implement oversampling or undersampling, which are two common strategies for dealing with imbalanced classes in classification problems. This post provides some explanation.</p>
+    <p>A frequent question of Weka users is how to implement oversampling or undersampling, which are two common strategies for dealing with imbalanced classes in classification problems. This post provides some explanation.</p>
 <!-- TEASER_END -->
 <p>When a binary classification problem has a lot less data in one class than in the other one, e.g., when learning from results of a medical test for which the vast majority of instances have a negative outcome and only a few return positive, some machine learning algorithms will simply learn to ignore the minority class and classify all cases into the majority class because this will trivially yield high classification accuracy. This kind of classification model is clearly not useful. Two common methods for combating this problem are undersampling of the majority class and oversampling of the minority class respectively.</p>
-<div class="section" id="section-1-undersampling-the-majority-class">
-<h2>Section 1: Undersampling the majority class</h2>
+<section id="section-1-undersampling-the-majority-class"><h2>Section 1: Undersampling the majority class</h2>
 <p>There are two Weka filters that can be used to implement undersampling of the majority class:</p>
-<pre class="literal-block">
-weka.filters.supervised.instance.Resample
-</pre>
+<pre class="literal-block">weka.filters.supervised.instance.Resample</pre>
 <p>and</p>
-<pre class="literal-block">
-weka.filters.supervised.instance.SpreadSubsample
-</pre>
-<p>The first one, <tt class="docutils literal">weka.filters.supervised.instance.Resample</tt>, uses the following expression to determine the number of instances to sample for a particular class <tt class="docutils literal">i</tt>:</p>
-<pre class="code java"><a name="rest_code_04cc82cea80848978825e316c20f1fb5-1"></a><span class="kt">int</span> <span class="n">sampleSize</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)((</span><span class="n">m_SampleSizePercent</span> <span class="o">/</span> <span class="mf">100.0</span><span class="o">)</span>  <span class="o">*</span> <span class="o">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">m_BiasToUniformClass</span><span class="o">)</span> <span class="o">*</span> <span class="n">numInstancesPerClass</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">m_BiasToUniformClass</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="na">numInstances</span><span class="o">()</span> <span class="o">/</span> <span class="n">numActualClasses</span><span class="o">));</span>
-</pre>
-<p>where <tt class="docutils literal">data.numInstances()</tt> gives the total number of instances in the dataset, <tt class="docutils literal">numInstancesPerClass[i]</tt> holds the number of instances in class <tt class="docutils literal">i</tt> and <tt class="docutils literal">numActualClasses</tt> corresponds to the number of classes that actually occur in the dataset (some classes declared in an ARFF file may not have any instances in the data).</p>
-<p>Based on this, to undersample the majority class so that both classes have the same number of instances, we can configure the filter to use  <tt class="docutils literal">biasToUniformClass=1.0</tt> and <tt class="docutils literal">sampleSizePercent=X</tt>, where <tt class="docutils literal">X/2</tt> is (approximately) the percentage of data that belongs to the minority class. We also need to configure the filter to perform sampling without replacement by applying <tt class="docutils literal">noReplacement=true</tt>.</p>
+<pre class="literal-block">weka.filters.supervised.instance.SpreadSubsample</pre>
+<p>The first one, <code class="docutils literal">weka.filters.supervised.instance.Resample</code>, uses the following expression to determine the number of instances to sample for a particular class <code class="docutils literal">i</code>:</p>
+<div class="code"><pre class="code java"><a id="rest_code_72495f71f9b34022ae0d464497b79b1c-1" name="rest_code_72495f71f9b34022ae0d464497b79b1c-1" href="#rest_code_72495f71f9b34022ae0d464497b79b1c-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">sampleSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="n">m_SampleSizePercent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span><span class="p">)</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">m_BiasToUniformClass</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">numInstancesPerClass</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m_BiasToUniformClass</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">numInstances</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">numActualClasses</span><span class="p">));</span>
+</pre></div>
+<p>where <code class="docutils literal">data.numInstances()</code> gives the total number of instances in the dataset, <code class="docutils literal">numInstancesPerClass[i]</code> holds the number of instances in class <code class="docutils literal">i</code> and <code class="docutils literal">numActualClasses</code> corresponds to the number of classes that actually occur in the dataset (some classes declared in an ARFF file may not have any instances in the data).</p>
+<p>Based on this, to undersample the majority class so that both classes have the same number of instances, we can configure the filter to use  <code class="docutils literal">biasToUniformClass=1.0</code> and <code class="docutils literal">sampleSizePercent=X</code>, where <code class="docutils literal">X/2</code> is (approximately) the percentage of data that belongs to the minority class. We also need to configure the filter to perform sampling without replacement by applying <code class="docutils literal">noReplacement=true</code>.</p>
 <p>For example, on the diabetes data that comes with the Weka distribution, we can apply the following command-line configuration of the filter:</p>
-<pre class="literal-block">
-weka.filters.supervised.instance.Resample -B 1.0 -Z 69.8 -no-replacement
-</pre>
-<p>When you apply this approach in practice, you will probably need to fiddle with the <tt class="docutils literal"><span class="pre">-Z</span></tt> parameter (i.e., <tt class="docutils literal">sampleSizePercent</tt>) a bit to keep all the instances of the minority class. Watch out for something like <tt class="docutils literal">*WARNING: Not enough instances of tested_positive for selected value of bias parameter in supervised Resample filter when sampling without replacement.*</tt>. It means that the value specified by <tt class="docutils literal"><span class="pre">-Z</span></tt> is too large: there is an insufficient number of instances in the minority class in the data.</p>
-<p>This seems unnecessary complicated, and it is. Instead of using <tt class="docutils literal">weka.filters.supervised.instance.Resample</tt>, a much easier way to achieve the same effect is to use <tt class="docutils literal">weka.filters.supervised.SpreadSubsample</tt> instead, with <tt class="docutils literal">distributionSpread=1.0</tt>:</p>
-<pre class="literal-block">
-weka.filters.supervised.instance.SpreadSubsample -M 1.0
-</pre>
-</div>
-<div class="section" id="section-2-oversampling-the-minority-class">
-<h2>Section 2: Oversampling the minority class</h2>
-<p>Now, to achieve oversampling of the minority class, rather than undersampling of the majority class, so that both classes have the same number of instances, we need to return to <tt class="docutils literal">weka.filters.supervsied.Resample</tt> and apply it with <tt class="docutils literal">noReplacement=false</tt>, <tt class="docutils literal">biasToUniformClass=1.0</tt>, and <tt class="docutils literal">sampleSizePercent=Y</tt>, where <tt class="docutils literal">Y/2</tt> is (approximately) the percentage of data that belongs to the majority class.</p>
+<pre class="literal-block">weka.filters.supervised.instance.Resample -B 1.0 -Z 69.8 -no-replacement</pre>
+<p>When you apply this approach in practice, you will probably need to fiddle with the <code class="docutils literal"><span class="pre">-Z</span></code> parameter (i.e., <code class="docutils literal">sampleSizePercent</code>) a bit to keep all the instances of the minority class. Watch out for something like <code class="docutils literal">*WARNING: Not enough instances of tested_positive for selected value of bias parameter in supervised Resample filter when sampling without replacement.*</code>. It means that the value specified by <code class="docutils literal"><span class="pre">-Z</span></code> is too large: there is an insufficient number of instances in the minority class in the data.</p>
+<p>This seems unnecessary complicated, and it is. Instead of using <code class="docutils literal">weka.filters.supervised.instance.Resample</code>, a much easier way to achieve the same effect is to use <code class="docutils literal">weka.filters.supervised.SpreadSubsample</code> instead, with <code class="docutils literal">distributionSpread=1.0</code>:</p>
+<pre class="literal-block">weka.filters.supervised.instance.SpreadSubsample -M 1.0</pre>
+</section><section id="section-2-oversampling-the-minority-class"><h2>Section 2: Oversampling the minority class</h2>
+<p>Now, to achieve oversampling of the minority class, rather than undersampling of the majority class, so that both classes have the same number of instances, we need to return to <code class="docutils literal">weka.filters.supervsied.Resample</code> and apply it with <code class="docutils literal">noReplacement=false</code>, <code class="docutils literal">biasToUniformClass=1.0</code>, and <code class="docutils literal">sampleSizePercent=Y</code>, where <code class="docutils literal">Y/2</code> is (approximately) the percentage of data that belongs to the majority class.</p>
 <p>In the case of the diabetes data that comes with the Weka distribution, we would use</p>
-<pre class="literal-block">
-weka.filters.supervised.instance.Resample -B 1.0 -Z 130.3
-</pre>
+<pre class="literal-block">weka.filters.supervised.instance.Resample -B 1.0 -Z 130.3</pre>
 <p>An important caveat is that this will apply sampling <em>with</em> replacement to the majority class as well, so it may not be ideal for your application! To get oversampling of the minority class and keep the majority class untouched, you may need to write your own program or use Weka's KnowledgeFlow GUI.</p>
-</div>
-<div class="section" id="section-3-concluding-remarks">
-<h2>Section 3: Concluding remarks</h2>
-<p>So these are two basic tools for undersampling and oversampling in Weka. However, there is also <tt class="docutils literal">weka.classifiers.meta.CostSensitiveClassifier</tt>, which, when applied in default mode, will reweight the training instances to take a given misclassification cost matrix into account and then just use the classifier built from the reweighted data. The weights that are produced can be used directly by any classifier in Weka that implements the <tt class="docutils literal">WeightedInstancesHandler</tt> interface (whether this is the case can be checked by inspecting the classifier's <tt class="docutils literal">Capabilities</tt>). If the base classifier that is specified inside <tt class="docutils literal">CostSensitveClassifier</tt> does not implement this <tt class="docutils literal">WeightedInstancesHandler</tt> interface, then the data will be resampled (with replacement) based on the weights by normalising the weights into a probability distribution that is used for sampling. Finally, there is <tt class="docutils literal">weka.filters.supervised.instance.ClassBalancer</tt>, a very simple filter that assigns instance weights so that each class of instances will have the same weight and the total sum of instance weights in the dataset remains unchanged. When <tt class="docutils literal">weka.classifiers.meta.FilteredClassifier</tt> is applied in conjunction with this filter and the base classifier does not implement <tt class="docutils literal">WeightedInstancesHandler</tt> then the weights will again be used to form a probability distribution for sampling with replacement. This will yield a training set where both classes are (approximately) balanced.</p>
+</section><section id="section-3-concluding-remarks"><h2>Section 3: Concluding remarks</h2>
+<p>So these are two basic tools for undersampling and oversampling in Weka. However, there is also <code class="docutils literal">weka.classifiers.meta.CostSensitiveClassifier</code>, which, when applied in default mode, will reweight the training instances to take a given misclassification cost matrix into account and then just use the classifier built from the reweighted data. The weights that are produced can be used directly by any classifier in Weka that implements the <code class="docutils literal">WeightedInstancesHandler</code> interface (whether this is the case can be checked by inspecting the classifier's <code class="docutils literal">Capabilities</code>). If the base classifier that is specified inside <code class="docutils literal">CostSensitveClassifier</code> does not implement this <code class="docutils literal">WeightedInstancesHandler</code> interface, then the data will be resampled (with replacement) based on the weights by normalising the weights into a probability distribution that is used for sampling. Finally, there is <code class="docutils literal">weka.filters.supervised.instance.ClassBalancer</code>, a very simple filter that assigns instance weights so that each class of instances will have the same weight and the total sum of instance weights in the dataset remains unchanged. When <code class="docutils literal">weka.classifiers.meta.FilteredClassifier</code> is applied in conjunction with this filter and the base classifier does not implement <code class="docutils literal">WeightedInstancesHandler</code> then the weights will again be used to form a probability distribution for sampling with replacement. This will yield a training set where both classes are (approximately) balanced.</p>
 <p>In addition to the above filters and classifiers, which sample instances or modify instance weights, it is also possible to apply a more sophisticated approach that generates new data in the minority class by interpolating between the training instances in that class. This is what the well-known SMOTE method does, and there is a package for Weka of that name that provides this functionality as a Weka filter.</p>
-<p>A final (important) note: all supervised filters in Weka must be applied in conjunction with <tt class="docutils literal">weka.classifiers.meta.FilteredClassifier</tt> so that the test data is processed without introducing bias into the performance estimates obtained by k-fold cross-validation or a percentage split evaluation! For example, in the case of the above filters, we should not modify the test data using the filters. Application of the <tt class="docutils literal">FilteredClassifier</tt> will ensure that this does not happen.</p>
+<p>A final (important) note: all supervised filters in Weka must be applied in conjunction with <code class="docutils literal">weka.classifiers.meta.FilteredClassifier</code> so that the test data is processed without introducing bias into the performance estimates obtained by k-fold cross-validation or a percentage split evaluation! For example, in the case of the above filters, we should not modify the test data using the filters. Application of the <code class="docutils literal">FilteredClassifier</code> will ensure that this does not happen.</p>
+</section>
 </div>
-</div>
-    </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/github/" rel="tag">github</a></li>
         </ul>
@@ -141,21 +127,19 @@ weka.filters.supervised.instance.Resample -B 1.0 -Z 130.3
             <li class="next">
                 <a href="../2019-02-16-micro_average/" rel="next" title="Micro averages in multi-class classification">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2020         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </ul></nav></aside></article><!--End of body content--><footer id="footer">
+            Contents © 2024         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
             
         </footer>
 </div>
 </div>
 
 
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
 </body>
 </html>

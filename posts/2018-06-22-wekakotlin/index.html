@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,9 +8,9 @@
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2018-06-22-wekakotlin/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Steven Lang">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Steven Lang ">
 <link rel="prev" href="../2018-05-30-weka-on-github/" title="Weka is now on Github" type="text/html">
 <link rel="next" href="../2018-10-08-making-a-weka-classifier/" title="Making a Weka classifier" type="text/html">
 <meta property="og:site_name" content="WEKA Blog">
@@ -26,39 +27,38 @@ Kotlin is a statically typed programming language for modern multiplatform appli
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark
+bg-dark
+"><div class="container">
 <!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://waikato.github.io/weka-blog/">
+        <a class="navbar-brand" href="../../">
 
-                <span id="blog-title">WEKA Blog</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" role="navigation" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../../archive.html">Archive</a>
+            <span id="blog-title">WEKA Blog</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Archive</a>
                 </li>
-<li>
-<a href="../../categories/">Tags</a>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
                 </li>
-<li>
-<a href="../../rss.xml">RSS feed</a>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
 
                 
             </li>
 </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="index.rst" id="sourcelink">Source</a>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item">
+    <a href="index.rst" id="sourcelink" class="nav-link">Source</a>
     </li>
+
 
                 
             </ul>
@@ -69,16 +69,19 @@ Kotlin is a statically typed programming language for modern multiplatform appli
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
-        <div class="row">
-            
-            
+        
+        
+        
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Weka-Kt: Kotlin Extensions for Weka</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    <a href="../../authors/steven-lang/">Steven Lang</a>
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    <a class="u-url" href="../../authors/steven-lang/">Steven Lang </a>
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-06-22T08:00:00+12:00" itemprop="datePublished" title="2018-06-22 08:00">2018-06-22 08:00</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2018-06-22T08:00:00+12:00" itemprop="datePublished" title="2018-06-22 08:00">2018-06-22 08:00</time></a>
+            </p>
             
         <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
 
@@ -86,109 +89,97 @@ Kotlin is a statically typed programming language for modern multiplatform appli
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<div class="figure">
-<a class="reference external image-reference" href="https://github.com/steven-lang/weka-kt"><img alt="Weka-Kt: Kotlin Extensions for Weka" src="https://raw.githubusercontent.com/steven-lang/weka-kt/master/resources/Weka_3_kotlin_full.png" style="width: 300px;"></a>
-</div>
-<div class="section" id="kotlin-extensions-for-weka">
-<h2>Kotlin Extensions for Weka</h2>
+    <figure><a class="reference external image-reference" href="https://github.com/steven-lang/weka-kt">
+<img alt="Weka-Kt: Kotlin Extensions for Weka" src="https://raw.githubusercontent.com/steven-lang/weka-kt/master/resources/Weka_3_kotlin_full.png" style="width: 300px;"></a>
+</figure><section id="kotlin-extensions-for-weka"><h2>Kotlin Extensions for Weka</h2>
 <p>Kotlin is a statically typed programming language for modern multiplatform applications running on the Java Virtual Machine. Its design philosophy is to be a concise and type-safe (e.g. support for non-nullable types) programming language. It supports both object-oriented and functional constructs. Other features include smart casting, operator overloading, higher-order functions, lambdas, and <a class="reference external" href="https://kotlinlang.org/docs/reference/extensions.html">extensions</a>. The latter has led to the formation of a group of Kotlin extension libraries that primarily focuses on the syntactic improvement of other libraries' usages. A key example is <a class="reference external" href="https://github.com/android/android-ktx">Android KTX</a> library, developed by Google, which provides extensions for the Android framework. The purpose of this is to make Android development with Kotlin more concise, pleasant and idiomatic.</p>
 <!-- TEASER_END -->
-<div class="section" id="code-examples">
-<h3>Code Examples</h3>
+<section id="code-examples"><h3>Code Examples</h3>
 <p>Weka-Kt is inspired by the same ideas as Android KTX. Its goal is to make the use of Weka more convenient. Let's start with a simple example that shows how extension functions work and how they can improve the life of a developer using Weka.</p>
-<div class="section" id="filtering-instances">
-<h4>Filtering Instances</h4>
+<section id="filtering-instances"><h4>Filtering Instances</h4>
 <p>A common use-case is to filter a dataset. E.g. removing 33.0 % of a given dataset can be done like this in Java:</p>
-<pre class="code Java"><a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-1"></a><span class="c1">// Get data</span>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-2"></a><span class="n">Instances</span> <span class="n">irisData</span> <span class="o">=</span> <span class="n">getIris</span><span class="o">();</span>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-3"></a>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-4"></a><span class="c1">// Create filter for train set</span>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-5"></a><span class="n">RemovePercentage</span> <span class="n">rpf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemovePercentage</span><span class="o">();</span>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-6"></a><span class="n">rpf</span><span class="o">.</span><span class="na">setPercentage</span><span class="o">(</span><span class="mf">33.0</span><span class="o">);</span>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-7"></a><span class="n">rpf</span><span class="o">.</span><span class="na">setInputFormat</span><span class="o">(</span><span class="n">irisData</span><span class="o">);</span>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-8"></a>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-9"></a><span class="c1">// Apply filter</span>
-<a name="rest_code_e48584d653f244b6a2be8b5f7aaf218d-10"></a><span class="n">Instances</span> <span class="n">irisFilterd</span> <span class="o">=</span> <span class="n">Filter</span><span class="o">.</span><span class="na">use</span><span class="o">(</span><span class="n">irisData</span><span class="o">,</span> <span class="n">rpf</span><span class="o">)</span>
-</pre>
+<div class="code"><pre class="code Java"><a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-1" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-1" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-1"></a><span class="c1">// Get data</span>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-2" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-2" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-2"></a><span class="n">Instances</span><span class="w"> </span><span class="n">irisData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getIris</span><span class="p">();</span>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-3" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-3" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-3"></a>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-4" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-4" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-4"></a><span class="c1">// Create filter for train set</span>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-5" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-5" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-5"></a><span class="n">RemovePercentage</span><span class="w"> </span><span class="n">rpf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RemovePercentage</span><span class="p">();</span>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-6" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-6" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-6"></a><span class="n">rpf</span><span class="p">.</span><span class="na">setPercentage</span><span class="p">(</span><span class="mf">33.0</span><span class="p">);</span>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-7" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-7" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-7"></a><span class="n">rpf</span><span class="p">.</span><span class="na">setInputFormat</span><span class="p">(</span><span class="n">irisData</span><span class="p">);</span>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-8" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-8" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-8"></a>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-9" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-9" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-9"></a><span class="c1">// Apply filter</span>
+<a id="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-10" name="rest_code_5f4acb0873c94f3f9847beeccca9ec9f-10" href="#rest_code_5f4acb0873c94f3f9847beeccca9ec9f-10"></a><span class="n">Instances</span><span class="w"> </span><span class="n">irisFilterd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="n">irisData</span><span class="p">,</span><span class="w"> </span><span class="n">rpf</span><span class="p">)</span>
+</pre></div>
 <p>The same functionality can be achieved with Weka-Kt's <a class="reference external" href="https://steven-lang.github.io/weka-kt/com.github.stevenlang.wekakt.extensions/weka.core.-instances/filter.html">Instances.filter</a> extensions:</p>
-<pre class="code Kotlin"><a name="rest_code_a19fef256bca47cbb73a42135c61170e-1"></a><span class="c1">// Get data</span>
-<a name="rest_code_a19fef256bca47cbb73a42135c61170e-2"></a><span class="k">val</span> <span class="py">irisData</span> <span class="p">=</span> <span class="n">getIris</span><span class="p">()</span>
-<a name="rest_code_a19fef256bca47cbb73a42135c61170e-3"></a>
-<a name="rest_code_a19fef256bca47cbb73a42135c61170e-4"></a><span class="c1">// Filter data</span>
-<a name="rest_code_a19fef256bca47cbb73a42135c61170e-5"></a><span class="k">val</span> <span class="py">irisFiltered</span> <span class="p">=</span> <span class="n">irisData</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">RemovePercentage</span><span class="p">())</span> <span class="p">{</span>
-<a name="rest_code_a19fef256bca47cbb73a42135c61170e-6"></a>    <span class="n">percentage</span> <span class="p">=</span> <span class="m">33.0</span>
-<a name="rest_code_a19fef256bca47cbb73a42135c61170e-7"></a><span class="p">}</span>
-</pre>
-<p>which calls the following extension function on the <code>irisData</code> object:</p>
-<pre class="code Kotlin"><a name="rest_code_28c6e5fe67c14732aa51aa16b3df7e34-1"></a><span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span> <span class="p">:</span> <span class="n">Filter</span><span class="p">&gt;</span> <span class="n">Instances</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">T</span><span class="p">.()</span> <span class="p">-&gt;</span> <span class="n">Unit</span><span class="p">):</span> <span class="n">Instances</span> <span class="p">{</span>
-<a name="rest_code_28c6e5fe67c14732aa51aa16b3df7e34-2"></a>    <span class="n">filter</span><span class="p">.</span><span class="n">body</span><span class="p">()</span>                 <span class="c1">// &lt;body&gt; is treated as function of all Filter subclasses &lt;T&gt;</span>
-<a name="rest_code_28c6e5fe67c14732aa51aa16b3df7e34-3"></a>    <span class="n">filter</span><span class="p">.</span><span class="n">setInputFormat</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>   <span class="c1">// &lt;this&gt; refers to the receiving Instances object</span>
-<a name="rest_code_28c6e5fe67c14732aa51aa16b3df7e34-4"></a>    <span class="k">return</span> <span class="n">Filter</span><span class="p">.</span><span class="n">useFilter</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">filter</span><span class="p">)</span>
-<a name="rest_code_28c6e5fe67c14732aa51aa16b3df7e34-5"></a><span class="p">}</span>
-</pre>
-<p>The above defined function <em>extends</em> the Weka <code>Instances</code> class. Therefore, the function acts as being part of the <code>Instances</code> class and <code>this</code> refers to the receiving <code>Instances</code> object. The parameter <code>body</code> is an extension function on the Filter subclass <code>T</code> and can thus be called on the <code>filter</code> object in the first line.</p>
-</div>
-<div class="section" id="generating-train-test-sets">
-<h4>Generating Train/Test Sets</h4>
+<div class="code"><pre class="code Kotlin"><a id="rest_code_13164e908bc44c489db8f2c11a8e8f81-1" name="rest_code_13164e908bc44c489db8f2c11a8e8f81-1" href="#rest_code_13164e908bc44c489db8f2c11a8e8f81-1"></a><span class="c1">// Get data</span>
+<a id="rest_code_13164e908bc44c489db8f2c11a8e8f81-2" name="rest_code_13164e908bc44c489db8f2c11a8e8f81-2" href="#rest_code_13164e908bc44c489db8f2c11a8e8f81-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">irisData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getIris</span><span class="p">()</span>
+<a id="rest_code_13164e908bc44c489db8f2c11a8e8f81-3" name="rest_code_13164e908bc44c489db8f2c11a8e8f81-3" href="#rest_code_13164e908bc44c489db8f2c11a8e8f81-3"></a>
+<a id="rest_code_13164e908bc44c489db8f2c11a8e8f81-4" name="rest_code_13164e908bc44c489db8f2c11a8e8f81-4" href="#rest_code_13164e908bc44c489db8f2c11a8e8f81-4"></a><span class="c1">// Filter data</span>
+<a id="rest_code_13164e908bc44c489db8f2c11a8e8f81-5" name="rest_code_13164e908bc44c489db8f2c11a8e8f81-5" href="#rest_code_13164e908bc44c489db8f2c11a8e8f81-5"></a><span class="kd">val</span><span class="w"> </span><span class="nv">irisFiltered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">irisData</span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">RemovePercentage</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_13164e908bc44c489db8f2c11a8e8f81-6" name="rest_code_13164e908bc44c489db8f2c11a8e8f81-6" href="#rest_code_13164e908bc44c489db8f2c11a8e8f81-6"></a><span class="w">    </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">33.0</span>
+<a id="rest_code_13164e908bc44c489db8f2c11a8e8f81-7" name="rest_code_13164e908bc44c489db8f2c11a8e8f81-7" href="#rest_code_13164e908bc44c489db8f2c11a8e8f81-7"></a><span class="p">}</span>
+</pre></div>
+<p>which calls the following extension function on the <cite>irisData</cite> object:</p>
+<div class="code"><pre class="code Kotlin"><a id="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-1" name="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-1" href="#rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-1"></a><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Filter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Instances</span><span class="p">.</span><span class="nf">filter</span><span class="p">(</span><span class="n">filter</span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="p">.()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">):</span><span class="w"> </span><span class="n">Instances</span><span class="w"> </span><span class="p">{</span>
+<a id="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-2" name="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-2" href="#rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-2"></a><span class="w">    </span><span class="n">filter</span><span class="p">.</span><span class="na">body</span><span class="p">()</span><span class="w">                 </span><span class="c1">// &lt;body&gt; is treated as function of all Filter subclasses &lt;T&gt;</span>
+<a id="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-3" name="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-3" href="#rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-3"></a><span class="w">    </span><span class="n">filter</span><span class="p">.</span><span class="na">setInputFormat</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w">   </span><span class="c1">// &lt;this&gt; refers to the receiving Instances object</span>
+<a id="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-4" name="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-4" href="#rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Filter</span><span class="p">.</span><span class="na">useFilter</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">filter</span><span class="p">)</span>
+<a id="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-5" name="rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-5" href="#rest_code_a3ebda1d4b7844a1a4524d48dc4d46b5-5"></a><span class="p">}</span>
+</pre></div>
+<p>The above defined function <em>extends</em> the Weka <cite>Instances</cite> class. Therefore, the function acts as being part of the <cite>Instances</cite> class and <cite>this</cite> refers to the receiving <cite>Instances</cite> object. The parameter <cite>body</cite> is an extension function on the Filter subclass <cite>T</cite> and can thus be called on the <cite>filter</cite> object in the first line.</p>
+</section><section id="generating-train-test-sets"><h4>Generating Train/Test Sets</h4>
 <p>Another use-case is to split a given dataset into two subsets, namely the train and the test-set. To obtain these two sets, the following Java code would be necessary:</p>
-<pre class="code Java"><a name="rest_code_e132e80b176a4dafb117990953ea975c-1"></a><span class="c1">// Create filter for train set</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-2"></a><span class="n">RemovePercentage</span> <span class="n">removePercentageTrain</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemovePercentage</span><span class="o">();</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-3"></a><span class="n">removePercentageTrain</span><span class="o">.</span><span class="na">setPercentage</span><span class="o">(</span><span class="mf">33.0</span><span class="o">);</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-4"></a><span class="n">removePercentageTrain</span><span class="o">.</span><span class="na">setInputFormat</span><span class="o">(</span><span class="n">irisData</span><span class="o">);</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-5"></a>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-6"></a><span class="c1">// Create filter for test set</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-7"></a><span class="n">RemovePercentage</span> <span class="n">removePercentageTest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemovePercentage</span><span class="o">();</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-8"></a><span class="n">removePercentageTest</span><span class="o">.</span><span class="na">setPercentage</span><span class="o">(</span><span class="mf">33.0</span><span class="o">);</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-9"></a><span class="n">removePercentageTest</span><span class="o">.</span><span class="na">setInvertSelection</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-10"></a><span class="n">removePercentageTest</span><span class="o">.</span><span class="na">setInputFormat</span><span class="o">(</span><span class="n">irisData</span><span class="o">);</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-11"></a>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-12"></a><span class="c1">// User filters and generate train/test sets</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-13"></a><span class="n">Instances</span> <span class="n">train</span> <span class="o">=</span> <span class="n">Filter</span><span class="o">.</span><span class="na">useFilter</span><span class="o">(</span><span class="n">irisData</span><span class="o">,</span> <span class="n">removePercentageTrain</span><span class="o">);</span>
-<a name="rest_code_e132e80b176a4dafb117990953ea975c-14"></a><span class="n">Instances</span> <span class="n">test</span> <span class="o">=</span> <span class="n">Filter</span><span class="o">.</span><span class="na">useFilter</span><span class="o">(</span><span class="n">irisData</span><span class="o">,</span> <span class="n">removePercentageTest</span><span class="o">);</span>
-</pre>
+<div class="code"><pre class="code Java"><a id="rest_code_5ad981ad0a78423abfa356338f38264d-1" name="rest_code_5ad981ad0a78423abfa356338f38264d-1" href="#rest_code_5ad981ad0a78423abfa356338f38264d-1"></a><span class="c1">// Create filter for train set</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-2" name="rest_code_5ad981ad0a78423abfa356338f38264d-2" href="#rest_code_5ad981ad0a78423abfa356338f38264d-2"></a><span class="n">RemovePercentage</span><span class="w"> </span><span class="n">removePercentageTrain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RemovePercentage</span><span class="p">();</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-3" name="rest_code_5ad981ad0a78423abfa356338f38264d-3" href="#rest_code_5ad981ad0a78423abfa356338f38264d-3"></a><span class="n">removePercentageTrain</span><span class="p">.</span><span class="na">setPercentage</span><span class="p">(</span><span class="mf">33.0</span><span class="p">);</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-4" name="rest_code_5ad981ad0a78423abfa356338f38264d-4" href="#rest_code_5ad981ad0a78423abfa356338f38264d-4"></a><span class="n">removePercentageTrain</span><span class="p">.</span><span class="na">setInputFormat</span><span class="p">(</span><span class="n">irisData</span><span class="p">);</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-5" name="rest_code_5ad981ad0a78423abfa356338f38264d-5" href="#rest_code_5ad981ad0a78423abfa356338f38264d-5"></a>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-6" name="rest_code_5ad981ad0a78423abfa356338f38264d-6" href="#rest_code_5ad981ad0a78423abfa356338f38264d-6"></a><span class="c1">// Create filter for test set</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-7" name="rest_code_5ad981ad0a78423abfa356338f38264d-7" href="#rest_code_5ad981ad0a78423abfa356338f38264d-7"></a><span class="n">RemovePercentage</span><span class="w"> </span><span class="n">removePercentageTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RemovePercentage</span><span class="p">();</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-8" name="rest_code_5ad981ad0a78423abfa356338f38264d-8" href="#rest_code_5ad981ad0a78423abfa356338f38264d-8"></a><span class="n">removePercentageTest</span><span class="p">.</span><span class="na">setPercentage</span><span class="p">(</span><span class="mf">33.0</span><span class="p">);</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-9" name="rest_code_5ad981ad0a78423abfa356338f38264d-9" href="#rest_code_5ad981ad0a78423abfa356338f38264d-9"></a><span class="n">removePercentageTest</span><span class="p">.</span><span class="na">setInvertSelection</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-10" name="rest_code_5ad981ad0a78423abfa356338f38264d-10" href="#rest_code_5ad981ad0a78423abfa356338f38264d-10"></a><span class="n">removePercentageTest</span><span class="p">.</span><span class="na">setInputFormat</span><span class="p">(</span><span class="n">irisData</span><span class="p">);</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-11" name="rest_code_5ad981ad0a78423abfa356338f38264d-11" href="#rest_code_5ad981ad0a78423abfa356338f38264d-11"></a>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-12" name="rest_code_5ad981ad0a78423abfa356338f38264d-12" href="#rest_code_5ad981ad0a78423abfa356338f38264d-12"></a><span class="c1">// User filters and generate train/test sets</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-13" name="rest_code_5ad981ad0a78423abfa356338f38264d-13" href="#rest_code_5ad981ad0a78423abfa356338f38264d-13"></a><span class="n">Instances</span><span class="w"> </span><span class="n">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">.</span><span class="na">useFilter</span><span class="p">(</span><span class="n">irisData</span><span class="p">,</span><span class="w"> </span><span class="n">removePercentageTrain</span><span class="p">);</span>
+<a id="rest_code_5ad981ad0a78423abfa356338f38264d-14" name="rest_code_5ad981ad0a78423abfa356338f38264d-14" href="#rest_code_5ad981ad0a78423abfa356338f38264d-14"></a><span class="n">Instances</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">.</span><span class="na">useFilter</span><span class="p">(</span><span class="n">irisData</span><span class="p">,</span><span class="w"> </span><span class="n">removePercentageTest</span><span class="p">);</span>
+</pre></div>
 <p>Using Weka-Kt's <a class="reference external" href="https://steven-lang.github.io/weka-kt/com.github.stevenlang.wekakt.extensions/weka.core.-instances/split.html">Instances.split</a>, this can be reduced to:</p>
-<pre class="code Kotlin"><a name="rest_code_cd79c9cbbc98420590aa2e8335ee788b-1"></a><span class="c1">// Split data using destructuring declaration</span>
-<a name="rest_code_cd79c9cbbc98420590aa2e8335ee788b-2"></a><span class="k">val</span> <span class="err">(</span><span class="py">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="p">=</span> <span class="n">irisData</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">testPercentage</span> <span class="p">=</span> <span class="m">33.0</span><span class="p">)</span>
-</pre>
-</div>
-<div class="section" id="numpy-like-data-access">
-<h4>Numpy-Like Data Access</h4>
-<p>Numpy provides an easy and intuitive way of accessing data in a numpy array by passing indices to the square-brackets operator <code>data[..]</code>. Kotlin's operator overloading allows us to extend the <cite>Instances</cite> functionality and provide definitions for numpy-like data access as shown in the following example:</p>
-<pre class="code Kotlin"><a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-1"></a><span class="c1">// Get row</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-2"></a><span class="k">val</span> <span class="py">row</span> <span class="p">=</span> <span class="n">irisData</span><span class="p">[</span><span class="m">5</span><span class="p">]</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-3"></a>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-4"></a><span class="c1">// Get value</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-5"></a><span class="k">val</span> <span class="py">valueByIndex</span> <span class="p">=</span> <span class="n">irisData</span><span class="p">[</span><span class="m">5</span><span class="p">,</span> <span class="m">3</span><span class="p">]</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-6"></a>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-7"></a><span class="c1">// Get value by attribute</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-8"></a><span class="k">val</span> <span class="py">valueByAttribute</span> <span class="p">=</span> <span class="n">row</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-9"></a>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-10"></a><span class="c1">// Set row</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-11"></a><span class="n">irisData</span><span class="p">[</span><span class="m">6</span><span class="p">]</span> <span class="p">=</span> <span class="n">row</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-12"></a>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-13"></a><span class="c1">// Set value at index (6,3)</span>
-<a name="rest_code_0074e898d3bb4a8eaa29e351beb155ea-14"></a><span class="n">irisData</span><span class="p">[</span><span class="m">6</span><span class="p">,</span> <span class="m">3</span><span class="p">]</span> <span class="p">=</span> <span class="m">100.0</span>
-</pre>
-<p>Furthermore, we can use Kotlins <cite>Range</cite> objects, e.g. <code>2..5</code> (5 inklusive) or <code>2 until 5</code> (5 exclusive), to access a slice of a dataset. Combining this with the brackets-operator results in even more flexible and shorter ways to access subset of a dataset:</p>
-<pre class="code Kotlin"><a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-1"></a><span class="c1">// Get rows 2-20</span>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-2"></a><span class="k">val</span> <span class="py">rowSubset</span> <span class="p">=</span> <span class="n">iris</span><span class="p">[</span><span class="m">2.</span><span class="p">.</span><span class="m">20</span><span class="p">]</span>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-3"></a>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-4"></a><span class="c1">// Get rows 2-20 (explicit attribute selection with &lt;ALL&gt;)</span>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-5"></a><span class="k">val</span> <span class="py">rowSubsetEq</span> <span class="p">=</span> <span class="n">iris</span><span class="p">[</span><span class="m">2.</span><span class="p">.</span><span class="m">20</span><span class="p">,</span> <span class="n">ALL</span><span class="p">]</span>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-6"></a>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-7"></a><span class="c1">// Get all rows and only columns 1-2</span>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-8"></a><span class="k">val</span> <span class="py">attributeSubset</span> <span class="p">=</span> <span class="n">iris</span><span class="p">[</span><span class="n">ALL</span><span class="p">,</span> <span class="m">1.</span><span class="p">.</span><span class="m">2</span><span class="p">]</span>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-9"></a>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-10"></a><span class="c1">// Get rows 2-20 and columns 1-2</span>
-<a name="rest_code_7f8ff9102f924c0887f6384431d25bb5-11"></a><span class="k">val</span> <span class="py">subset</span> <span class="p">=</span> <span class="n">iris</span><span class="p">[</span><span class="m">2.</span><span class="p">.</span><span class="m">20</span><span class="p">,</span> <span class="m">1.</span><span class="p">.</span><span class="m">2</span><span class="p">]</span>
-</pre>
+<div class="code"><pre class="code Kotlin"><a id="rest_code_dba2729e009b4458be6ec3506db203a2-1" name="rest_code_dba2729e009b4458be6ec3506db203a2-1" href="#rest_code_dba2729e009b4458be6ec3506db203a2-1"></a><span class="c1">// Split data using destructuring declaration</span>
+<a id="rest_code_dba2729e009b4458be6ec3506db203a2-2" name="rest_code_dba2729e009b4458be6ec3506db203a2-2" href="#rest_code_dba2729e009b4458be6ec3506db203a2-2"></a><span class="kd">val</span><span class="w"> </span><span class="p">(</span><span class="nv">train</span><span class="p">,</span><span class="w"> </span><span class="nv">test</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">irisData</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="n">testPercentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">33.0</span><span class="p">)</span>
+</pre></div>
+</section><section id="numpy-like-data-access"><h4>Numpy-Like Data Access</h4>
+<p>Numpy provides an easy and intuitive way of accessing data in a numpy array by passing indices to the square-brackets operator <cite>data[..]</cite>. Kotlin's operator overloading allows us to extend the <cite>Instances</cite> functionality and provide definitions for numpy-like data access as shown in the following example:</p>
+<div class="code"><pre class="code Kotlin"><a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-1" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-1" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-1"></a><span class="c1">// Get row</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-2" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-2" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">irisData</span><span class="o">[</span><span class="m">5</span><span class="o">]</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-3" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-3" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-3"></a>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-4" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-4" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-4"></a><span class="c1">// Get value</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-5" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-5" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-5"></a><span class="kd">val</span><span class="w"> </span><span class="nv">valueByIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">irisData</span><span class="o">[</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="o">]</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-6" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-6" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-6"></a>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-7" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-7" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-7"></a><span class="c1">// Get value by attribute</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-8" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-8" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-8"></a><span class="kd">val</span><span class="w"> </span><span class="nv">valueByAttribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="o">[</span><span class="n">attribute</span><span class="o">]</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-9" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-9" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-9"></a>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-10" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-10" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-10"></a><span class="c1">// Set row</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-11" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-11" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-11"></a><span class="n">irisData</span><span class="o">[</span><span class="m">6</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-12" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-12" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-12"></a>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-13" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-13" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-13"></a><span class="c1">// Set value at index (6,3)</span>
+<a id="rest_code_b01b4530d4ae44b6bc01b545cce88e10-14" name="rest_code_b01b4530d4ae44b6bc01b545cce88e10-14" href="#rest_code_b01b4530d4ae44b6bc01b545cce88e10-14"></a><span class="n">irisData</span><span class="o">[</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100.0</span>
+</pre></div>
+<p>Furthermore, we can use Kotlins <cite>Range</cite> objects, e.g. <cite>2..5</cite> (5 inklusive) or <cite>2 until 5</cite> (5 exclusive), to access a slice of a dataset. Combining this with the brackets-operator results in even more flexible and shorter ways to access subset of a dataset:</p>
+<div class="code"><pre class="code Kotlin"><a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-1" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-1" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-1"></a><span class="c1">// Get rows 2-20</span>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-2" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-2" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">rowSubset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iris</span><span class="o">[</span><span class="m">2.</span><span class="p">.</span><span class="m">20</span><span class="o">]</span>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-3" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-3" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-3"></a>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-4" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-4" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-4"></a><span class="c1">// Get rows 2-20 (explicit attribute selection with &lt;ALL&gt;)</span>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-5" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-5" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-5"></a><span class="kd">val</span><span class="w"> </span><span class="nv">rowSubsetEq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iris</span><span class="o">[</span><span class="m">2.</span><span class="p">.</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ALL</span><span class="o">]</span>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-6" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-6" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-6"></a>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-7" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-7" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-7"></a><span class="c1">// Get all rows and only columns 1-2</span>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-8" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-8" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-8"></a><span class="kd">val</span><span class="w"> </span><span class="nv">attributeSubset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iris</span><span class="o">[</span><span class="n">ALL</span><span class="p">,</span><span class="w"> </span><span class="m">1.</span><span class="p">.</span><span class="m">2</span><span class="o">]</span>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-9" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-9" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-9"></a>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-10" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-10" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-10"></a><span class="c1">// Get rows 2-20 and columns 1-2</span>
+<a id="rest_code_abb3718d893f47d1b7a50ffbb398f348-11" name="rest_code_abb3718d893f47d1b7a50ffbb398f348-11" href="#rest_code_abb3718d893f47d1b7a50ffbb398f348-11"></a><span class="kd">val</span><span class="w"> </span><span class="nv">subset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iris</span><span class="o">[</span><span class="m">2.</span><span class="p">.</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">1.</span><span class="p">.</span><span class="m">2</span><span class="o">]</span>
+</pre></div>
 <p>More Weka Java vs Kotlin examples can be found <a class="reference external" href="https://github.com/steven-lang/weka-kt">here</a>. All extension functions are well documented and demonstrated with code snippets in the <a class="reference external" href="https://steven-lang.github.io/weka-kt/">Weka-Kt documentation</a>. Further ideas for Weka extension or improvements can be submitted as issues or pull requests at <a class="reference external" href="https://github.com/steven-lang/weka-kt">https://github.com/steven-lang/weka-kt</a>.</p>
+</section></section></section>
 </div>
-</div>
-</div>
-</div>
-    </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/kotlin/" rel="tag">kotlin</a></li>
         </ul>
@@ -199,21 +190,19 @@ Kotlin is a statically typed programming language for modern multiplatform appli
             <li class="next">
                 <a href="../2018-10-08-making-a-weka-classifier/" rel="next" title="Making a Weka classifier">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2020         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </ul></nav></aside></article><!--End of body content--><footer id="footer">
+            Contents © 2024         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
             
         </footer>
 </div>
 </div>
 
 
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
 </body>
 </html>

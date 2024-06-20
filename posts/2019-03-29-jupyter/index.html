@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +8,7 @@
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2019-03-29-jupyter/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Peter Reutemann">
 <link rel="prev" href="../2019-03-01-bookmarks/" title="Bookmarks support" type="text/html">
@@ -28,39 +29,38 @@ A recent pos">
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark
+bg-dark
+"><div class="container">
 <!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://waikato.github.io/weka-blog/">
+        <a class="navbar-brand" href="../../">
 
-                <span id="blog-title">WEKA Blog</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" role="navigation" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../../archive.html">Archive</a>
+            <span id="blog-title">WEKA Blog</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Archive</a>
                 </li>
-<li>
-<a href="../../categories/">Tags</a>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
                 </li>
-<li>
-<a href="../../rss.xml">RSS feed</a>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
 
                 
             </li>
 </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="index.rst" id="sourcelink">Source</a>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item">
+    <a href="index.rst" id="sourcelink" class="nav-link">Source</a>
     </li>
+
 
                 
             </ul>
@@ -71,16 +71,19 @@ A recent pos">
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
-        <div class="row">
-            
-            
+        
+        
+        
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Jupyter notebooks</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    <a href="../../authors/peter-reutemann/">Peter Reutemann</a>
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    <a class="u-url" href="../../authors/peter-reutemann/">Peter Reutemann</a>
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-03-29T14:04:00+13:00" itemprop="datePublished" title="2019-03-29 14:04">2019-03-29 14:04</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-03-29T14:04:00+13:00" itemprop="datePublished" title="2019-03-29 14:04">2019-03-29 14:04</time></a>
+            </p>
             
         <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
 
@@ -88,8 +91,7 @@ A recent pos">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p><a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> are extremely popular in the
+    <p><a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> are extremely popular in the
 Python world, simply because it is great to combine documentation and
 code in a visually appealing way. Makes it an ideal tool for teaching!</p>
 <p>A recent post on the <a class="reference external" href="https://moa.cms.waikato.ac.nz/how-to-use-jupyter-notebooks-with-moa/">MOA blog</a>, demonstrated the <a class="reference external" href="https://github.com/SpencerPark/IJava">IJava kernel</a> for executing Java scripts. The kernel relies on the Java JDK 9+ feature
@@ -98,65 +100,43 @@ first.</p>
 <p>Rather than using <em>mybinder.org</em>, I was intrigued how easy it would be
 to run it on ones local machine. As it turns out, extremely easy!</p>
 <!-- TEASER_END -->
-<div class="section" id="installation">
-<h2>Installation</h2>
+<section id="installation"><h2>Installation</h2>
 <p>Here is what I did on my Linux Mint 18.2 machine:</p>
 <ul>
 <li>
-<p class="first">created a directory called <em>weka-notebooks</em></p>
-<pre class="literal-block">
-mkdir weka-notebooks
-</pre>
+<p>created a directory called <em>weka-notebooks</em></p>
+<pre class="literal-block">mkdir weka-notebooks</pre>
 </li>
 <li>
-<p class="first">changed into the directory and created a Python virtual environment:</p>
-<pre class="literal-block">
-cd weka-notebooks
-virtualenv -p /usr/bin/python3.5 venv
-</pre>
+<p>changed into the directory and created a Python virtual environment:</p>
+<pre class="literal-block">cd weka-notebooks
+virtualenv -p /usr/bin/python3.5 venv</pre>
 </li>
 <li>
-<p class="first">installed Jupyter notebooks and its dependencies:</p>
-<pre class="literal-block">
-venv/bin/pip install jupyter
-</pre>
+<p>installed Jupyter notebooks and its dependencies:</p>
+<pre class="literal-block">venv/bin/pip install jupyter</pre>
+</li>
+<li><p>then I downloaded the latest IJava <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/">release</a> (at time of writing, this
+was <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip">1.20</a>) into this directory</p></li>
+<li>
+<p>unzipped the IJava archive:</p>
+<pre class="literal-block">unzip -q ijava*.zip</pre>
 </li>
 <li>
-<p class="first">then I downloaded the latest IJava <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/">release</a> (at time of writing, this
-was <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip">1.20</a>) into this directory</p>
+<p>and installed the Java kernel into my virtual environment, using the IJava installer:</p>
+<pre class="literal-block">venv/bin/python install.py --sys-prefix</pre>
 </li>
 <li>
-<p class="first">unzipped the IJava archive:</p>
-<pre class="literal-block">
-unzip -q ijava*.zip
-</pre>
+<p>after that, I fired up Jupyter using:</p>
+<pre class="literal-block">venv/bin/jupyter-notebook</pre>
 </li>
-<li>
-<p class="first">and installed the Java kernel into my virtual environment, using the IJava installer:</p>
-<pre class="literal-block">
-venv/bin/python install.py --sys-prefix
-</pre>
-</li>
-<li>
-<p class="first">after that, I fired up Jupyter using:</p>
-<pre class="literal-block">
-venv/bin/jupyter-notebook
-</pre>
-</li>
-<li>
-<p class="first">now you can create new notebooks!</p>
-</li>
-</ul>
-</div>
-<div class="section" id="example">
-<h2>Example</h2>
+<li><p>now you can create new notebooks!</p></li>
+</ul></section><section id="example"><h2>Example</h2>
 <p>The following example cross-validates J48 on the UCI dataset <em>anneal</em> (you can
 download the notebook for the <a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/trunk/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">developer version</a> of Weka and the
 <a class="reference external" href="https://svn.cms.waikato.ac.nz/svn/weka/branches/stable-3-8/wekaexamples/src/main/notebook/crossvalidate_j48.ipynb">stable 3.8 version</a>):</p>
-<img alt="../../images/jupyter.png" src="../../images/jupyter.png">
+<img alt="../../images/jupyter.png" src="../../images/jupyter.png"></section>
 </div>
-</div>
-    </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/scripting/" rel="tag">scripting</a></li>
         </ul>
@@ -167,21 +147,19 @@ download the notebook for the <a class="reference external" href="https://svn.cm
             <li class="next">
                 <a href="../2019-04-02-jupyter-windows/" rel="next" title="Jupyter notebooks (on Windows)">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2020         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </ul></nav></aside></article><!--End of body content--><footer id="footer">
+            Contents © 2024         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
             
         </footer>
 </div>
 </div>
 
 
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
 </body>
 </html>

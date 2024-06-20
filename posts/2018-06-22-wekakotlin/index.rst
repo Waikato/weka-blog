@@ -57,7 +57,7 @@ The same functionality can be achieved with Weka-Kt's `Instances.filter <https:/
         percentage = 33.0
     }
 
-which calls the following extension function on the :code:`irisData` object:
+which calls the following extension function on the `irisData` object:
 
 .. code-block:: Kotlin
 
@@ -67,7 +67,7 @@ which calls the following extension function on the :code:`irisData` object:
         return Filter.useFilter(this, filter)
     }
     
-The above defined function *extends* the Weka :code:`Instances` class. Therefore, the function acts as being part of the :code:`Instances` class and :code:`this` refers to the receiving :code:`Instances` object. The parameter :code:`body` is an extension function on the Filter subclass :code:`T` and can thus be called on the :code:`filter` object in the first line.
+The above defined function *extends* the Weka `Instances` class. Therefore, the function acts as being part of the `Instances` class and `this` refers to the receiving `Instances` object. The parameter `body` is an extension function on the Filter subclass `T` and can thus be called on the `filter` object in the first line.
 
 ==========================
 Generating Train/Test Sets
@@ -103,7 +103,7 @@ Using Weka-Kt's `Instances.split <https://steven-lang.github.io/weka-kt/com.gith
 ======================
 Numpy-Like Data Access
 ======================
-Numpy provides an easy and intuitive way of accessing data in a numpy array by passing indices to the square-brackets operator :code:`data[..]`. Kotlin's operator overloading allows us to extend the `Instances` functionality and provide definitions for numpy-like data access as shown in the following example:
+Numpy provides an easy and intuitive way of accessing data in a numpy array by passing indices to the square-brackets operator `data[..]`. Kotlin's operator overloading allows us to extend the `Instances` functionality and provide definitions for numpy-like data access as shown in the following example:
 
 .. code-block:: Kotlin
 
@@ -123,7 +123,7 @@ Numpy provides an easy and intuitive way of accessing data in a numpy array by p
    irisData[6, 3] = 100.0
 
 
-Furthermore, we can use Kotlins `Range` objects, e.g. :code:`2..5` (5 inklusive) or :code:`2 until 5` (5 exclusive), to access a slice of a dataset. Combining this with the brackets-operator results in even more flexible and shorter ways to access subset of a dataset:
+Furthermore, we can use Kotlins `Range` objects, e.g. `2..5` (5 inklusive) or `2 until 5` (5 exclusive), to access a slice of a dataset. Combining this with the brackets-operator results in even more flexible and shorter ways to access subset of a dataset:
 
 .. code-block:: Kotlin
 

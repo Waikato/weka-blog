@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +8,7 @@
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2019-04-02-jupyter-windows/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Peter Reutemann">
 <link rel="prev" href="../2019-03-29-jupyter/" title="Jupyter notebooks" type="text/html">
@@ -29,39 +30,38 @@ a Java 9 J">
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark
+bg-dark
+"><div class="container">
 <!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://waikato.github.io/weka-blog/">
+        <a class="navbar-brand" href="../../">
 
-                <span id="blog-title">WEKA Blog</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" role="navigation" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../../archive.html">Archive</a>
+            <span id="blog-title">WEKA Blog</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Archive</a>
                 </li>
-<li>
-<a href="../../categories/">Tags</a>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
                 </li>
-<li>
-<a href="../../rss.xml">RSS feed</a>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
 
                 
             </li>
 </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="index.rst" id="sourcelink">Source</a>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item">
+    <a href="index.rst" id="sourcelink" class="nav-link">Source</a>
     </li>
+
 
                 
             </ul>
@@ -72,16 +72,19 @@ a Java 9 J">
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
-        <div class="row">
-            
-            
+        
+        
+        
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Jupyter notebooks (on Windows)</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    <a href="../../authors/peter-reutemann/">Peter Reutemann</a>
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    <a class="u-url" href="../../authors/peter-reutemann/">Peter Reutemann</a>
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-04-02T13:44:00+13:00" itemprop="datePublished" title="2019-04-02 13:44">2019-04-02 13:44</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-04-02T13:44:00+13:00" itemprop="datePublished" title="2019-04-02 13:44">2019-04-02 13:44</time></a>
+            </p>
             
         <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
 
@@ -89,8 +92,7 @@ a Java 9 J">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>In the previous <a class="reference external" href="../2019-03-29-jupyter">post</a>, I quickly
+    <p>In the previous <a class="reference external" href="../2019-03-29-jupyter/">post</a>, I quickly
 described how to set up Jupyter Notebooks to run Java code. Now I want
 to explain how to set things up on Windows using
 <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>. Of course, you have to have
@@ -98,57 +100,36 @@ a Java 9 JDK or later installed on your system, as the JDK's <em>JShell</em>
 feature is required to execute the Java code on the fly.</p>
 <!-- TEASER_END -->
 <ul>
+<li><p>open a command prompt</p></li>
 <li>
-<p class="first">open a command prompt</p>
+<p>create a new environment using anaconda (e.g., for Python 3.5)</p>
+<pre class="literal-block">conda create -n py35-ijava python=3.5</pre>
 </li>
 <li>
-<p class="first">create a new environment using anaconda (e.g., for Python 3.5)</p>
-<pre class="literal-block">
-conda create -n py35-ijava python=3.5
-</pre>
+<p>activate environment</p>
+<pre class="literal-block">activate py35-ijava</pre>
 </li>
 <li>
-<p class="first">activate environment</p>
-<pre class="literal-block">
-activate py35-ijava
-</pre>
+<p>install Jupyter</p>
+<pre class="literal-block">pip install jupyter</pre>
+</li>
+<li><p>download the latest IJava <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/">release</a> (at time of writing, this was <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip">1.20</a>)</p></li>
+<li><p>unzip the IJava release (e.g., with your File browser or 7-Zip)</p></li>
+<li>
+<p>change into the directory where you extracted the release, containing the <cite>install.py</cite>, e.g.:</p>
+<pre class="literal-block">cd C:\Users\fracpete\Downloads\ijava-1.2.0</pre>
 </li>
 <li>
-<p class="first">install Jupyter</p>
-<pre class="literal-block">
-pip install jupyter
-</pre>
+<p>install the kernel</p>
+<pre class="literal-block">python install.py --sys-prefix</pre>
 </li>
 <li>
-<p class="first">download the latest IJava <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/">release</a> (at time of writing, this was <a class="reference external" href="https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip">1.20</a>)</p>
+<p>start Jupyter</p>
+<pre class="literal-block">jupyter-notebook</pre>
 </li>
-<li>
-<p class="first">unzip the IJava release (e.g., with your File browser or 7-Zip)</p>
-</li>
-<li>
-<p class="first">change into the directory where you extracted the release, containing the <cite>install.py</cite>, e.g.:</p>
-<pre class="literal-block">
-cd C:\Users\fracpete\Downloads\ijava-1.2.0
-</pre>
-</li>
-<li>
-<p class="first">install the kernel</p>
-<pre class="literal-block">
-python install.py --sys-prefix
-</pre>
-</li>
-<li>
-<p class="first">start Jupyter</p>
-<pre class="literal-block">
-jupyter-notebook
-</pre>
-</li>
-<li>
-<p class="first">now you can create new (Java) notebooks!</p>
-</li>
+<li><p>now you can create new (Java) notebooks!</p></li>
 </ul>
 </div>
-    </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/scripting/" rel="tag">scripting</a></li>
         </ul>
@@ -159,21 +140,19 @@ jupyter-notebook
             <li class="next">
                 <a href="../2019-09-23-weka-debian-packages/" rel="next" title="Weka Debian packages">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2020         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </ul></nav></aside></article><!--End of body content--><footer id="footer">
+            Contents © 2024         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
             
         </footer>
 </div>
 </div>
 
 
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
 </body>
 </html>

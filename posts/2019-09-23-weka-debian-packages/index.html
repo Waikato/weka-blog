@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,11 +8,11 @@
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/posts/2019-09-23-weka-debian-packages/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="FracPete">
 <link rel="prev" href="../2019-04-02-jupyter-windows/" title="Jupyter notebooks (on Windows)" type="text/html">
-<link rel="next" href="../2020-07-04-wekaDeeplearning4j-1.6.0/" title="New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more" type="text/html">
+<link rel="next" href="../2020-07-04-wekaDeeplearning4j-1.6.0/" title="New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more " type="text/html">
 <meta property="og:site_name" content="WEKA Blog">
 <meta property="og:title" content="Weka Debian packages">
 <meta property="og:url" content="https://waikato.github.io/weka-blog/posts/2019-09-23-weka-debian-packages/">
@@ -28,39 +29,38 @@ but users ">
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark
+bg-dark
+"><div class="container">
 <!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://waikato.github.io/weka-blog/">
+        <a class="navbar-brand" href="../../">
 
-                <span id="blog-title">WEKA Blog</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" role="navigation" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../../archive.html">Archive</a>
+            <span id="blog-title">WEKA Blog</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Archive</a>
                 </li>
-<li>
-<a href="../../categories/">Tags</a>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Tags</a>
                 </li>
-<li>
-<a href="../../rss.xml">RSS feed</a>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
 
                 
             </li>
 </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="index.rst" id="sourcelink">Source</a>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item">
+    <a href="index.rst" id="sourcelink" class="nav-link">Source</a>
     </li>
+
 
                 
             </ul>
@@ -71,16 +71,19 @@ but users ">
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
-        <div class="row">
-            
-            
+        
+        
+        
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Weka Debian packages</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                    <a href="../../authors/fracpete/">FracPete</a>
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    <a class="u-url" href="../../authors/fracpete/">FracPete</a>
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-09-23T13:21:00+12:00" itemprop="datePublished" title="2019-09-23 13:21">2019-09-23 13:21</time></a></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-09-23T13:21:00+12:00" itemprop="datePublished" title="2019-09-23 13:21">2019-09-23 13:21</time></a>
+            </p>
             
         <p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
 
@@ -88,8 +91,7 @@ but users ">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <div>
-<p>Users installing Weka on Linux must have always felt left out
+    <p>Users installing Weka on Linux must have always felt left out
 a bit, with no installer available, instead having to deal with
 just a ZIP file. For power users, that would not have mattered,
 but users new to Linux may have found that a bit more challenging.</p>
@@ -98,8 +100,7 @@ one of its many derivatives like Ubuntu - with the advent
 of <a class="reference external" href="https://www.cs.waikato.ac.nz/~ml/weka/snapshots/weka_snapshots.html">snapshots</a>
 being available for download as <a class="reference external" href="https://en.wikipedia.org/wiki/Deb_%28file_format%29">Debian packages</a> (stable 3.8 and developer version).</p>
 <!-- TEASER_END -->
-<div class="section" id="downloading-and-installing">
-<h2>Downloading and installing</h2>
+<section id="downloading-and-installing"><h2>Downloading and installing</h2>
 <p>All snapshots, ZIP files and Debian packages, get generated by our
 build server and are available from the following URL:</p>
 <p><a class="reference external" href="https://www.cs.waikato.ac.nz/~ml/weka/snapshots/weka_snapshots.html">cs.waikato.ac.nz/~ml/weka/snapshots/weka_snapshots.html</a></p>
@@ -110,37 +111,26 @@ command-line using <em>sudo dpkg -i filename.deb</em> or double-click it
 to use a graphical installer like <a class="reference external" href="https://itsfoss.com/gdebi-default-ubuntu-software-center/">GDebi</a>
 or <em>Ubuntu's Software Center</em> (for some reason the <em>Software
 Center</em> thinks that Weka is proprietary).</p>
-</div>
-<div class="section" id="starting-weka">
-<h2>Starting Weka</h2>
+</section><section id="starting-weka"><h2>Starting Weka</h2>
 <p>Depending on what version you installed, you will have two scripts
 in your <em>/usr/bin</em> directory:</p>
-<pre class="literal-block">
-weka-stable-gui
-weka-stable-run
-</pre>
+<pre class="literal-block">weka-stable-gui
+weka-stable-run</pre>
 <p>Or:</p>
-<pre class="literal-block">
-weka-dev-gui
-weka-dev-run
-</pre>
-<div class="section" id="gui">
-<h3>GUI</h3>
+<pre class="literal-block">weka-dev-gui
+weka-dev-run</pre>
+<section id="gui"><h3>GUI</h3>
 <p>The <em>-gui</em> script will start Weka's GUIChooser with 512MB of heap space by default.
 You can increase the heap with the <em>-memory</em> option, e.g., <em>-memory 2g</em> to use 2GB.
 If you want to execute another GUI class, e.g., the Explorer, then you can supply
 this with the <em>-main</em> option, e.g., <em>-main weka.gui.explorer.Explorer</em>.</p>
 <p>Starting the Explorer of the developer version with 2GB of heap from the
 command-line would look like this:</p>
-<pre class="literal-block">
-weka-dev-gui -main weka.gui.explorer.Explorer -memory 2g
-</pre>
+<pre class="literal-block">weka-dev-gui -main weka.gui.explorer.Explorer -memory 2g</pre>
 <p>The Debian package also installs a <em>.desktop</em> file in <em>/usr/share/applications</em>,
 which simply calls the <em>weka-{dev|stable}-gui</em> script and should show up in your
 applications menu automatically.</p>
-</div>
-<div class="section" id="run">
-<h3>Run</h3>
+</section><section id="run"><h3>Run</h3>
 <p>The <em>-run</em> script executes Weka's <em>weka.Run</em> class, for executing classes, like
 classifiers, clusterers, filters, etc. from the command-line. The <em>weka.Run</em> tool
 allows you to specify shortened classnames (as long as they are unique), e.g.,
@@ -148,13 +138,8 @@ allows you to specify shortened classnames (as long as they are unique), e.g.,
 option to chage the heap size from its default 512MB.</p>
 <p>The following command-line cross-validates J48 (stable version) on the labor
 UCI dataset:</p>
-<pre class="literal-block">
-weka-stable-run .J48 -t /some/where/labor.arff
-</pre>
-</div>
-</div>
-<div class="section" id="building-packages">
-<h2>Building packages</h2>
+<pre class="literal-block">weka-stable-run .J48 -t /some/where/labor.arff</pre>
+</section></section><section id="building-packages"><h2>Building packages</h2>
 <p>This section is only relevant to people wanting to build their own
 Debian packages, e.g., when including their own classes in a custom
 build, or people that want to simply know how it is done.</p>
@@ -167,27 +152,18 @@ build framework to collect all the required
 artifacts (<em>mvn-deb-pkg</em>) and one that reuses jar files built
 previously by <a class="reference external" href="http://ant.apache.org/">ant</a> (<em>ant-deb-pkg</em>).
 Our build server uses the latter one.</p>
-<div class="section" id="using-maven">
-<h3>Using Maven</h3>
+<section id="using-maven"><h3>Using Maven</h3>
 <p>You can use the following command-line for building a Debian package
 (located in your <em>target</em> directory):</p>
-<pre class="literal-block">
-mvn clean install -DskipTests=true deb:package -P mvn-deb-pkg
-</pre>
-</div>
-<div class="section" id="using-ant">
-<h3>Using Ant</h3>
+<pre class="literal-block">mvn clean install -DskipTests=true deb:package -P mvn-deb-pkg</pre>
+</section><section id="using-ant"><h3>Using Ant</h3>
 <p>Since the Ant profile relies on previously generated jar files, you
 need to execute two commands to successfully build a Debian package
 in your <em>target</em> directory:</p>
-<pre class="literal-block">
-ant clean exejar srcjar
-mvn deb:package -P ant-deb-pkg
-</pre>
+<pre class="literal-block">ant clean exejar srcjar
+mvn deb:package -P ant-deb-pkg</pre>
+</section></section>
 </div>
-</div>
-</div>
-    </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/github/" rel="tag">github</a></li>
         </ul>
@@ -196,23 +172,21 @@ mvn deb:package -P ant-deb-pkg
                 <a href="../2019-04-02-jupyter-windows/" rel="prev" title="Jupyter notebooks (on Windows)">Previous post</a>
             </li>
             <li class="next">
-                <a href="../2020-07-04-wekaDeeplearning4j-1.6.0/" rel="next" title="New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more">Next post</a>
+                <a href="../2020-07-04-wekaDeeplearning4j-1.6.0/" rel="next" title="New WekaDeeplearning4j Release - Pretrained Models, Feature Extraction Update, and more ">Next post</a>
             </li>
-        </ul></nav></aside></article>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2020         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </ul></nav></aside></article><!--End of body content--><footer id="footer">
+            Contents © 2024         <a href="mailto:eibe@waikato.ac.nz">The WEKA Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
             
         </footer>
 </div>
 </div>
 
 
-            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates -->
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
 </body>
 </html>
