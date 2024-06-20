@@ -131,7 +131,7 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "bootstrap3"
+THEME = "bootstrap4"
 
 # Below this point, everything is optional
 
@@ -414,11 +414,11 @@ REDIRECTIONS = []
 
 # For user.github.io OR organization.github.io pages, the DEPLOY branch
 # MUST be 'master', and 'gh-pages' for other repositories.
-# GITHUB_SOURCE_BRANCH = 'master'
-# GITHUB_DEPLOY_BRANCH = 'gh-pages'
+GITHUB_SOURCE_BRANCH = 'master'
+GITHUB_DEPLOY_BRANCH = 'gh-pages'
 
 # The name of the remote where you wish to push to, using github_deploy.
-# GITHUB_REMOTE_NAME = 'origin'
+GITHUB_REMOTE_NAME = 'origin'
 
 # Where the output site should be located
 # If you don't use an absolute path, it will be considered as relative
