@@ -112,4 +112,5 @@ venv.bak/
 *.db
 cache/
 output/
-
+.idea/
+*.iml
