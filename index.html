@@ -12,7 +12,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="rss.xml">
 <link rel="canonical" href="https://waikato.github.io/weka-blog/">
 <link rel="next" href="index-1.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2020-11-26-wekaDeeplearning4j-1.7.0/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/2024-07-16-pww3-release-using-jpype/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -63,7 +63,48 @@ bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2020-11-26-wekaDeeplearning4j-1.7.0/" class="u-url">New WekaDeeplearning4j Release - CNN explorer, saliency maps, progress manager, and model summaries </a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2024-07-16-pww3-release-using-jpype/" class="u-url">python-weka-wrapper3 release using JPype</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/fracpete/">FracPete</a>
+            </span></p>
+            <p class="dateline">
+            <a href="posts/2024-07-16-pww3-release-using-jpype/" rel="bookmark">
+            <time class="published dt-published" datetime="2024-07-16T11:40:00+12:00" itemprop="datePublished" title="2024-07-16 11:40">2024-07-16 11:40</time></a>
+            </p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>Some of you might have come across the python-weka-wrapper3 library, which makes Weka available from Python:</p>
+<blockquote>
+<p><a class="reference external" href="https://github.com/fracpete/python-weka-wrapper3">https://github.com/fracpete/python-weka-wrapper3</a></p>
+</blockquote>
+<p>When the project started out, it relied on the javabridge library in order to communicate with Java Virtual Machine
+running the Weka process. Unfortunately, that project hasn't been maintained properly for a while now and it made
+installation difficult or even impossible for M1/M2 Mac (ARM) users.</p>
+<p>Over the last few weeks, I migrated the code base to using the <a class="reference external" href="https://github.com/jpype-project/jpype">JPype library</a>
+and updated the documentation accordingly.</p>
+<p>Since the code-based appeared stable (tests and examples worked), I made a new release on Friday last week: <strong>0.3.0</strong></p>
+<p>There are several good news: <strong>first</strong>, the installation is much easier; <strong>second</strong>, ARM Mac users can use it
+now as well; <strong>third</strong>, there were pretty much no interface changes necessary, as all changes happened behind
+the scenes (only low-level access to Java objects changed).</p>
+<p>So, if you had problems in the past, you might want to give it a go again.</p>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2022-08-10-weka-moved-away-from-github/" class="u-url">Weka moved away from Github</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="authors/fracpete/">FracPete</a>
+            </span></p>
+            <p class="dateline">
+            <a href="posts/2022-08-10-weka-moved-away-from-github/" rel="bookmark">
+            <time class="published dt-published" datetime="2022-08-10T13:00:00+12:00" itemprop="datePublished" title="2022-08-10 13:00">2022-08-10 13:00</time></a>
+            </p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>Due to the size limitations for repositories on Github, Weka has been moved in-house again:</p>
+<p><a class="reference external" href="https://git.cms.waikato.ac.nz/weka/weka">https://git.cms.waikato.ac.nz/weka/weka</a></p>
+<p>This repository contains all the branches and all commits, not just a subset like the Github ones did in the past.</p>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2020-11-26-wekaDeeplearning4j-1.7.0/" class="u-url">New WekaDeeplearning4j Release - CNN explorer, saliency maps, progress manager, and model summaries </a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="authors/rhys-compton/">Rhys Compton</a>
@@ -215,41 +256,6 @@ single starting directory ineffective, unfortunately.</p>
     <div>
 <p>A frequent question of Weka users is how to implement oversampling or undersampling, which are two common strategies for dealing with imbalanced classes in classification problems. This post provides some explanation.</p>
 <p class="more"><a href="posts/2019-01-30-sampling/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2018-10-08-making-a-weka-classifier/" class="u-url">Making a Weka classifier</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="authors/eibe/">eibe</a>
-            </span></p>
-            <p class="dateline">
-            <a href="posts/2018-10-08-making-a-weka-classifier/" rel="bookmark">
-            <time class="published dt-published" datetime="2018-10-08T16:02:00+12:00" itemprop="datePublished" title="2018-10-08 16:02">2018-10-08 16:02</time></a>
-            </p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>One role of the Weka software is to provide users with the opportunity to implement machine learning algorithms without having to deal with data import and evaluation issues: when a classifier has been written as a Java class that implements a couple of standard methods defined in the Weka framework, all the goodies that come with Weka are automatically applicable to it, and it will automatically show up in Weka's graphical user interfaces. To see what needs to be done, read on!</p>
-<p class="more"><a href="posts/2018-10-08-making-a-weka-classifier/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/2018-06-22-wekakotlin/" class="u-url">Weka-Kt: Kotlin Extensions for Weka</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="authors/steven-lang/">Steven Lang </a>
-            </span></p>
-            <p class="dateline">
-            <a href="posts/2018-06-22-wekakotlin/" rel="bookmark">
-            <time class="published dt-published" datetime="2018-06-22T08:00:00+12:00" itemprop="datePublished" title="2018-06-22 08:00">2018-06-22 08:00</time></a>
-            </p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<figure><a class="reference external image-reference" href="https://github.com/steven-lang/weka-kt">
-<img alt="Weka-Kt: Kotlin Extensions for Weka" src="https://raw.githubusercontent.com/steven-lang/weka-kt/master/resources/Weka_3_kotlin_full.png" style="width: 300px;"></a>
-</figure><section id="kotlin-extensions-for-weka"><h2>Kotlin Extensions for Weka</h2>
-<p>Kotlin is a statically typed programming language for modern multiplatform applications running on the Java Virtual Machine. Its design philosophy is to be a concise and type-safe (e.g. support for non-nullable types) programming language. It supports both object-oriented and functional constructs. Other features include smart casting, operator overloading, higher-order functions, lambdas, and <a class="reference external" href="https://kotlinlang.org/docs/reference/extensions.html">extensions</a>. The latter has led to the formation of a group of Kotlin extension libraries that primarily focuses on the syntactic improvement of other libraries' usages. A key example is <a class="reference external" href="https://github.com/android/android-ktx">Android KTX</a> library, developed by Google, which provides extensions for the Android framework. The purpose of this is to make Android development with Kotlin more concise, pleasant and idiomatic.</p>
-<p class="more"><a href="posts/2018-06-22-wekakotlin/">Read more…</a></p></section>
 </div>
     </div>
     </article>
